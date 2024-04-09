@@ -60,8 +60,8 @@ Partial Class Form1
         ListBox2 = New ListBox()
         Label5 = New Label()
         TabPage4 = New TabPage()
-        Conectar = New Button()
         TextBox3 = New TextBox()
+        Conectar = New Button()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -444,6 +444,13 @@ Partial Class Form1
         TabPage4.Text = "GPs"
         TabPage4.UseVisualStyleBackColor = True
         ' 
+        ' TextBox3
+        ' 
+        TextBox3.Location = New Point(251, 224)
+        TextBox3.Name = "TextBox3"
+        TextBox3.Size = New Size(150, 27)
+        TextBox3.TabIndex = 44
+        ' 
         ' Conectar
         ' 
         Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -454,13 +461,6 @@ Partial Class Form1
         Conectar.TabIndex = 1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
-        ' 
-        ' TextBox3
-        ' 
-        TextBox3.Location = New Point(251, 224)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(150, 27)
-        TextBox3.TabIndex = 44
         ' 
         ' Form1
         ' 
