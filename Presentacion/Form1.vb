@@ -115,7 +115,7 @@
             Try
                 pi = New Piloto
                 pi.IDPiloto = TextBox_ID_Piloto.Text
-                pi.Apellido = ComboBox_Pais_Piloto.SelectedItem
+                pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
                 Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro"}
                 Dim Apellidos() As String = {"Gozalez", "Galarda", "Garzás", "Melano", "Limón"}
                 Dim rnd As New Random()
@@ -156,7 +156,7 @@
         If Not Me.pi Is Nothing Then
             If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.pi.IDPiloto & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 Try
-                    If Me.p.BorrarPersona() <> 1 Then
+                    If Me.pi.BorrarPilotos() <> 1 Then
                         MessageBox.Show("DELETE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                         Exit Sub
                     End If
@@ -166,7 +166,7 @@
                 End Try
                 Me.ListBox_Piloto.Items.Remove(pi.IDPiloto)
             End If
-            Me.Limpiar.PerformClick() 'Hacer click'
+            Me.Limpiar_Piloto.PerformClick() 'Hacer click'
 
         End If
     End Sub
