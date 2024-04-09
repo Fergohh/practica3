@@ -82,6 +82,7 @@
         End Try
         For Each pAux In Me.p.PerDAO.Personas
             Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
+            Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
         Next
         For Each piAux In Me.pi.PilotoDAO.Pilotos
             Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
@@ -110,15 +111,19 @@
     End Sub
 
     Private Sub Añadir_Piloto_Click(sender As Object, e As EventArgs) Handles Añadir_Piloto.Click
-        If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty Then '<> significa !='
+        If Me.TextBox_ID_Piloto.Text <> String.Empty Then '<> significa !='
             Try
-                p = New Pais
-                p.IDPais = txtID.Text
-                p.Nombre = txtNombre.Text
-                p.Habitantes = txtHab.Text
+                pi = New Piloto
+                pi.IDPiloto = TextBox_ID_Piloto.Text
+                pi.Apellido = ComboBox_Pais_Piloto.SelectedItem
+                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro"}
+                Dim Apellidos() As String = {"Gozalez", "Galarda", "Garzás", "Melano", "Limón"}
+                Dim rnd As New Random()
+                Dim indiceAleatorio As Integer = rnd.Next(0, nombres.Length)
+                pi.Nombre = nombres(indiceAleatorio)
+                pi.Apellido = Apellidos(indiceAleatorio)
 
-
-                If p.InsertarPersona() <> 1 Then
+                If pi.InsertarPilotos <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -127,7 +132,7 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            Me.ListBox1.Items.Add(p.IDPais)
+            Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
         End If
     End Sub
 
@@ -148,8 +153,8 @@
     End Sub
 
     Private Sub Borrar_Piloto_Click(sender As Object, e As EventArgs) Handles Borrar_Piloto.Click
-        If Not Me.p Is Nothing Then
-            If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.p.IDPais & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If Not Me.pi Is Nothing Then
+            If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.pi.IDPiloto & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
                 Try
                     If Me.p.BorrarPersona() <> 1 Then
                         MessageBox.Show("DELETE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -159,7 +164,7 @@
                     MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
                 End Try
-                Me.ListBox1.Items.Remove(p.IDPais)
+                Me.ListBox_Piloto.Items.Remove(pi.IDPiloto)
             End If
             Me.Limpiar.PerformClick() 'Hacer click'
 
@@ -167,30 +172,25 @@
     End Sub
 
     Private Sub Limpiar_Piloto_Click(sender As Object, e As EventArgs) Handles Limpiar_Piloto.Click
-        Me.txtID.Text = String.Empty
-        Me.txtNombre.Text = String.Empty
-        Me.txtHab.Text = String.Empty
-        Me.txtID.Enabled = True
-        Me.txtNombre.Enabled = True
-        Me.txtHab.Enabled = True
+        Me.TextBox_ID_Piloto.Text = String.Empty
+
     End Sub
 
 
     Private Sub ListBox_Piloto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Piloto.SelectedIndexChanged
-        Me.Actualizar.Enabled = True
-        Me.Borrar.Enabled = True
-        Me.txtID.Enabled = False
-        If Not Me.ListBox1.SelectedItem Is Nothing Then
-            Me.p = New Pais(Me.ListBox1.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+        Me.Actualizar_Piloto.Enabled = True
+        Me.Borrar_Piloto.Enabled = True
+        Me.TextBox_ID_Piloto.Enabled = False
+        If Not Me.ListBox_Piloto.SelectedItem Is Nothing Then
+            Me.pi = New Piloto(Me.ListBox_Piloto.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
-                Me.p.LeerPersona()
+                Me.pi.LeerPilotos()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
-            Me.txtID.Text = Me.p.IDPais.ToString
-            Me.txtNombre.Text = Me.p.Nombre.ToString
-            Me.txtHab.Text = Me.p.Habitantes.ToString
+            Me.TextBox_ID_Piloto.Text = Me.pi.IDPiloto.ToString
+
         End If
     End Sub
 
