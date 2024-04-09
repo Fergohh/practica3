@@ -37,4 +37,4 @@
         Return Me.EscuderiaDAO.Borrar(Me)
     End Function
 
-End Class
+
