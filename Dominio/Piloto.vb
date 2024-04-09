@@ -16,23 +16,23 @@
         Me.IDPiloto = id
     End Sub
 
-    Public Sub LeerTodosPaises()
+    Public Sub LeerTodosPilotos()
         Me.PilotoDAO.LeerTodas()
     End Sub
 
-    Public Sub LeerPaises()
+    Public Sub LeerPilotos()
         Me.PilotoDAO.Leer(Me) 'Me es un objeto persona'
     End Sub
 
-    Public Function InsertarPaises() As Integer
+    Public Function InsertarPilotos() As Integer
         Return Me.PilotoDAO.Insertar(Me)
     End Function
 
-    Public Function ActualizarPersona() As Integer
+    Public Function ActualizarPilotos() As Integer
         Return Me.PilotoDAO.Actualizar(Me)
     End Function
 
-    Public Function BorrarPersona() As Integer
+    Public Function BorrarPilotos() As Integer
         Return Me.PilotoDAO.Borrar(Me)
     End Function
 
