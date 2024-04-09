@@ -37,7 +37,7 @@
 
 
     Public Function Borrar(ByVal p As Pais) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM paises WHERE IdPais='" & p.IDPais & "';")
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM paises WHERE IdPais='" & p.IDPersona & "';")
     End Function
 
 End Class
