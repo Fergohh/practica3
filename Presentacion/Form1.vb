@@ -238,7 +238,7 @@
                 E.IDEscuderia = TextBox_ID_Escuderia.Text
                 E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
                 E.Nombre = TextBox_Nombre_Escuderia.Text
-                E.FechaCrec = DateTimePicker_Escuderia.Value
+                E.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
 
                 If E.InsertarEscuderia <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
