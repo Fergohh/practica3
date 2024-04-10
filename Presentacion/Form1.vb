@@ -123,12 +123,13 @@
                 pi = New Piloto
                 pi.IDPiloto = TextBox_ID_Piloto.Text
                 pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
-                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro"}
-                Dim Apellidos() As String = {"Gozalez", "Galarda", "Garzás", "Melano", "Limón"}
+                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro", "Javier", "Fernando"}
+                Dim Apellidos() As String = {"Gozalez", "Galarga", "Garzás", "Melano", "Limón", "Alonso", "De la Osa"}
                 Dim rnd As New Random()
                 Dim indiceAleatorio As Integer = rnd.Next(0, nombres.Length)
+                Dim indiceAleatorio2 As Integer = rnd.Next(0, Apellidos.Length)
                 pi.Nombre = nombres(indiceAleatorio)
-                pi.Apellido = Apellidos(indiceAleatorio)
+                pi.Apellido = Apellidos(indiceAleatorio2)
 
                 If pi.InsertarPilotos <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
