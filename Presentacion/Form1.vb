@@ -181,6 +181,8 @@
     Private Sub Limpiar_Piloto_Click(sender As Object, e As EventArgs) Handles Limpiar_Piloto.Click
         Me.TextBox_ID_Piloto.Text = String.Empty
         Me.ComboBox_Pais_Piloto.SelectedIndex = -1
+        Me.TextBox_ID_Piloto.Enabled = True
+        Me.ComboBox_Pais_Piloto.Enabled = True
 
 
     End Sub
@@ -232,8 +234,10 @@
         Me.TextBox_ID_Escuderia.Text = String.Empty
         Me.ComboBox_Pais_Escuderia.SelectedIndex = -1
         Me.TextBox_Nombre_Escuderia.Text = String.Empty
-        Me.DateTimePicker_Escuderia.Value = String.Empty
-
+        Me.DateTimePicker_Escuderia.Value = Date.Today
+        Me.TextBox_ID_Escuderia.Enabled = True
+        Me.ComboBox_Pais_Escuderia.Enabled = True
+        Me.TextBox_Nombre_Escuderia.Enabled = True
     End Sub
 
 End Class
