@@ -230,6 +230,33 @@
         End If
     End Sub
 
+    Private Sub Añadir_Escuderia_Click(sender As Object, e As EventArgs) Handles Añadir_Escuderia.Click
+        If Me.TextBox_ID_Piloto.Text <> String.Empty Then '<> significa !='
+            Try
+                pi = New Piloto
+                pi.IDPiloto = TextBox_ID_Piloto.Text
+                pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
+                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro", "Javier", "Fernando"}
+                Dim Apellidos() As String = {"Gozalez", "Galarga", "Garzás", "Melano", "Limón", "Alonso", "De la Osa"}
+                Dim rnd As New Random()
+                Dim indiceAleatorio As Integer = rnd.Next(0, nombres.Length)
+                Dim indiceAleatorio2 As Integer = rnd.Next(0, Apellidos.Length)
+                pi.Nombre = nombres(indiceAleatorio)
+                pi.Apellido = Apellidos(indiceAleatorio2)
+
+                If pi.InsertarPilotos <> 1 Then
+                    MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+
+            End Try
+            Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
+        End If
+    End Sub
+
     Private Sub Limpiar_Escuderia_Click(sender As Object, e As EventArgs) Handles Limpiar_Escuderia.Click
         Me.TextBox_ID_Escuderia.Text = String.Empty
         Me.ComboBox_Pais_Escuderia.SelectedIndex = -1
