@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         TabControl1 = New TabControl()
         Pais = New TabPage()
         ListView1 = New ListView()
@@ -61,8 +62,8 @@ Partial Class Form1
         Label5 = New Label()
         TabPage4 = New TabPage()
         TextBox3 = New TextBox()
-        Conectar = New Button()
         TabPage1 = New TabPage()
+        Conectar = New Button()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -99,7 +100,7 @@ Partial Class Form1
         Pais.Controls.Add(ListBox1)
         Pais.Location = New Point(4, 24)
         Pais.Name = "Pais"
-        Pais.Padding = New Padding(3, 3, 3, 3)
+        Pais.Padding = New Padding(3)
         Pais.Size = New Size(570, 352)
         Pais.TabIndex = 0
         Pais.Text = "Pais"
@@ -219,7 +220,7 @@ Partial Class Form1
         Pilotos.Controls.Add(lbl_ID_Piloto)
         Pilotos.Location = New Point(4, 24)
         Pilotos.Name = "Pilotos"
-        Pilotos.Padding = New Padding(3, 3, 3, 3)
+        Pilotos.Padding = New Padding(3)
         Pilotos.Size = New Size(570, 352)
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
@@ -370,6 +371,7 @@ Partial Class Form1
         TextBox_ID_Escuderia.Location = New Point(368, 75)
         TextBox_ID_Escuderia.Margin = New Padding(3, 2, 3, 2)
         TextBox_ID_Escuderia.Name = "TextBox_ID_Escuderia"
+        TextBox_ID_Escuderia.ReadOnly = True
         TextBox_ID_Escuderia.Size = New Size(132, 23)
         TextBox_ID_Escuderia.TabIndex = 43
         ' 
@@ -459,16 +461,6 @@ Partial Class Form1
         TextBox3.Size = New Size(132, 23)
         TextBox3.TabIndex = 44
         ' 
-        ' Conectar
-        ' 
-        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Conectar.Location = New Point(685, 47)
-        Conectar.Name = "Conectar"
-        Conectar.Size = New Size(103, 352)
-        Conectar.TabIndex = 1
-        Conectar.Text = "Conectar!!!"
-        Conectar.UseVisualStyleBackColor = True
-        ' 
         ' TabPage1
         ' 
         TabPage1.Location = New Point(4, 24)
@@ -478,6 +470,17 @@ Partial Class Form1
         TabPage1.TabIndex = 4
         TabPage1.Text = "TabPage1"
         TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' Conectar
+        ' 
+        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
+        Conectar.Location = New Point(685, 47)
+        Conectar.Name = "Conectar"
+        Conectar.Size = New Size(103, 352)
+        Conectar.TabIndex = 1
+        Conectar.Text = "Conectar!!!"
+        Conectar.UseVisualStyleBackColor = True
         ' 
         ' Form1
         ' 

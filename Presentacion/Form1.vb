@@ -235,7 +235,6 @@
         If Me.TextBox_ID_Escuderia.Text <> String.Empty Then '<> significa !='
             Try
                 E = New Escuderia
-                E.IDEscuderia = TextBox_ID_Escuderia.Text
                 E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
                 E.Nombre = TextBox_Nombre_Escuderia.Text
                 E.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
