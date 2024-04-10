@@ -489,7 +489,7 @@ Partial Class Form1
         ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(685, 47)
         Conectar.Name = "Conectar"
@@ -525,7 +525,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(Conectar)

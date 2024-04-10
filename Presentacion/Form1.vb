@@ -123,13 +123,9 @@
                 pi = New Piloto
                 pi.IDPiloto = TextBox_ID_Piloto.Text
                 pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
-                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro", "Javier", "Fernando"}
-                Dim Apellidos() As String = {"Gozalez", "Galarga", "Garzás", "Melano", "Limón", "Alonso", "De la Osa"}
-                Dim rnd As New Random()
-                Dim indiceAleatorio As Integer = rnd.Next(0, nombres.Length)
-                Dim indiceAleatorio2 As Integer = rnd.Next(0, Apellidos.Length)
-                pi.Nombre = nombres(indiceAleatorio)
-                pi.Apellido = Apellidos(indiceAleatorio2)
+                pi.Nombre = TextBox_Nombre_Piloto.Text
+                pi.Apellido = TextBox_Apellido_Piloto.Text
+
 
                 If pi.InsertarPilotos <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -184,7 +180,10 @@
         Me.ComboBox_Pais_Piloto.SelectedIndex = -1
         Me.TextBox_ID_Piloto.Enabled = True
         Me.ComboBox_Pais_Piloto.Enabled = True
-
+        Me.TextBox_Nombre_Piloto.Text = String.Empty
+        Me.TextBox_Apellido_Piloto.Text = String.Empty
+        Me.TextBox_Nombre_Piloto.Enabled = True
+        Me.TextBox_Apellido_Piloto.Enabled = True
 
     End Sub
 
@@ -194,6 +193,9 @@
         Me.Borrar_Piloto.Enabled = True
         Me.TextBox_ID_Piloto.Enabled = False
         Me.ComboBox_Pais_Piloto.Enabled = False
+        Me.TextBox_Nombre_Piloto.Enabled = True
+
+        Me.TextBox_Apellido_Piloto.Enabled = True
         If Not Me.ListBox_Piloto.SelectedItem Is Nothing Then
             Me.pi = New Piloto(Me.ListBox_Piloto.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
@@ -204,7 +206,8 @@
             End Try
             Me.TextBox_ID_Piloto.Text = Me.pi.IDPiloto.ToString
             Me.ComboBox_Pais_Piloto.SelectedItem = Me.pi.PaisPiloto
-
+            Me.TextBox_Nombre_Piloto.Text = Me.pi.Nombre.ToString
+            Me.TextBox_Apellido_Piloto.Text = Me.pi.Apellido.ToString
 
 
         End If
