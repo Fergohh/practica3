@@ -38,6 +38,10 @@ Partial Class Form1
         txtNombre = New TextBox()
         ListBox1 = New ListBox()
         Pilotos = New TabPage()
+        Label7 = New Label()
+        Label6 = New Label()
+        TextBox_Apellido_Piloto = New TextBox()
+        TextBox_Nombre_Piloto = New TextBox()
         ComboBox_Pais_Piloto = New ComboBox()
         TextBox_ID_Piloto = New TextBox()
         Limpiar_Piloto = New Button()
@@ -209,6 +213,10 @@ Partial Class Form1
         ' 
         ' Pilotos
         ' 
+        Pilotos.Controls.Add(Label7)
+        Pilotos.Controls.Add(Label6)
+        Pilotos.Controls.Add(TextBox_Apellido_Piloto)
+        Pilotos.Controls.Add(TextBox_Nombre_Piloto)
         Pilotos.Controls.Add(ComboBox_Pais_Piloto)
         Pilotos.Controls.Add(TextBox_ID_Piloto)
         Pilotos.Controls.Add(Limpiar_Piloto)
@@ -225,6 +233,38 @@ Partial Class Form1
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
         Pilotos.UseVisualStyleBackColor = True
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(311, 156)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(66, 20)
+        Label7.TabIndex = 36
+        Label7.Text = "Apellido"
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(311, 101)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(64, 20)
+        Label6.TabIndex = 35
+        Label6.Text = "Nombre"
+        ' 
+        ' TextBox_Apellido_Piloto
+        ' 
+        TextBox_Apellido_Piloto.Location = New Point(381, 153)
+        TextBox_Apellido_Piloto.Name = "TextBox_Apellido_Piloto"
+        TextBox_Apellido_Piloto.Size = New Size(150, 27)
+        TextBox_Apellido_Piloto.TabIndex = 34
+        ' 
+        ' TextBox_Nombre_Piloto
+        ' 
+        TextBox_Nombre_Piloto.Location = New Point(381, 101)
+        TextBox_Nombre_Piloto.Name = "TextBox_Nombre_Piloto"
+        TextBox_Nombre_Piloto.Size = New Size(150, 27)
+        TextBox_Nombre_Piloto.TabIndex = 33
         ' 
         ' ComboBox_Pais_Piloto
         ' 
@@ -473,7 +513,7 @@ Partial Class Form1
         ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(685, 47)
         Conectar.Name = "Conectar"
@@ -484,7 +524,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(Conectar)
