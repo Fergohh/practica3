@@ -232,7 +232,8 @@
         Me.TextBox_ID_Escuderia.Text = String.Empty
         Me.ComboBox_Pais_Escuderia.SelectedIndex = -1
         Me.TextBox_Nombre_Escuderia.Text = String.Empty
-        Me.DateTimePicker_Escuderia.Value = String.Empty
+        Me.DateTimePicker_Escuderia.Value = Date.Today
+
 
     End Sub
 
