@@ -180,6 +180,8 @@
 
     Private Sub Limpiar_Piloto_Click(sender As Object, e As EventArgs) Handles Limpiar_Piloto.Click
         Me.TextBox_ID_Piloto.Text = String.Empty
+        Me.ComboBox_Pais_Piloto.SelectedIndex = -1
+
 
     End Sub
 
@@ -209,6 +211,8 @@
         Me.Actualizar_Escuderia.Enabled = True
         Me.Borrar_Escuderia.Enabled = True
         Me.TextBox_ID_Escuderia.Enabled = False
+        Me.TextBox_Nombre_Escuderia.Enabled = False
+        Me.ComboBox_Pais_Escuderia.Enabled = False
         If Not Me.ListBox_Escuderia.SelectedItem Is Nothing Then
             Me.E = New Escuderia(Me.ListBox_Escuderia.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
@@ -219,9 +223,17 @@
             End Try
             Me.TextBox_ID_Escuderia.Text = Me.E.IDEscuderia.ToString
             Me.DateTimePicker_Escuderia.Value = Me.E.FechaCrec
-            Me.ComboBox_Pais_Piloto.SelectedItem = Me.E.PaisEscuderia
+            Me.ComboBox_Pais_Escuderia.SelectedItem = Me.E.PaisEscuderia
+            Me.TextBox_Nombre_Escuderia.Text = Me.E.Nombre.ToString
         End If
     End Sub
 
+    Private Sub Limpiar_Escuderia_Click(sender As Object, e As EventArgs) Handles Limpiar_Escuderia.Click
+        Me.TextBox_ID_Escuderia.Text = String.Empty
+        Me.ComboBox_Pais_Escuderia.SelectedIndex = -1
+        Me.TextBox_Nombre_Escuderia.Text = String.Empty
+        Me.DateTimePicker_Escuderia.Value = String.Empty
+
+    End Sub
 
 End Class
