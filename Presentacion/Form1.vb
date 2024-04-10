@@ -188,6 +188,7 @@
         Me.Actualizar_Piloto.Enabled = True
         Me.Borrar_Piloto.Enabled = True
         Me.TextBox_ID_Piloto.Enabled = False
+        Me.ComboBox_Pais_Piloto.Enabled = False
         If Not Me.ListBox_Piloto.SelectedItem Is Nothing Then
             Me.pi = New Piloto(Me.ListBox_Piloto.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
@@ -197,6 +198,9 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.TextBox_ID_Piloto.Text = Me.pi.IDPiloto.ToString
+            Me.ComboBox_Pais_Piloto.SelectedItem = Me.pi.PaisPiloto
+
+
 
         End If
     End Sub
@@ -214,7 +218,8 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.TextBox_ID_Escuderia.Text = Me.E.IDEscuderia.ToString
-
+            Me.DateTimePicker_Escuderia.Value = Me.E.FechaCrec
+            Me.ComboBox_Pais_Piloto.SelectedItem = Me.E.PaisEscuderia
         End If
     End Sub
 
