@@ -17,23 +17,23 @@
         Me.IDEscuderia = id
     End Sub
 
-    Public Sub LeerTodosPaises()
+    Public Sub LeerTodosEscuderias()
         Me.EscuderiaDAO.LeerTodas()
     End Sub
 
-    Public Sub LeerPaises()
+    Public Sub LeerEscuderia()
         Me.EscuderiaDAO.Leer(Me) 'Me es un objeto persona'
     End Sub
 
-    Public Function InsertarPaises() As Integer
+    Public Function InsertarEscuderia() As Integer
         Return Me.EscuderiaDAO.Insertar(Me)
     End Function
 
-    Public Function ActualizarPersona() As Integer
+    Public Function ActualizarEscuderia() As Integer
         Return Me.EscuderiaDAO.Actualizar(Me)
     End Function
 
-    Public Function BorrarPersona() As Integer
+    Public Function BorrarEscuderia() As Integer
         Return Me.EscuderiaDAO.Borrar(Me)
     End Function
 
