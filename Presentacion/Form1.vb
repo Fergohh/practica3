@@ -1,6 +1,7 @@
 ﻿Public Class Form1
     Dim p As Pais
     Dim pi As Piloto
+    Dim E As Escuderia
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
         If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty Then '<> significa !='
             Try
@@ -72,9 +73,11 @@
         Dim piAux As Piloto
         Me.p = New Pais
         Me.pi = New Piloto
+        Me.E = New Escuderia
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
+            Me.E.LeerTodosEscuderias()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -83,9 +86,13 @@
         For Each pAux In Me.p.PerDAO.Personas
             Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
             Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
+            Me.ComboBox_Pais_Escuderia.Items.Add(pAux.IDPais)
         Next
         For Each piAux In Me.pi.PilotoDAO.Pilotos
             Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each EAux In Me.E.EscuderiaDAO.Escuderias
+            Me.ListBox_Piloto.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         Conectar.Enabled = False
         Conectar.Visible = False
@@ -190,6 +197,23 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.TextBox_ID_Piloto.Text = Me.pi.IDPiloto.ToString
+
+        End If
+    End Sub
+
+    Private Sub ListBox_Escuderia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Escuderia.SelectedIndexChanged
+        Me.Actualizar_Escuderia.Enabled = True
+        Me.Borrar_Escuderia.Enabled = True
+        Me.TextBox_ID_Escuderia.Enabled = False
+        If Not Me.ListBox_Escuderia.SelectedItem Is Nothing Then
+            Me.E = New Escuderia(Me.ListBox_Escuderia.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Try
+                Me.E.LeerEscuderia()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            Me.TextBox_ID_Escuderia.Text = Me.E.IDEscuderia.ToString
 
         End If
     End Sub

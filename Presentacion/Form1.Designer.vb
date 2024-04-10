@@ -48,16 +48,16 @@ Partial Class Form1
         lbl_ID_Piloto = New Label()
         GPs = New TabPage()
         lbl_nombre_Escuderia = New Label()
-        TextBox2 = New TextBox()
-        DateTimePicker1 = New DateTimePicker()
-        ComboBox1 = New ComboBox()
-        TextBox1 = New TextBox()
+        TextBox_Nombre_Escuderia = New TextBox()
+        DateTimePicker_Escuderia = New DateTimePicker()
+        ComboBox_Pais_Escuderia = New ComboBox()
+        TextBox_ID_Escuderia = New TextBox()
         Limpiar_Escuderia = New Button()
         Borrar_Escuderia = New Button()
-        Button1 = New Button()
+        Actualizar_Escuderia = New Button()
         Añadir_Escuderia = New Button()
         Label4 = New Label()
-        ListBox2 = New ListBox()
+        ListBox_Escuderia = New ListBox()
         Label5 = New Label()
         TabPage4 = New TabPage()
         TextBox3 = New TextBox()
@@ -314,16 +314,16 @@ Partial Class Form1
         ' GPs
         ' 
         GPs.Controls.Add(lbl_nombre_Escuderia)
-        GPs.Controls.Add(TextBox2)
-        GPs.Controls.Add(DateTimePicker1)
-        GPs.Controls.Add(ComboBox1)
-        GPs.Controls.Add(TextBox1)
+        GPs.Controls.Add(TextBox_Nombre_Escuderia)
+        GPs.Controls.Add(DateTimePicker_Escuderia)
+        GPs.Controls.Add(ComboBox_Pais_Escuderia)
+        GPs.Controls.Add(TextBox_ID_Escuderia)
         GPs.Controls.Add(Limpiar_Escuderia)
         GPs.Controls.Add(Borrar_Escuderia)
-        GPs.Controls.Add(Button1)
+        GPs.Controls.Add(Actualizar_Escuderia)
         GPs.Controls.Add(Añadir_Escuderia)
         GPs.Controls.Add(Label4)
-        GPs.Controls.Add(ListBox2)
+        GPs.Controls.Add(ListBox_Escuderia)
         GPs.Controls.Add(Label5)
         GPs.Location = New Point(4, 29)
         GPs.Margin = New Padding(3, 4, 3, 4)
@@ -342,34 +342,34 @@ Partial Class Form1
         lbl_nombre_Escuderia.TabIndex = 47
         lbl_nombre_Escuderia.Text = "Nombre"
         ' 
-        ' TextBox2
+        ' TextBox_Nombre_Escuderia
         ' 
-        TextBox2.Location = New Point(420, 194)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(150, 27)
-        TextBox2.TabIndex = 46
+        TextBox_Nombre_Escuderia.Location = New Point(420, 194)
+        TextBox_Nombre_Escuderia.Name = "TextBox_Nombre_Escuderia"
+        TextBox_Nombre_Escuderia.Size = New Size(150, 27)
+        TextBox_Nombre_Escuderia.TabIndex = 46
         ' 
-        ' DateTimePicker1
+        ' DateTimePicker_Escuderia
         ' 
-        DateTimePicker1.Location = New Point(297, 253)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(273, 27)
-        DateTimePicker1.TabIndex = 45
+        DateTimePicker_Escuderia.Location = New Point(297, 253)
+        DateTimePicker_Escuderia.Name = "DateTimePicker_Escuderia"
+        DateTimePicker_Escuderia.Size = New Size(273, 27)
+        DateTimePicker_Escuderia.TabIndex = 45
         ' 
-        ' ComboBox1
+        ' ComboBox_Pais_Escuderia
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(420, 148)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(150, 28)
-        ComboBox1.TabIndex = 44
+        ComboBox_Pais_Escuderia.FormattingEnabled = True
+        ComboBox_Pais_Escuderia.Location = New Point(420, 148)
+        ComboBox_Pais_Escuderia.Name = "ComboBox_Pais_Escuderia"
+        ComboBox_Pais_Escuderia.Size = New Size(150, 28)
+        ComboBox_Pais_Escuderia.TabIndex = 44
         ' 
-        ' TextBox1
+        ' TextBox_ID_Escuderia
         ' 
-        TextBox1.Location = New Point(420, 100)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(150, 27)
-        TextBox1.TabIndex = 43
+        TextBox_ID_Escuderia.Location = New Point(420, 100)
+        TextBox_ID_Escuderia.Name = "TextBox_ID_Escuderia"
+        TextBox_ID_Escuderia.Size = New Size(150, 27)
+        TextBox_ID_Escuderia.TabIndex = 43
         ' 
         ' Limpiar_Escuderia
         ' 
@@ -389,14 +389,14 @@ Partial Class Form1
         Borrar_Escuderia.Text = "Borrar"
         Borrar_Escuderia.UseVisualStyleBackColor = True
         ' 
-        ' Button1
+        ' Actualizar_Escuderia
         ' 
-        Button1.Location = New Point(476, 304)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(94, 29)
-        Button1.TabIndex = 40
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
+        Actualizar_Escuderia.Location = New Point(476, 304)
+        Actualizar_Escuderia.Name = "Actualizar_Escuderia"
+        Actualizar_Escuderia.Size = New Size(94, 29)
+        Actualizar_Escuderia.TabIndex = 40
+        Actualizar_Escuderia.Text = "Actualizar"
+        Actualizar_Escuderia.UseVisualStyleBackColor = True
         ' 
         ' Añadir_Escuderia
         ' 
@@ -416,13 +416,13 @@ Partial Class Form1
         Label4.TabIndex = 38
         Label4.Text = "Pais"
         ' 
-        ' ListBox2
+        ' ListBox_Escuderia
         ' 
-        ListBox2.FormattingEnabled = True
-        ListBox2.Location = New Point(82, 94)
-        ListBox2.Name = "ListBox2"
-        ListBox2.Size = New Size(164, 264)
-        ListBox2.TabIndex = 37
+        ListBox_Escuderia.FormattingEnabled = True
+        ListBox_Escuderia.Location = New Point(82, 94)
+        ListBox_Escuderia.Name = "ListBox_Escuderia"
+        ListBox_Escuderia.Size = New Size(164, 264)
+        ListBox_Escuderia.TabIndex = 37
         ' 
         ' Label5
         ' 
@@ -512,16 +512,16 @@ Partial Class Form1
     Friend WithEvents ListBox_Piloto As ListBox
     Friend WithEvents lbl_ID_Piloto As Label
     Friend WithEvents lbl_nombre_Escuderia As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox_Nombre_Escuderia As TextBox
+    Friend WithEvents DateTimePicker_Escuderia As DateTimePicker
+    Friend WithEvents ComboBox_Pais_Escuderia As ComboBox
+    Friend WithEvents TextBox_ID_Escuderia As TextBox
     Friend WithEvents Limpiar_Escuderia As Button
     Friend WithEvents Borrar_Escuderia As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Actualizar_Escuderia As Button
     Friend WithEvents Añadir_Escuderia As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents ListBox2 As ListBox
+    Friend WithEvents ListBox_Escuderia As ListBox
     Friend WithEvents Label5 As Label
     Friend WithEvents TextBox3 As TextBox
 
