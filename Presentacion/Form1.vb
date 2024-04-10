@@ -92,7 +92,7 @@
             Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each EAux In Me.E.EscuderiaDAO.Escuderias
-            Me.ListBox_Piloto.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
+            Me.ListBox_Escuderia.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         Conectar.Enabled = False
         Conectar.Visible = False
