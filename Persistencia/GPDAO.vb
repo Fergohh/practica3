@@ -1,4 +1,4 @@
-﻿Public Class EscuderiaDAO
+﻿Public Class GPDAO
     Public ReadOnly Property GPs As Collection 'personas es una variable de tipo colleción'
 
     Public Sub New()
