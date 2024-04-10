@@ -29,7 +29,7 @@
     End Sub
 
     Public Function Insertar(ByVal p As Escuderia) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO escuderias VALUES ('" & p.IDEscuderia & "', '" & p.Nombre & "', '" & p.FechaCrec & "');")
+        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO escuderias VALUES ('" & p.IDEscuderia & "', '" & p.Nombre & "', '" & p.PaisEscuderia & "', '" & p.FechaCrec & "');")
     End Function
 
     Public Function Actualizar(ByVal p As Escuderia) As Integer
