@@ -28,7 +28,7 @@
         Next
     End Sub
     Public Function Insertar(ByVal p As Piloto) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO pilotos VALUES ('" & p.IDPiloto & "', '" & p.Nombre & "', '" & p.Apellido & "', '" & p.PaisPiloto & "');")
+        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO pilotos ()VALUES ('" & p.IDPiloto & "', '" & p.Nombre & "', '" & p.Apellido & "', '" & p.PaisPiloto & "');")
     End Function
 
     Public Function Actualizar(ByVal p As Piloto) As Integer
