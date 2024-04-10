@@ -38,6 +38,7 @@ Partial Class Form1
         txtNombre = New TextBox()
         ListBox1 = New ListBox()
         Pilotos = New TabPage()
+        TextBox_Nombre_Piloto = New TextBox()
         ComboBox_Pais_Piloto = New ComboBox()
         TextBox_ID_Piloto = New TextBox()
         Limpiar_Piloto = New Button()
@@ -64,6 +65,9 @@ Partial Class Form1
         TextBox3 = New TextBox()
         TabPage1 = New TabPage()
         Conectar = New Button()
+        TextBox_Apellido_Piloto = New TextBox()
+        Label6 = New Label()
+        Label7 = New Label()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -209,6 +213,10 @@ Partial Class Form1
         ' 
         ' Pilotos
         ' 
+        Pilotos.Controls.Add(Label7)
+        Pilotos.Controls.Add(Label6)
+        Pilotos.Controls.Add(TextBox_Apellido_Piloto)
+        Pilotos.Controls.Add(TextBox_Nombre_Piloto)
         Pilotos.Controls.Add(ComboBox_Pais_Piloto)
         Pilotos.Controls.Add(TextBox_ID_Piloto)
         Pilotos.Controls.Add(Limpiar_Piloto)
@@ -226,21 +234,29 @@ Partial Class Form1
         Pilotos.Text = "Pilotos"
         Pilotos.UseVisualStyleBackColor = True
         ' 
+        ' TextBox_Nombre_Piloto
+        ' 
+        TextBox_Nombre_Piloto.Location = New Point(267, 125)
+        TextBox_Nombre_Piloto.Name = "TextBox_Nombre_Piloto"
+        TextBox_Nombre_Piloto.Size = New Size(260, 23)
+        TextBox_Nombre_Piloto.TabIndex = 33
+        ' 
         ' ComboBox_Pais_Piloto
         ' 
         ComboBox_Pais_Piloto.FormattingEnabled = True
-        ComboBox_Pais_Piloto.Location = New Point(333, 124)
+        ComboBox_Pais_Piloto.Location = New Point(267, 70)
         ComboBox_Pais_Piloto.Margin = New Padding(3, 2, 3, 2)
         ComboBox_Pais_Piloto.Name = "ComboBox_Pais_Piloto"
-        ComboBox_Pais_Piloto.Size = New Size(132, 23)
+        ComboBox_Pais_Piloto.Size = New Size(260, 23)
         ComboBox_Pais_Piloto.TabIndex = 32
         ' 
         ' TextBox_ID_Piloto
         ' 
-        TextBox_ID_Piloto.Location = New Point(333, 82)
+        TextBox_ID_Piloto.Location = New Point(267, 23)
         TextBox_ID_Piloto.Margin = New Padding(3, 2, 3, 2)
         TextBox_ID_Piloto.Name = "TextBox_ID_Piloto"
-        TextBox_ID_Piloto.Size = New Size(132, 23)
+        TextBox_ID_Piloto.ReadOnly = True
+        TextBox_ID_Piloto.Size = New Size(260, 23)
         TextBox_ID_Piloto.TabIndex = 31
         ' 
         ' Limpiar_Piloto
@@ -286,7 +302,7 @@ Partial Class Form1
         ' lbl_Pais_Piloto
         ' 
         lbl_Pais_Piloto.AutoSize = True
-        lbl_Pais_Piloto.Location = New Point(298, 124)
+        lbl_Pais_Piloto.Location = New Point(227, 70)
         lbl_Pais_Piloto.Name = "lbl_Pais_Piloto"
         lbl_Pais_Piloto.Size = New Size(28, 15)
         lbl_Pais_Piloto.TabIndex = 26
@@ -296,16 +312,16 @@ Partial Class Form1
         ' 
         ListBox_Piloto.FormattingEnabled = True
         ListBox_Piloto.ItemHeight = 15
-        ListBox_Piloto.Location = New Point(89, 75)
+        ListBox_Piloto.Location = New Point(27, 26)
         ListBox_Piloto.Margin = New Padding(3, 2, 3, 2)
         ListBox_Piloto.Name = "ListBox_Piloto"
-        ListBox_Piloto.Size = New Size(144, 154)
+        ListBox_Piloto.Size = New Size(147, 289)
         ListBox_Piloto.TabIndex = 25
         ' 
         ' lbl_ID_Piloto
         ' 
         lbl_ID_Piloto.AutoSize = True
-        lbl_ID_Piloto.Location = New Point(307, 85)
+        lbl_ID_Piloto.Location = New Point(237, 26)
         lbl_ID_Piloto.Name = "lbl_ID_Piloto"
         lbl_ID_Piloto.Size = New Size(18, 15)
         lbl_ID_Piloto.TabIndex = 24
@@ -482,6 +498,31 @@ Partial Class Form1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
         ' 
+        ' TextBox_Apellido_Piloto
+        ' 
+        TextBox_Apellido_Piloto.Location = New Point(267, 172)
+        TextBox_Apellido_Piloto.Name = "TextBox_Apellido_Piloto"
+        TextBox_Apellido_Piloto.Size = New Size(260, 23)
+        TextBox_Apellido_Piloto.TabIndex = 34
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(204, 128)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(51, 15)
+        Label6.TabIndex = 35
+        Label6.Text = "Nombre"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(204, 177)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(51, 15)
+        Label7.TabIndex = 36
+        Label7.Text = "Apellido"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -544,5 +585,9 @@ Partial Class Form1
     Friend WithEvents Label5 As Label
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TextBox_Nombre_Piloto As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents TextBox_Apellido_Piloto As TextBox
 
 End Class
