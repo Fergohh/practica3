@@ -3,7 +3,7 @@
     Dim pi As Piloto
     Dim E As Escuderia
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
-        If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty Then '<> significa !='
+        If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty And Me.txtID.Text.Length = 3 Then '<> significa !='
             Try
                 p = New Pais
                 p.IDPais = txtID.Text
@@ -239,7 +239,7 @@
                 E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
                 E.Nombre = TextBox_Nombre_Escuderia.Text
                 E.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
-
+                Print("El valor es: %s", E.FechaCrec)
                 If E.InsertarEscuderia <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
