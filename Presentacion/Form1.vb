@@ -231,21 +231,16 @@
         End If
     End Sub
 
-    Private Sub Añadir_Escuderia_Click(sender As Object, e As EventArgs) Handles Añadir_Escuderia.Click
-        If Me.TextBox_ID_Piloto.Text <> String.Empty Then '<> significa !='
+    Private Sub Añadir_Escuderia_Click(sender As Object, a As EventArgs) Handles Añadir_Escuderia.Click
+        If Me.TextBox_ID_Escuderia.Text <> String.Empty Then '<> significa !='
             Try
-                pi = New Piloto
-                pi.IDPiloto = TextBox_ID_Piloto.Text
-                pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
-                Dim nombres() As String = {"Juan", "Elver", "Carlos", "Rosa", "Pedro", "Javier", "Fernando"}
-                Dim Apellidos() As String = {"Gozalez", "Galarga", "Garzás", "Melano", "Limón", "Alonso", "De la Osa"}
-                Dim rnd As New Random()
-                Dim indiceAleatorio As Integer = rnd.Next(0, nombres.Length)
-                Dim indiceAleatorio2 As Integer = rnd.Next(0, Apellidos.Length)
-                pi.Nombre = nombres(indiceAleatorio)
-                pi.Apellido = Apellidos(indiceAleatorio2)
+                E = New Escuderia
+                E.IDEscuderia = TextBox_ID_Escuderia.Text
+                E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
+                E.Nombre = TextBox_Nombre_Escuderia.Text
+                E.FechaCrec = DateTimePicker_Escuderia.Value
 
-                If pi.InsertarPilotos <> 1 Then
+                If E.InsertarEscuderia <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -254,7 +249,7 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
+            Me.ListBox_Escuderia.Items.Add(E.IDEscuderia)
         End If
     End Sub
 
