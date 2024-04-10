@@ -193,8 +193,9 @@
         Me.Borrar_Piloto.Enabled = True
         Me.TextBox_ID_Piloto.Enabled = False
         Me.ComboBox_Pais_Piloto.Enabled = False
-        Me.TextBox_Nombre_Piloto.Enabled = False
-        Me.TextBox_Apellido_Piloto.Enabled = False
+        Me.TextBox_Nombre_Piloto.Enabled = True
+
+        Me.TextBox_Apellido_Piloto.Enabled = True
         If Not Me.ListBox_Piloto.SelectedItem Is Nothing Then
             Me.pi = New Piloto(Me.ListBox_Piloto.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
