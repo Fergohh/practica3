@@ -38,4 +38,5 @@
     Public Function Borrar(ByVal p As Piloto) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM pilotos WHERE IdPiloto='" & p.IDPiloto & "';")
     End Function
+
 End Class
