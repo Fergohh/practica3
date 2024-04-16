@@ -13,7 +13,7 @@
             p = New Piloto(aux(1).ToString) 'el primer elemento( axu(1) ) es el ID'
             p.Nombre = aux(2).ToString 'el segundo elemento( aux(2) ) es el nombre'
             p.Apellido = aux(3).ToString
-            p.PaisPiloto = (aux(4).ToString)
+            p.PaisPiloto = aux(4).ToString
             Me.Pilotos.Add(p) 'add añade algo a una coleccion: añadimos la persona a la coleccion'
         Next 'dato importante: para acceder al id es 1 y nombre 2 no como en el reader que el primer elemento es 0 y el segundo 1'
     End Sub
@@ -22,9 +22,10 @@
         Dim col As Collection : Dim aux As Collection
         col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM pilotos WHERE IdPiloto='" & p.IDPiloto & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
         For Each aux In col
+            p.IDPiloto = aux(1)
             p.Nombre = aux(2).ToString
-            p.Apellido = aux(3)
-            p.PaisPiloto = aux(4)
+            p.Apellido = aux(3).ToString
+            p.PaisPiloto = aux(4).ToString
         Next
     End Sub
     Public Function Insertar(ByVal p As Piloto) As Integer

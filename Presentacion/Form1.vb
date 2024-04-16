@@ -137,9 +137,12 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            Me.ListBox_Piloto.Items.Clear()
-
-            Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
+            ListBox_Piloto.Items.Clear()
+            Dim piAux As Piloto
+            pi.LeerTodosPilotos()
+            For Each piAux In Me.pi.PilotoDAO.Pilotos
+                Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
+            Next
         End If
     End Sub
 
