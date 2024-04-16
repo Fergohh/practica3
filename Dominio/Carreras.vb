@@ -1,13 +1,11 @@
-﻿Imports Microsoft.VisualBasic
-
-Public Class Carrera
+﻿Public Class Carreras
 
     Public Property Temporada As Integer
     Public Property GP As Integer
     Public Property Piloto As Integer
     Public Property Posicion As Integer
     Public Property Puntos As Integer
-    Public ReadOnly Property CarrerasDAO As CarrerasDAO 'cereamos objeto tipo PersonaDAO'
+    Public ReadOnly Property CarrerasDAO As CarrerasDAO 'creamos objeto tipo PersonaDAO'
 
     Public Sub New()
         Me.CarrerasDAO = New CarrerasDAO
@@ -16,8 +14,8 @@ Public Class Carrera
     Public Sub New(temporada As String, Gp As Integer, Piloto As Integer)
         Me.CarrerasDAO = New CarrerasDAO
         Me.Temporada = temporada
-        'Me.GP = Gp;
-        'Me.Piloto = Piloto;
+        Me.GP = Gp
+        Me.Piloto = Piloto
     End Sub
 
     Public Sub LeerTodosCarreras()
