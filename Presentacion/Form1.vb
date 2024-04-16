@@ -2,6 +2,8 @@
     Dim p As Pais
     Dim pi As Piloto
     Dim E As Escuderia
+    Dim c As Carreras
+    Dim con As Contrato
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
         If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty And Me.txtID.Text.Length = 3 Then '<> significa !='
             Try
@@ -30,7 +32,7 @@
             p.Nombre = txtNombre.Text
             p.Habitantes = txtHab.Text
             Try
-            If p.ActualizarPersona() <> 1 Then
+                If p.ActualizarPersona() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -73,13 +75,20 @@
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
         Dim pAux As Pais
         Dim piAux As Piloto
+        Dim EAux As Escuderia
+        Dim cAux As Carreras
+        Dim conAux As Contrato
         Me.p = New Pais
         Me.pi = New Piloto
         Me.E = New Escuderia
+        Me.c = New Carreras
+        Me.con = New Contrato
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
             Me.E.LeerTodosEscuderias()
+            Me.c.LeerTodosCarreras()
+            Me.con.LeerTodosContratos()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -95,6 +104,12 @@
         Next
         For Each EAux In Me.E.EscuderiaDAO.Escuderias
             Me.ListBox_Escuderia.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each cAux In Me.c.CarrerasDAO.Carrera
+            Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each conAux In Me.con.ContratoDAO.Contratos
+            Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         Conectar.Enabled = False
         Conectar.Visible = False
