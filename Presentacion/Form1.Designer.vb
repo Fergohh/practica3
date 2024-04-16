@@ -120,7 +120,7 @@ Partial Class Form1
         Pais.Controls.Add(ListBox1)
         Pais.Location = New Point(4, 24)
         Pais.Name = "Pais"
-        Pais.Padding = New Padding(3, 3, 3, 3)
+        Pais.Padding = New Padding(3)
         Pais.Size = New Size(570, 352)
         Pais.TabIndex = 0
         Pais.Text = "Pais"
@@ -244,7 +244,7 @@ Partial Class Form1
         Pilotos.Controls.Add(lbl_ID_Piloto)
         Pilotos.Location = New Point(4, 24)
         Pilotos.Name = "Pilotos"
-        Pilotos.Padding = New Padding(3, 3, 3, 3)
+        Pilotos.Padding = New Padding(3)
         Pilotos.Size = New Size(570, 352)
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
@@ -628,7 +628,7 @@ Partial Class Form1
         Carreras.Controls.Add(ListBox_Carreras)
         Carreras.Location = New Point(4, 24)
         Carreras.Name = "Carreras"
-        Carreras.Padding = New Padding(3, 3, 3, 3)
+        Carreras.Padding = New Padding(3)
         Carreras.Size = New Size(570, 352)
         Carreras.TabIndex = 4
         Carreras.Text = "Carreras"

@@ -1,7 +1,7 @@
 ﻿Public Class Form1
     Dim p As Pais
     Dim pi As Piloto
-    Dim E As Escuderia
+    Dim es As Escuderia
     Dim G As GP
     Dim c As Carreras
     Dim con As Contrato
@@ -82,14 +82,14 @@
         Dim conAux As Contrato
         Me.p = New Pais
         Me.pi = New Piloto
-        Me.E = New Escuderia
+        Me.es = New Escuderia
         Me.G = New GP
         Me.c = New Carreras
         Me.con = New Contrato
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
-            Me.E.LeerTodosEscuderias()
+            Me.es.LeerTodosEscuderias()
             Me.G.LeerTodosGPs()
             Me.c.LeerTodosCarreras()
             Me.con.LeerTodosContratos()
@@ -107,7 +107,7 @@
         For Each piAux In Me.pi.PilotoDAO.Pilotos
             Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
         Next
-        For Each EAux In Me.E.EscuderiaDAO.Escuderias
+        For Each EAux In Me.es.EscuderiaDAO.Escuderias
             Me.ListBox_Escuderia.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each GAux In Me.G.GPDAO.GPs
@@ -247,31 +247,32 @@
         Me.Actualizar_Escuderia.Enabled = True
         Me.Borrar_Escuderia.Enabled = True
         Me.TextBox_ID_Escuderia.Enabled = False
-        Me.TextBox_Nombre_Escuderia.Enabled = False
+        Me.TextBox_Nombre_Escuderia.Enabled = True
         Me.ComboBox_Pais_Escuderia.Enabled = False
+        Me.DateTimePicker_Escuderia.Enabled = False
         If Not Me.ListBox_Escuderia.SelectedItem Is Nothing Then
-            Me.E = New Escuderia(Me.ListBox_Escuderia.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Me.es = New Escuderia(Me.ListBox_Escuderia.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
-                Me.E.LeerEscuderia()
+                Me.es.LeerEscuderia()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
-            Me.TextBox_ID_Escuderia.Text = Me.E.IDEscuderia.ToString
-            Me.DateTimePicker_Escuderia.Value = Me.E.FechaCrec
-            Me.ComboBox_Pais_Escuderia.SelectedItem = Me.E.PaisEscuderia
-            Me.TextBox_Nombre_Escuderia.Text = Me.E.Nombre.ToString
+            Me.TextBox_ID_Escuderia.Text = Me.es.IDEscuderia.ToString
+            Me.DateTimePicker_Escuderia.Value = Me.es.FechaCrec
+            Me.ComboBox_Pais_Escuderia.SelectedItem = Me.es.PaisEscuderia
+            Me.TextBox_Nombre_Escuderia.Text = Me.es.Nombre.ToString
         End If
     End Sub
 
     Private Sub Añadir_Escuderia_Click(sender As Object, a As EventArgs) Handles Añadir_Escuderia.Click
-        If TextBox_ID_Escuderia.Text <> String.Empty Then '<> significa !='
+        If TextBox_Nombre_Escuderia.Text <> String.Empty And ComboBox_Pais_Escuderia.Text <> String.Empty Then '<> significa !='
             Try
-                E = New Escuderia
-                E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
-                E.Nombre = TextBox_Nombre_Escuderia.Text
-                E.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
-                If E.InsertarEscuderia <> 1 Then
+                es = New Escuderia
+                es.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
+                es.Nombre = TextBox_Nombre_Escuderia.Text
+                es.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
+                If es.InsertarEscuderia <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -280,10 +281,35 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            ListBox_Escuderia.Items.Add(E.IDEscuderia)
+            ListBox_Escuderia.Items.Clear()
+            Dim esAux As Escuderia
+            es.LeerTodosEscuderias()
+            For Each esAux In Me.es.EscuderiaDAO.Escuderias
+                Me.ListBox_Escuderia.Items.Add(esAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
+            Next
         End If
     End Sub
 
+    Private Sub Actualizar_Escuderia_Click(sender As Object, e As EventArgs) Handles Actualizar_Escuderia.Click
+        If Not es Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
+            es.Nombre = TextBox_Nombre_Escuderia.Text
+            es.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
+            Try
+                If es.ActualizarEscuderia() <> 1 Then
+                    MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            MessageBox.Show(G.DenominacionGP & " actualizado correctamente!")
+        End If
+    End Sub
+
+    Private Sub Borrar_Escuderia_Click(sender As Object, e As EventArgs) Handles Borrar_Escuderia.Click
+
+    End Sub
     Private Sub Limpiar_Escuderia_Click(sender As Object, e As EventArgs) Handles Limpiar_Escuderia.Click
         TextBox_ID_Escuderia.Text = String.Empty
         ComboBox_Pais_Escuderia.SelectedIndex = -1
