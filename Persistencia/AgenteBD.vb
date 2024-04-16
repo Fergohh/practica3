@@ -2,7 +2,7 @@
 
     Private Shared _instancia As AgenteBD
     Private Shared conexion As MySql.Data.MySqlClient.MySqlConnection
-    Private Const cadenaConexion As String = "server=localhost;port=3306;database=formulauno;uid=root;pwd=1234"
+    Private Const cadenaConexion As String = "server=25.32.88.80;port=3306;database=formulauno;uid=javi;pwd=1234"
 
     Private Sub New()
         AgenteBD.conexion = New MySql.Data.MySqlClient.MySqlConnection(AgenteBD.cadenaConexion)
