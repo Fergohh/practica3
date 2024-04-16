@@ -3,6 +3,7 @@
     Dim pi As Piloto
     Dim E As Escuderia
     Dim G As GP
+    Dim ca As Calendario
     Dim c As Carreras
     Dim con As Contrato
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
@@ -78,6 +79,7 @@
         Dim piAux As Piloto
         Dim EAux As Escuderia
         Dim GAux As GP
+        Dim caAux As Calendario
         Dim cAux As Carreras
         Dim conAux As Contrato
         Me.p = New Pais
@@ -91,6 +93,7 @@
             Me.pi.LeerTodosPilotos()
             Me.E.LeerTodosEscuderias()
             Me.G.LeerTodosGPs()
+            Me.ca.LeerTodosCalendarios()
             Me.c.LeerTodosCarreras()
             Me.con.LeerTodosContratos()
 
@@ -112,6 +115,9 @@
         Next
         For Each GAux In Me.G.GPDAO.GPs
             Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each caAux In Me.ca.CalendarioDAO.Calendarios
+            Me.ListBox_Calendario.Items.Add(caAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each cAux In Me.c.CarrerasDAO.Carrera
             Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
@@ -392,4 +398,23 @@
         Me.TextBox_GP_Denominacion.Enabled = True
 
     End Sub
+
+    Private Sub ListBox_Calendario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Calendario.SelectedIndexChanged
+
+
+        If Not Me.ListBox_Calendario.SelectedItem Is Nothing Then
+            Me.ca = New Calendario(Me.ListBox_Calendario.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Try
+                Me.ca.LeerCalendario()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            Me.TextBox_GP_Calendario.Text = Me.ca.GP.ToString
+            Me.TextBox_Orden_Calendario.Text = Me.ca.Orden.ToString
+
+
+        End If
+    End Sub
+
 End Class

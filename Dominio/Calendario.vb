@@ -9,10 +9,8 @@
         Me.CalendarioDAO = New CalendarioDAO
     End Sub
 
-    Public Sub New(ByVal temporada As Short, ByVal gp As Integer, ByVal orden As Byte)
+    Public Sub New(ByVal temporada As Short)
         Me.Temporada = temporada
-        Me.GP = gp
-        Me.Orden = orden
         Me.CalendarioDAO = New CalendarioDAO
     End Sub
 
