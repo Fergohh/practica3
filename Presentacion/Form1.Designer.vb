@@ -65,12 +65,22 @@ Partial Class Form1
         ListBox_Escuderia = New ListBox()
         Label5 = New Label()
         TabPage4 = New TabPage()
-        TextBox3 = New TextBox()
+        Label8 = New Label()
+        Limpiar_GP = New Button()
+        Borrar_GP = New Button()
+        Actualizar_GP = New Button()
+        Añadir_GP = New Button()
+        TextBox_GP_Denominacion = New TextBox()
+        TextBox_GP_ID = New TextBox()
+        ComboBox_GP_Pais = New ComboBox()
+        ListBox_GP = New ListBox()
         Carreras = New TabPage()
-        Contratos = New TabPage()
-        Conectar = New Button()
         ListBox_Carreras = New ListBox()
+        Contratos = New TabPage()
         ListBox_Contratos = New ListBox()
+        Conectar = New Button()
+        Label9 = New Label()
+        Label10 = New Label()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -488,7 +498,17 @@ Partial Class Form1
         ' 
         ' TabPage4
         ' 
-        TabPage4.Controls.Add(TextBox3)
+        TabPage4.Controls.Add(Label10)
+        TabPage4.Controls.Add(Label9)
+        TabPage4.Controls.Add(Label8)
+        TabPage4.Controls.Add(Limpiar_GP)
+        TabPage4.Controls.Add(Borrar_GP)
+        TabPage4.Controls.Add(Actualizar_GP)
+        TabPage4.Controls.Add(Añadir_GP)
+        TabPage4.Controls.Add(TextBox_GP_Denominacion)
+        TabPage4.Controls.Add(TextBox_GP_ID)
+        TabPage4.Controls.Add(ComboBox_GP_Pais)
+        TabPage4.Controls.Add(ListBox_GP)
         TabPage4.Location = New Point(4, 29)
         TabPage4.Margin = New Padding(3, 4, 3, 4)
         TabPage4.Name = "TabPage4"
@@ -497,12 +517,80 @@ Partial Class Form1
         TabPage4.Text = "GPs"
         TabPage4.UseVisualStyleBackColor = True
         ' 
-        ' TextBox3
+        ' Label8
         ' 
-        TextBox3.Location = New Point(251, 224)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(150, 27)
-        TextBox3.TabIndex = 44
+        Label8.AutoSize = True
+        Label8.Location = New Point(397, 130)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(40, 20)
+        Label8.TabIndex = 52
+        Label8.Text = "IdGP"
+        ' 
+        ' Limpiar_GP
+        ' 
+        Limpiar_GP.Location = New Point(501, 380)
+        Limpiar_GP.Name = "Limpiar_GP"
+        Limpiar_GP.Size = New Size(94, 29)
+        Limpiar_GP.TabIndex = 51
+        Limpiar_GP.Text = "Limpiar"
+        Limpiar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Borrar_GP
+        ' 
+        Borrar_GP.Location = New Point(391, 380)
+        Borrar_GP.Name = "Borrar_GP"
+        Borrar_GP.Size = New Size(94, 29)
+        Borrar_GP.TabIndex = 50
+        Borrar_GP.Text = "Borrar"
+        Borrar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Actualizar_GP
+        ' 
+        Actualizar_GP.Location = New Point(501, 332)
+        Actualizar_GP.Name = "Actualizar_GP"
+        Actualizar_GP.Size = New Size(94, 29)
+        Actualizar_GP.TabIndex = 49
+        Actualizar_GP.Text = "Actualizar"
+        Actualizar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Añadir_GP
+        ' 
+        Añadir_GP.Location = New Point(389, 332)
+        Añadir_GP.Name = "Añadir_GP"
+        Añadir_GP.Size = New Size(94, 29)
+        Añadir_GP.TabIndex = 48
+        Añadir_GP.Text = "Anadir"
+        Añadir_GP.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox_GP_Denominacion
+        ' 
+        TextBox_GP_Denominacion.Location = New Point(445, 178)
+        TextBox_GP_Denominacion.Name = "TextBox_GP_Denominacion"
+        TextBox_GP_Denominacion.Size = New Size(150, 27)
+        TextBox_GP_Denominacion.TabIndex = 47
+        ' 
+        ' TextBox_GP_ID
+        ' 
+        TextBox_GP_ID.Location = New Point(445, 127)
+        TextBox_GP_ID.Name = "TextBox_GP_ID"
+        TextBox_GP_ID.Size = New Size(150, 27)
+        TextBox_GP_ID.TabIndex = 46
+        ' 
+        ' ComboBox_GP_Pais
+        ' 
+        ComboBox_GP_Pais.FormattingEnabled = True
+        ComboBox_GP_Pais.Location = New Point(445, 243)
+        ComboBox_GP_Pais.Name = "ComboBox_GP_Pais"
+        ComboBox_GP_Pais.Size = New Size(150, 28)
+        ComboBox_GP_Pais.TabIndex = 45
+        ' 
+        ' ListBox_GP
+        ' 
+        ListBox_GP.FormattingEnabled = True
+        ListBox_GP.Location = New Point(39, 25)
+        ListBox_GP.Name = "ListBox_GP"
+        ListBox_GP.Size = New Size(231, 384)
+        ListBox_GP.TabIndex = 0
         ' 
         ' Carreras
         ' 
@@ -516,6 +604,14 @@ Partial Class Form1
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
         ' 
+        ' ListBox_Carreras
+        ' 
+        ListBox_Carreras.FormattingEnabled = True
+        ListBox_Carreras.Location = New Point(152, 28)
+        ListBox_Carreras.Name = "ListBox_Carreras"
+        ListBox_Carreras.Size = New Size(338, 384)
+        ListBox_Carreras.TabIndex = 0
+        ' 
         ' Contratos
         ' 
         Contratos.Controls.Add(ListBox_Contratos)
@@ -526,6 +622,14 @@ Partial Class Form1
         Contratos.TabIndex = 5
         Contratos.Text = "Contratos"
         Contratos.UseVisualStyleBackColor = True
+        ' 
+        ' ListBox_Contratos
+        ' 
+        ListBox_Contratos.FormattingEnabled = True
+        ListBox_Contratos.Location = New Point(197, 28)
+        ListBox_Contratos.Name = "ListBox_Contratos"
+        ListBox_Contratos.Size = New Size(267, 344)
+        ListBox_Contratos.TabIndex = 0
         ' 
         ' Conectar
         ' 
@@ -539,21 +643,23 @@ Partial Class Form1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
         ' 
-        ' ListBox_Carreras
+        ' Label9
         ' 
-        ListBox_Carreras.FormattingEnabled = True
-        ListBox_Carreras.Location = New Point(152, 28)
-        ListBox_Carreras.Name = "ListBox_Carreras"
-        ListBox_Carreras.Size = New Size(338, 384)
-        ListBox_Carreras.TabIndex = 0
+        Label9.AutoSize = True
+        Label9.Location = New Point(341, 181)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(98, 20)
+        Label9.TabIndex = 53
+        Label9.Text = "Denomiacion"
         ' 
-        ' ListBox_Contratos
+        ' Label10
         ' 
-        ListBox_Contratos.FormattingEnabled = True
-        ListBox_Contratos.Location = New Point(197, 28)
-        ListBox_Contratos.Name = "ListBox_Contratos"
-        ListBox_Contratos.Size = New Size(267, 344)
-        ListBox_Contratos.TabIndex = 0
+        Label10.AutoSize = True
+        Label10.Location = New Point(397, 246)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(34, 20)
+        Label10.TabIndex = 54
+        Label10.Text = "Pais"
         ' 
         ' Form1
         ' 
@@ -618,7 +724,6 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents ListBox_Escuderia As ListBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Carreras As TabPage
     Friend WithEvents TextBox_Nombre_Piloto As TextBox
     Friend WithEvents Label7 As Label
@@ -627,5 +732,16 @@ Partial Class Form1
     Friend WithEvents Contratos As TabPage
     Friend WithEvents ListBox_Carreras As ListBox
     Friend WithEvents ListBox_Contratos As ListBox
+    Friend WithEvents ComboBox_GP_Pais As ComboBox
+    Friend WithEvents ListBox_GP As ListBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Limpiar_GP As Button
+    Friend WithEvents Borrar_GP As Button
+    Friend WithEvents Actualizar_GP As Button
+    Friend WithEvents Añadir_GP As Button
+    Friend WithEvents TextBox_GP_Denominacion As TextBox
+    Friend WithEvents TextBox_GP_ID As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
 
 End Class
