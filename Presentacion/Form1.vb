@@ -4,6 +4,7 @@
     Dim E As Escuderia
     Dim c As Carreras
     Dim con As Contrato
+    Dim cal As Calendario
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
         If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty And Me.txtID.Text.Length = 3 Then '<> significa !='
             Try
@@ -78,17 +79,20 @@
         Dim EAux As Escuderia
         Dim cAux As Carreras
         Dim conAux As Contrato
+        Dim calAux As Calendario
         Me.p = New Pais
         Me.pi = New Piloto
         Me.E = New Escuderia
         Me.c = New Carreras
         Me.con = New Contrato
+        Me.cal = New Calendario
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
             Me.E.LeerTodosEscuderias()
             Me.c.LeerTodosCarreras()
             Me.con.LeerTodosContratos()
+            Me.cal.LeerTodosCalendarios()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -110,6 +114,9 @@
         Next
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each calAux In Me.cal.CalendarioDAO.Calendarios
+            Me.ListBox_Fechas.Items.Add(calAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         Conectar.Enabled = False
         Conectar.Visible = False
@@ -285,5 +292,9 @@
         Me.ComboBox_Pais_Escuderia.Enabled = True
         Me.TextBox_Nombre_Escuderia.Enabled = True
         Me.DateTimePicker_Escuderia.Enabled = True
+    End Sub
+
+    Private Sub ListBox_Fechas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Fechas.SelectedIndexChanged
+
     End Sub
 End Class
