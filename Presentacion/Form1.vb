@@ -26,9 +26,11 @@
 
     Private Sub Actualizar_Click(sender As Object, e As EventArgs) Handles Actualizar.Click
         If Not p Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
+            p.IDPais = txtID.Text
             p.Nombre = txtNombre.Text
+            p.Habitantes = txtHab.Text
             Try
-                If p.ActualizarPersona() <> 1 Then
+            If p.ActualizarPersona() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -144,6 +146,7 @@
     Private Sub Actualizar_Piloto_Click(sender As Object, e As EventArgs) Handles Actualizar_Piloto.Click
         If Not pi Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
             pi.Nombre = TextBox_Nombre_Piloto.Text
+            pi.Apellido = TextBox_Apellido_Piloto.Text
             Try
                 If pi.ActualizarPilotos() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

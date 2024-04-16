@@ -24,6 +24,7 @@
         For Each aux In col
             p.Nombre = aux(2).ToString
             p.Habitantes = aux(3).ToString
+            Me.Personas.Add(p)
         Next
     End Sub
 
@@ -32,7 +33,7 @@
     End Function
 
     Public Function Actualizar(ByVal p As Pais) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("UPDATE paises SET NombrePais = '" & p.Nombre & "' WHERE (`IdPais` = '" & p.IDPais & "');")
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE paises SET NombrePais = '" & p.Nombre & "', HabitantesPais = '" & p.Habitantes & "' WHERE (`IdPais` = '" & p.IDPais & "');")
     End Function
 
 
