@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlClient
+﻿Imports MySql.Data.MySqlClient
 
 Public Class CalendarioDAO
     Public ReadOnly Property Calendarios As Collection ' Calendarios es una colección de objetos Calendario
@@ -13,11 +13,10 @@ Public Class CalendarioDAO
             Dim col, aux As Collection
             col = AgenteBD.ObtenerAgente().Leer("SELECT * FROM Calendario ORDER BY Temporada, Orden") ' Leer todos los calendarios ordenados por temporada y orden
             For Each aux In col
-                calendario = New Calendario With {
-                    .Temporada = aux(1), ' El primer elemento es la temporada
-                    .GP = aux(2), ' El segundo elemento es el GP
-                    .Orden = aux(3) ' El tercer elemento es el orden
-                    }
+                calendario = New Calendario()
+                calendario.Temporada = aux(1) ' El primer elemento es la temporada
+                calendario.GP = aux(2) ' El segundo elemento es el GP
+                calendario.Orden = aux(3) ' El tercer elemento es el orden
                 Me.Calendarios.Add(calendario) ' Agregar el calendario a la colección
             Next
         Catch ex As Exception
@@ -45,4 +44,19 @@ Public Class CalendarioDAO
         End Try
     End Function
 
+    Public Function Actualizar(ByVal calendario As Calendario) As Integer
+        Try
+            Return AgenteBD.ObtenerAgente.Modificar("UPDATE Calendario SET Orden='" & calendario.Orden & "' WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Actualizar el orden de un calendario existente en la base de datos
+        Catch ex As Exception
+            Throw New Exception("Error al actualizar el calendario", ex)
+        End Try
+    End Function
+
+    Public Function Borrar(ByVal calendario As Calendario) As Integer
+        Try
+            Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM Calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Borrar un calendario existente de la base de datos
+        Catch ex As Exception
+            Throw New Exception("Error al borrar el calendario", ex)
+        End Try
+    End Function
 End Class
