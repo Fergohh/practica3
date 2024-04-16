@@ -67,13 +67,17 @@ Partial Class Form1
         TabPage4 = New TabPage()
         TextBox3 = New TextBox()
         Carreras = New TabPage()
-        Conectar = New Button()
         Contratos = New TabPage()
+        Conectar = New Button()
+        ListBox_Carreras = New ListBox()
+        ListBox_Contratos = New ListBox()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
         GPs.SuspendLayout()
         TabPage4.SuspendLayout()
+        Carreras.SuspendLayout()
+        Contratos.SuspendLayout()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -502,6 +506,7 @@ Partial Class Form1
         ' 
         ' Carreras
         ' 
+        Carreras.Controls.Add(ListBox_Carreras)
         Carreras.Location = New Point(4, 29)
         Carreras.Margin = New Padding(3, 4, 3, 4)
         Carreras.Name = "Carreras"
@@ -510,6 +515,17 @@ Partial Class Form1
         Carreras.TabIndex = 4
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
+        ' 
+        ' Contratos
+        ' 
+        Contratos.Controls.Add(ListBox_Contratos)
+        Contratos.Location = New Point(4, 29)
+        Contratos.Name = "Contratos"
+        Contratos.Padding = New Padding(3)
+        Contratos.Size = New Size(653, 474)
+        Contratos.TabIndex = 5
+        Contratos.Text = "Contratos"
+        Contratos.UseVisualStyleBackColor = True
         ' 
         ' Conectar
         ' 
@@ -523,15 +539,21 @@ Partial Class Form1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
         ' 
-        ' Contratos
+        ' ListBox_Carreras
         ' 
-        Contratos.Location = New Point(4, 29)
-        Contratos.Name = "Contratos"
-        Contratos.Padding = New Padding(3)
-        Contratos.Size = New Size(653, 474)
-        Contratos.TabIndex = 5
-        Contratos.Text = "Contratos"
-        Contratos.UseVisualStyleBackColor = True
+        ListBox_Carreras.FormattingEnabled = True
+        ListBox_Carreras.Location = New Point(152, 28)
+        ListBox_Carreras.Name = "ListBox_Carreras"
+        ListBox_Carreras.Size = New Size(338, 384)
+        ListBox_Carreras.TabIndex = 0
+        ' 
+        ' ListBox_Contratos
+        ' 
+        ListBox_Contratos.FormattingEnabled = True
+        ListBox_Contratos.Location = New Point(197, 28)
+        ListBox_Contratos.Name = "ListBox_Contratos"
+        ListBox_Contratos.Size = New Size(267, 344)
+        ListBox_Contratos.TabIndex = 0
         ' 
         ' Form1
         ' 
@@ -552,6 +574,8 @@ Partial Class Form1
         GPs.PerformLayout()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
+        Carreras.ResumeLayout(False)
+        Contratos.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -601,5 +625,7 @@ Partial Class Form1
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBox_Apellido_Piloto As TextBox
     Friend WithEvents Contratos As TabPage
+    Friend WithEvents ListBox_Carreras As ListBox
+    Friend WithEvents ListBox_Contratos As ListBox
 
 End Class
