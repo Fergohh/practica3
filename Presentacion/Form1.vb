@@ -323,11 +323,11 @@
         If Me.TextBox_GP_Denominacion.Text <> String.Empty And ComboBox_GP_Pais.SelectedItem <> String.Empty Then '<> significa !='
             Try
                 G = New GP
-                G.PaisPiloto = ComboBox_GP_Pais.SelectedItem
-                G.Nombre = TextBox_GP_Denominacion.Text
+                G.PaisGP = ComboBox_GP_Pais.SelectedItem
+                G.DenominacionGP = TextBox_GP_Denominacion.Text
 
 
-                If G.InsertarPilotos <> 1 Then
+                If G.InsertarGP <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -336,9 +336,60 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            Me.ListBox_Piloto.Items.Clear()
-
-            Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
+            ListBox_GP.Items.Clear()
+            Dim GAux As GP
+            G.LeerTodosGPs()
+            For Each piAux In Me.G.GPDAO.GPs
+                Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
+            Next
         End If
+    End Sub
+
+
+    Private Sub Actualizar_GP_Click(sender As Object, e As EventArgs) Handles Actualizar_GP.Click
+        If Not G Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
+            G.DenominacionGP = TextBox_GP_Denominacion.Text
+
+            Try
+                If G.ActualizarGP() <> 1 Then
+                    MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            MessageBox.Show(G.DenominacionGP & " actualizado correctamente!")
+        End If
+    End Sub
+
+    Private Sub Borrar_GP_Click(sender As Object, e As EventArgs) Handles Borrar_GP.Click
+        If Not Me.G Is Nothing Then
+            If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.G.IDGP & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Try
+                    If Me.G.BorrarGP() <> 1 Then
+                        MessageBox.Show("DELETE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Exit Sub
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+                End Try
+                Me.ListBox_GP.Items.Remove(G.IDGP)
+            End If
+
+            Me.Limpiar_GP.PerformClick() 'Hacer click'
+        End If
+    End Sub
+
+
+    Private Sub Limpiar_GP_Click(sender As Object, e As EventArgs) Handles Limpiar_GP.Click
+        Me.TextBox_GP_ID.Text = String.Empty
+        Me.ComboBox_GP_Pais.SelectedIndex = -1
+        Me.TextBox_GP_Denominacion.Text = String.Empty
+        Me.TextBox_GP_ID.Enabled = True
+        Me.ComboBox_GP_Pais.Enabled = True
+        Me.TextBox_GP_Denominacion.Enabled = True
+
     End Sub
 End Class
