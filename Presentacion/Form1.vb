@@ -30,7 +30,7 @@
             p.Nombre = txtNombre.Text
             p.Habitantes = txtHab.Text
             Try
-            If p.ActualizarPersona() <> 1 Then
+                If p.ActualizarPersona() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
