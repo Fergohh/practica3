@@ -45,19 +45,4 @@ Public Class CalendarioDAO
         End Try
     End Function
 
-    Public Function Actualizar(ByVal calendario As Calendario) As Integer
-        Try
-            Return AgenteBD.ObtenerAgente.Modificar("UPDATE Calendario SET Orden='" & calendario.Orden & "' WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Actualizar el orden de un calendario existente en la base de datos
-        Catch ex As Exception
-            Throw New Exception("Error al actualizar el calendario", ex)
-        End Try
-    End Function
-
-    Public Function Borrar(ByVal calendario As Calendario) As Integer
-        Try
-            Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM Calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Borrar un calendario existente de la base de datos
-        Catch ex As Exception
-            Throw New Exception("Error al borrar el calendario", ex)
-        End Try
-    End Function
 End Class

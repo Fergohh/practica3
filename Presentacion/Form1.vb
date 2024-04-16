@@ -2,6 +2,7 @@
     Dim p As Pais
     Dim pi As Piloto
     Dim E As Escuderia
+    Dim G As GP
     Dim c As Carreras
     Dim con As Contrato
     Dim cal As Calendario
@@ -77,12 +78,14 @@
         Dim pAux As Pais
         Dim piAux As Piloto
         Dim EAux As Escuderia
+        Dim GAux As GP
         Dim cAux As Carreras
         Dim conAux As Contrato
         Dim calAux As Calendario
         Me.p = New Pais
         Me.pi = New Piloto
         Me.E = New Escuderia
+        Me.G = New GP
         Me.c = New Carreras
         Me.con = New Contrato
         Me.cal = New Calendario
@@ -90,6 +93,7 @@
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
             Me.E.LeerTodosEscuderias()
+            Me.G.LeerTodosGPs()
             Me.c.LeerTodosCarreras()
             Me.con.LeerTodosContratos()
             Me.cal.LeerTodosCalendarios()
@@ -108,6 +112,9 @@
         Next
         For Each EAux In Me.E.EscuderiaDAO.Escuderias
             Me.ListBox_Escuderia.Items.Add(EAux.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
+        Next
+        For Each GAux In Me.G.GPDAO.GPs
+            Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each cAux In Me.c.CarrerasDAO.Carrera
             Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
@@ -264,7 +271,7 @@
     End Sub
 
     Private Sub Añadir_Escuderia_Click(sender As Object, a As EventArgs) Handles Añadir_Escuderia.Click
-        If Me.TextBox_ID_Escuderia.Text <> String.Empty Then '<> significa !='
+        If TextBox_ID_Escuderia.Text <> String.Empty Then '<> significa !='
             Try
                 E = New Escuderia
                 E.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
@@ -279,19 +286,118 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
-            Me.ListBox_Escuderia.Items.Add(E.IDEscuderia)
+            ListBox_Escuderia.Items.Add(E.IDEscuderia)
         End If
     End Sub
 
     Private Sub Limpiar_Escuderia_Click(sender As Object, e As EventArgs) Handles Limpiar_Escuderia.Click
-        Me.TextBox_ID_Escuderia.Text = String.Empty
-        Me.ComboBox_Pais_Escuderia.SelectedIndex = -1
-        Me.TextBox_Nombre_Escuderia.Text = String.Empty
-        Me.DateTimePicker_Escuderia.Value = Date.Today
-        Me.TextBox_ID_Escuderia.Enabled = True
-        Me.ComboBox_Pais_Escuderia.Enabled = True
-        Me.TextBox_Nombre_Escuderia.Enabled = True
-        Me.DateTimePicker_Escuderia.Enabled = True
+        TextBox_ID_Escuderia.Text = String.Empty
+        ComboBox_Pais_Escuderia.SelectedIndex = -1
+        TextBox_Nombre_Escuderia.Text = String.Empty
+        DateTimePicker_Escuderia.Value = Date.Today
+        TextBox_ID_Escuderia.Enabled = True
+        ComboBox_Pais_Escuderia.Enabled = True
+        TextBox_Nombre_Escuderia.Enabled = True
+        DateTimePicker_Escuderia.Enabled = True
+    End Sub
+
+
+    Private Sub ListBox_GP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_GP.SelectedIndexChanged
+        Me.Actualizar_Piloto.Enabled = True
+        Me.Borrar_Piloto.Enabled = True
+        Me.TextBox_GP_ID.Enabled = False
+        Me.ComboBox_GP_Pais.Enabled = False
+        Me.TextBox_GP_Denominacion.Enabled = True
+
+        If Not Me.ListBox_GP.SelectedItem Is Nothing Then
+            Me.G = New GP(Me.ListBox_GP.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Try
+                Me.G.LeerGP()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            Me.TextBox_GP_ID.Text = Me.G.IDGP.ToString
+            Me.ComboBox_GP_Pais.SelectedItem = Me.G.PaisGP
+            Me.TextBox_Nombre_Piloto.Text = Me.G.DenominacionGP.ToString
+
+
+        End If
+    End Sub
+
+
+    Private Sub Añadir_GP_Click(sender As Object, e As EventArgs) Handles Añadir_GP.Click
+        If Me.TextBox_GP_Denominacion.Text <> String.Empty And ComboBox_GP_Pais.SelectedItem <> String.Empty Then '<> significa !='
+            Try
+                G = New GP
+                G.PaisGP = ComboBox_GP_Pais.SelectedItem
+                G.DenominacionGP = TextBox_GP_Denominacion.Text
+
+
+                If G.InsertarGP <> 1 Then
+                    MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+
+            End Try
+            ListBox_GP.Items.Clear()
+            Dim GAux As GP
+            G.LeerTodosGPs()
+            For Each piAux In Me.G.GPDAO.GPs
+                Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
+            Next
+        End If
+    End Sub
+
+
+    Private Sub Actualizar_GP_Click(sender As Object, e As EventArgs) Handles Actualizar_GP.Click
+        If Not G Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
+            G.DenominacionGP = TextBox_GP_Denominacion.Text
+
+            Try
+                If G.ActualizarGP() <> 1 Then
+                    MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            MessageBox.Show(G.DenominacionGP & " actualizado correctamente!")
+        End If
+    End Sub
+
+    Private Sub Borrar_GP_Click(sender As Object, e As EventArgs) Handles Borrar_GP.Click
+        If Not Me.G Is Nothing Then
+            If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.G.IDGP & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Try
+                    If Me.G.BorrarGP() <> 1 Then
+                        MessageBox.Show("DELETE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Exit Sub
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+                End Try
+                Me.ListBox_GP.Items.Remove(G.IDGP)
+            End If
+
+            Me.Limpiar_GP.PerformClick() 'Hacer click'
+        End If
+    End Sub
+
+
+    Private Sub Limpiar_GP_Click(sender As Object, e As EventArgs) Handles Limpiar_GP.Click
+        Me.TextBox_GP_ID.Text = String.Empty
+        Me.ComboBox_GP_Pais.SelectedIndex = -1
+        Me.TextBox_GP_Denominacion.Text = String.Empty
+        Me.TextBox_GP_ID.Enabled = True
+        Me.ComboBox_GP_Pais.Enabled = True
+        Me.TextBox_GP_Denominacion.Enabled = True
+
     End Sub
 
     Private Sub ListBox_Fechas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Fechas.SelectedIndexChanged

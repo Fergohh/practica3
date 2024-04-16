@@ -27,11 +27,11 @@
     End Sub
 
     Public Function Insertar(ByVal p As GP) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO gps VALUES ('" & p.IDGP & "', '" & p.DenominacionGP & "', '" & p.PaisGP & "');")
+        Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO gps (DenominacionGP, PaisGP) VALUES ('" & p.DenominacionGP & "', '" & p.PaisGP & "');")
     End Function
 
     Public Function Actualizar(ByVal p As GP) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("UPDATE gps SET NombreEscuderia='" & p.DenominacionGP & "' WHERE IdGP='" & p.IDGP & "';")
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE gps SET gps='" & p.DenominacionGP & "' WHERE IdGP='" & p.IDGP & "';")
     End Function
 
     Public Function Borrar(ByVal p As GP) As Integer

@@ -65,7 +65,15 @@ Partial Class Form1
         ListBox_Escuderia = New ListBox()
         Label5 = New Label()
         TabPage4 = New TabPage()
-        TextBox3 = New TextBox()
+        Label8 = New Label()
+        Limpiar_GP = New Button()
+        Borrar_GP = New Button()
+        Actualizar_GP = New Button()
+        Añadir_GP = New Button()
+        TextBox_GP_Denominacion = New TextBox()
+        TextBox_GP_ID = New TextBox()
+        ComboBox_GP_Pais = New ComboBox()
+        ListBox_GP = New ListBox()
         Carreras = New TabPage()
         ListBox_Carreras = New ListBox()
         Contratos = New TabPage()
@@ -497,19 +505,71 @@ Partial Class Form1
         ' TabPage4
         ' 
         TabPage4.Controls.Add(TextBox3)
-        TabPage4.Location = New Point(4, 24)
+        TabPage4.Location = New Point(4, 29)
+        TabPage4.Margin = New Padding(3, 4, 3, 4)
         TabPage4.Name = "TabPage4"
         TabPage4.Size = New Size(570, 352)
         TabPage4.TabIndex = 3
         TabPage4.Text = "GPs"
         TabPage4.UseVisualStyleBackColor = True
         ' 
-        ' TextBox3
+        ' Label8
         ' 
-        TextBox3.Location = New Point(220, 168)
-        TextBox3.Margin = New Padding(3, 2, 3, 2)
+        Label8.AutoSize = True
+        Label8.Location = New Point(397, 130)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(40, 20)
+        Label8.TabIndex = 52
+        Label8.Text = "IdGP"
+        ' 
+        ' Limpiar_GP
+        ' 
+        Limpiar_GP.Location = New Point(501, 380)
+        Limpiar_GP.Name = "Limpiar_GP"
+        Limpiar_GP.Size = New Size(94, 29)
+        Limpiar_GP.TabIndex = 51
+        Limpiar_GP.Text = "Limpiar"
+        Limpiar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Borrar_GP
+        ' 
+        Borrar_GP.Location = New Point(391, 380)
+        Borrar_GP.Name = "Borrar_GP"
+        Borrar_GP.Size = New Size(94, 29)
+        Borrar_GP.TabIndex = 50
+        Borrar_GP.Text = "Borrar"
+        Borrar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Actualizar_GP
+        ' 
+        Actualizar_GP.Location = New Point(501, 332)
+        Actualizar_GP.Name = "Actualizar_GP"
+        Actualizar_GP.Size = New Size(94, 29)
+        Actualizar_GP.TabIndex = 49
+        Actualizar_GP.Text = "Actualizar"
+        Actualizar_GP.UseVisualStyleBackColor = True
+        ' 
+        ' Añadir_GP
+        ' 
+        Añadir_GP.Location = New Point(389, 332)
+        Añadir_GP.Name = "Añadir_GP"
+        Añadir_GP.Size = New Size(94, 29)
+        Añadir_GP.TabIndex = 48
+        Añadir_GP.Text = "Anadir"
+        Añadir_GP.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox_GP_Denominacion
+        ' 
+        TextBox_GP_Denominacion.Location = New Point(445, 178)
+        TextBox_GP_Denominacion.Name = "TextBox_GP_Denominacion"
+        TextBox_GP_Denominacion.Size = New Size(150, 27)
+        TextBox_GP_Denominacion.TabIndex = 47
+        ' 
+        ' TextBox_GP_ID
+        ' 
+        TextBox3.Location = New Point(251, 224)
         TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(132, 23)
+        TextBox3.Size = New Size(150, 27)
         TextBox3.TabIndex = 44
         ' 
         ' Carreras
@@ -523,16 +583,6 @@ Partial Class Form1
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
         ' 
-        ' ListBox_Carreras
-        ' 
-        ListBox_Carreras.FormattingEnabled = True
-        ListBox_Carreras.ItemHeight = 15
-        ListBox_Carreras.Location = New Point(133, 21)
-        ListBox_Carreras.Margin = New Padding(3, 2, 3, 2)
-        ListBox_Carreras.Name = "ListBox_Carreras"
-        ListBox_Carreras.Size = New Size(296, 289)
-        ListBox_Carreras.TabIndex = 0
-        ' 
         ' Contratos
         ' 
         Contratos.Controls.Add(ListBox_Contratos)
@@ -545,19 +595,9 @@ Partial Class Form1
         Contratos.Text = "Contratos"
         Contratos.UseVisualStyleBackColor = True
         ' 
-        ' ListBox_Contratos
-        ' 
-        ListBox_Contratos.FormattingEnabled = True
-        ListBox_Contratos.ItemHeight = 15
-        ListBox_Contratos.Location = New Point(172, 21)
-        ListBox_Contratos.Margin = New Padding(3, 2, 3, 2)
-        ListBox_Contratos.Name = "ListBox_Contratos"
-        ListBox_Contratos.Size = New Size(234, 259)
-        ListBox_Contratos.TabIndex = 0
-        ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(685, 47)
         Conectar.Name = "Conectar"
@@ -566,29 +606,25 @@ Partial Class Form1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
         ' 
-        ' TabPage1
+        ' ListBox_Carreras
         ' 
-        TabPage1.Controls.Add(ListBox_Fechas)
-        TabPage1.Location = New Point(4, 24)
-        TabPage1.Name = "TabPage1"
-        TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(570, 352)
-        TabPage1.TabIndex = 6
-        TabPage1.Text = "Calendario"
-        TabPage1.UseVisualStyleBackColor = True
+        ListBox_Carreras.FormattingEnabled = True
+        ListBox_Carreras.Location = New Point(152, 28)
+        ListBox_Carreras.Name = "ListBox_Carreras"
+        ListBox_Carreras.Size = New Size(338, 384)
+        ListBox_Carreras.TabIndex = 0
         ' 
-        ' ListBox_Fechas
+        ' ListBox_Contratos
         ' 
-        ListBox_Fechas.FormattingEnabled = True
-        ListBox_Fechas.ItemHeight = 15
-        ListBox_Fechas.Location = New Point(50, 53)
-        ListBox_Fechas.Name = "ListBox_Fechas"
-        ListBox_Fechas.Size = New Size(160, 214)
-        ListBox_Fechas.TabIndex = 0
+        ListBox_Contratos.FormattingEnabled = True
+        ListBox_Contratos.Location = New Point(197, 28)
+        ListBox_Contratos.Name = "ListBox_Contratos"
+        ListBox_Contratos.Size = New Size(267, 344)
+        ListBox_Contratos.TabIndex = 0
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
         Controls.Add(Conectar)
@@ -649,7 +685,6 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents ListBox_Escuderia As ListBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Carreras As TabPage
     Friend WithEvents TextBox_Nombre_Piloto As TextBox
     Friend WithEvents Label7 As Label
@@ -658,7 +693,5 @@ Partial Class Form1
     Friend WithEvents Contratos As TabPage
     Friend WithEvents ListBox_Carreras As ListBox
     Friend WithEvents ListBox_Contratos As ListBox
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents ListBox_Fechas As ListBox
 
 End Class
