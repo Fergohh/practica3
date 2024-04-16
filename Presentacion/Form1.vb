@@ -118,10 +118,9 @@
     End Sub
 
     Private Sub Añadir_Piloto_Click(sender As Object, e As EventArgs) Handles Añadir_Piloto.Click
-        If Me.TextBox_ID_Piloto.Text <> String.Empty Then '<> significa !='
+        If Me.TextBox_Nombre_Piloto.Text <> String.Empty And Me.TextBox_Apellido_Piloto.Text <> String.Empty And ComboBox_Pais_Piloto.SelectedItem <> String.Empty Then '<> significa !='
             Try
                 pi = New Piloto
-                pi.IDPiloto = TextBox_ID_Piloto.Text
                 pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
                 pi.Nombre = TextBox_Nombre_Piloto.Text
                 pi.Apellido = TextBox_Apellido_Piloto.Text
@@ -136,15 +135,17 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
 
             End Try
+            Me.ListBox_Piloto.Items.Clear()
+
             Me.ListBox_Piloto.Items.Add(pi.IDPiloto)
         End If
     End Sub
 
     Private Sub Actualizar_Piloto_Click(sender As Object, e As EventArgs) Handles Actualizar_Piloto.Click
-        If Not p Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
-            p.Nombre = txtNombre.Text
+        If Not pi Is Nothing Then 'el p Is Nothing es como p == NULL, si le pones el Not delante seria p != NULL'
+            pi.Nombre = TextBox_Nombre_Piloto.Text
             Try
-                If p.ActualizarPersona() <> 1 Then
+                If pi.ActualizarPilotos() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -152,7 +153,7 @@
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
-            MessageBox.Show(p.Nombre & " actualizado correctamente!")
+            MessageBox.Show(pi.Nombre & " actualizado correctamente!")
         End If
     End Sub
 
@@ -262,5 +263,6 @@
         Me.TextBox_ID_Escuderia.Enabled = True
         Me.ComboBox_Pais_Escuderia.Enabled = True
         Me.TextBox_Nombre_Escuderia.Enabled = True
+        Me.DateTimePicker_Escuderia.Enabled = True
     End Sub
 End Class

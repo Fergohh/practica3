@@ -36,6 +36,4 @@
     Public Function BorrarEscuderia() As Integer
         Return Me.EscuderiaDAO.Borrar(Me)
     End Function
-
-
 End Class
