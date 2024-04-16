@@ -102,6 +102,7 @@
             Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
             Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
             Me.ComboBox_Pais_Escuderia.Items.Add(pAux.IDPais)
+            Me.ComboBox_GP_Pais.Items.Add(pAux.IDPais)
         Next
         For Each piAux In Me.pi.PilotoDAO.Pilotos
             Me.ListBox_Piloto.Items.Add(piAux.IDPiloto) 'imprime el id de la persona en la lista con .Items.Add'
@@ -312,7 +313,7 @@
             End Try
             Me.TextBox_GP_ID.Text = Me.G.IDGP.ToString
             Me.ComboBox_GP_Pais.SelectedItem = Me.G.PaisGP
-            Me.TextBox_Nombre_Piloto.Text = Me.G.DenominacionGP.ToString
+            Me.TextBox_GP_Denominacion.Text = Me.G.DenominacionGP.ToString
 
 
         End If
@@ -339,7 +340,7 @@
             ListBox_GP.Items.Clear()
             Dim GAux As GP
             G.LeerTodosGPs()
-            For Each piAux In Me.G.GPDAO.GPs
+            For Each GAux In Me.G.GPDAO.GPs
                 Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
             Next
         End If
@@ -387,7 +388,6 @@
         Me.TextBox_GP_ID.Text = String.Empty
         Me.ComboBox_GP_Pais.SelectedIndex = -1
         Me.TextBox_GP_Denominacion.Text = String.Empty
-        Me.TextBox_GP_ID.Enabled = True
         Me.ComboBox_GP_Pais.Enabled = True
         Me.TextBox_GP_Denominacion.Enabled = True
 

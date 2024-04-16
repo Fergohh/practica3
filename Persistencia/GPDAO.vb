@@ -31,7 +31,7 @@
     End Function
 
     Public Function Actualizar(ByVal p As GP) As Integer
-        Return AgenteBD.ObtenerAgente.Modificar("UPDATE gps SET gps ='" & p.DenominacionGP & "' WHERE IdGP='" & p.IDGP & "';")
+        Return AgenteBD.ObtenerAgente.Modificar("UPDATE gps SET DenominacionGP='" & p.DenominacionGP & "' WHERE IdGP='" & p.IDGP & "';")
     End Function
 
     Public Function Borrar(ByVal p As GP) As Integer
