@@ -88,6 +88,7 @@
         Me.G = New GP
         Me.c = New Carreras
         Me.con = New Contrato
+        Me.ca = New Calendario
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
@@ -314,7 +315,22 @@
     End Sub
 
     Private Sub Borrar_Escuderia_Click(sender As Object, e As EventArgs) Handles Borrar_Escuderia.Click
+        If Not Me.es Is Nothing Then
+            If MessageBox.Show("¿Estas seguro que quieres borrar?" & Me.es.IDEscuderia & "?", "Por favor, confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                Try
+                    If Me.es.BorrarEscuderia() <> 1 Then
+                        MessageBox.Show("DELETE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Exit Sub
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+                End Try
+                Me.ListBox_Escuderia.Items.Remove(es.IDEscuderia)
+            End If
+            Me.Limpiar_Escuderia.PerformClick() 'Hacer click'
 
+        End If
     End Sub
     Private Sub Limpiar_Escuderia_Click(sender As Object, e As EventArgs) Handles Limpiar_Escuderia.Click
         TextBox_ID_Escuderia.Text = String.Empty
