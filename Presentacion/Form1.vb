@@ -72,6 +72,7 @@
         Me.txtID.Enabled = True
         Me.txtNombre.Enabled = True
         Me.txtHab.Enabled = True
+        Me.txtID.ReadOnly = True
     End Sub
 
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
@@ -459,4 +460,20 @@
         End If
     End Sub
 
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        Dim txt As String
+        txt = txtNombre.Text
+
+        If txt <> String.Empty And txt.Length > 2 Then
+            txtID.Text = txt.Substring(0, 3).ToUpper
+
+            For Each pAux In Me.p.PerDAO.Personas
+                If pAux.IDPais = txtID.Text Then
+                    txtID.ReadOnly = False
+                Else
+                    txtID.ReadOnly = True
+                End If
+            Next
+        End If
+    End Sub
 End Class
