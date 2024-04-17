@@ -87,6 +87,12 @@ Partial Class Form1
         Contratos = New TabPage()
         ListBox_Contratos = New ListBox()
         Conectar = New Button()
+        Numeros_escuderias = New NumericUpDown()
+        Numeros_GP = New NumericUpDown()
+        Escuderias = New Label()
+        Label14 = New Label()
+        Button_Valores = New Button()
+        Label13 = New Label()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -95,6 +101,8 @@ Partial Class Form1
         Calendario.SuspendLayout()
         Carreras.SuspendLayout()
         Contratos.SuspendLayout()
+        CType(Numeros_escuderias, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Numeros_GP, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -741,11 +749,75 @@ Partial Class Form1
         Conectar.Text = "Conectar!!!"
         Conectar.UseVisualStyleBackColor = True
         ' 
+        ' Numeros_escuderias
+        ' 
+        Numeros_escuderias.Enabled = False
+        Numeros_escuderias.Location = New Point(494, 415)
+        Numeros_escuderias.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Numeros_escuderias.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
+        Numeros_escuderias.Name = "Numeros_escuderias"
+        Numeros_escuderias.Size = New Size(150, 27)
+        Numeros_escuderias.TabIndex = 2
+        Numeros_escuderias.Value = New Decimal(New Integer() {5, 0, 0, 0})
+        ' 
+        ' Numeros_GP
+        ' 
+        Numeros_GP.Enabled = False
+        Numeros_GP.Location = New Point(494, 458)
+        Numeros_GP.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
+        Numeros_GP.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Numeros_GP.Name = "Numeros_GP"
+        Numeros_GP.Size = New Size(150, 27)
+        Numeros_GP.TabIndex = 3
+        Numeros_GP.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        ' 
+        ' Escuderias
+        ' 
+        Escuderias.AutoSize = True
+        Escuderias.Location = New Point(406, 417)
+        Escuderias.Name = "Escuderias"
+        Escuderias.Size = New Size(78, 20)
+        Escuderias.TabIndex = 4
+        Escuderias.Text = "Escuderias"
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Location = New Point(451, 460)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(33, 20)
+        Label14.TabIndex = 5
+        Label14.Text = "GPs"
+        ' 
+        ' Button_Valores
+        ' 
+        Button_Valores.Location = New Point(272, 432)
+        Button_Valores.Name = "Button_Valores"
+        Button_Valores.Size = New Size(131, 48)
+        Button_Valores.TabIndex = 6
+        Button_Valores.Text = "SI QUIERO"
+        Button_Valores.UseVisualStyleBackColor = True
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(24, 417)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(249, 80)
+        Label13.TabIndex = 7
+        Label13.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(914, 600)
+        Controls.Add(Label13)
+        Controls.Add(Button_Valores)
+        Controls.Add(Label14)
+        Controls.Add(Escuderias)
+        Controls.Add(Numeros_GP)
+        Controls.Add(Numeros_escuderias)
         Controls.Add(Conectar)
         Controls.Add(TabControl1)
         Name = "Form1"
@@ -763,7 +835,10 @@ Partial Class Form1
         Calendario.PerformLayout()
         Carreras.ResumeLayout(False)
         Contratos.ResumeLayout(False)
+        CType(Numeros_escuderias, ComponentModel.ISupportInitialize).EndInit()
+        CType(Numeros_GP, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents TabControl1 As TabControl
@@ -830,5 +905,11 @@ Partial Class Form1
     Friend WithEvents ListBox_Calendario As ListBox
     Friend WithEvents TextBox_GP_Calendario As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents Numeros_escuderias As NumericUpDown
+    Friend WithEvents Numeros_GP As NumericUpDown
+    Friend WithEvents Escuderias As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Button_Valores As Button
+    Friend WithEvents Label13 As Label
 
 End Class

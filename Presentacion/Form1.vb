@@ -90,6 +90,8 @@
         Me.c = New Carreras
         Me.con = New Contrato
         Me.ca = New Calendario
+        Me.Numeros_escuderias.Enabled = False
+        Me.Numeros_GP.Enabled = False
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
@@ -477,11 +479,18 @@
         End If
     End Sub
 
-    Public Function generarRandoms()
+    Public Function generarRandoms() As List(Of Escuderia)
         Dim EAux As Escuderia
         Me.es = New Escuderia
         Dim EscuderiasRandom As New List(Of Escuderia)
-        es.LeerTodosEscuderias()
+        Try
+
+            es.LeerTodosEscuderias()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+
+        End Try 'si hay algo raro que salte y vuelva a ejecutar'
         For Each EAux In Me.es.EscuderiaDAO.Escuderias
             EscuderiasRandom.Add(EAux)
         Next
@@ -492,10 +501,17 @@
 
         ' Aplicar el comparador para desordenar la lista
         EscuderiasRandom.Sort(comparador)
-
-
+        Return EscuderiasRandom
 
     End Function
+
+
+    Private Sub Button_Valores_Click(sender As Object, e As EventArgs) Handles Button_Valores.Click
+        Me.Numeros_escuderias.Enabled = True
+        Me.Numeros_GP.Enabled = True
+        Me.Button_Valores.Enabled = False
+
+        End Function
 
     Private Sub GenerarListaTemporadasAleatorias()
         Dim random As New Random()
