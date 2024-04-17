@@ -38,7 +38,13 @@ Public Class CalendarioDAO
 
     Public Function Insertar(ByVal calendario As Calendario) As Integer
         Try
-            Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO Calendario (Temporada, GP, Orden) VALUES ('" & calendario.Temporada & "', '" & calendario.GP & "', '" & calendario.Orden & "')") ' Insertar un nuevo calendario en la base de datos
+            If calendario.Temporada < 1970 Or calendario.Temporada > 2024 Then
+                Throw New ArgumentException("El año de la temporada debe estar entre 1970 y 2024")
+            End If
+
+            Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO Calendario (Temporada, GP, Orden) VALUES ('" & calendario.Temporada & "', '" & calendario.GP & "', '" & calendario.Orden & "')")
+        Catch ex As ArgumentException
+            Throw
         Catch ex As Exception
             Throw New Exception("Error al insertar el calendario", ex)
         End Try

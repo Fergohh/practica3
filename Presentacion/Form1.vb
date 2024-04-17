@@ -496,4 +496,39 @@
 
 
     End Function
+
+    Private Sub GenerarListaTemporadasAleatorias()
+        Dim random As New Random()
+        Dim years As New List(Of Integer)
+
+        ' Agregar años desde 1970 hasta 2024 a la lista
+        For year As Integer = 1970 To 2024
+            years.Add(year)
+        Next
+
+        ' Mezclar aleatoriamente los años en la lista
+        Shuffle(years)
+
+        ' Seleccionar un número aleatorio de elementos de la lista mezclada
+        Dim numberOfYears As Integer = random.Next(10, 21) ' Entre 10 y 20 elementos (máximo 20)
+        Dim selectedYears As List(Of Integer) = years.Take(numberOfYears).ToList()
+
+        ' Imprimir la lista de años seleccionados
+        For Each year As Integer In selectedYears
+            Console.WriteLine(year)
+        Next
+    End Sub
+
+    ' Función para mezclar aleatoriamente los elementos de una lista
+    Private Sub Shuffle(Of T)(ByRef list As List(Of T))
+        Dim random As New Random()
+        Dim n As Integer = list.Count
+        While n > 1
+            n -= 1
+            Dim k As Integer = random.Next(n + 1)
+            Dim value As T = list(k)
+            list(k) = list(n)
+            list(n) = value
+        End While
+    End Sub
 End Class
