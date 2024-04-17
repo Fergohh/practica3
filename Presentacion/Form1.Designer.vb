@@ -129,7 +129,7 @@ Partial Class Form1
         Pais.Location = New Point(4, 24)
         Pais.Name = "Pais"
         Pais.Padding = New Padding(3)
-        Pais.Size = New Size(653, 474)
+        Pais.Size = New Size(570, 352)
         Pais.TabIndex = 0
         Pais.Text = "Pais"
         Pais.UseVisualStyleBackColor = True
@@ -253,8 +253,8 @@ Partial Class Form1
         Pilotos.Controls.Add(lbl_ID_Piloto)
         Pilotos.Location = New Point(4, 24)
         Pilotos.Name = "Pilotos"
-        Pilotos.Padding = New Padding(3)
-        Pilotos.Size = New Size(653, 474)
+        Pilotos.Padding = New Padding(3, 3, 3, 3)
+        Pilotos.Size = New Size(570, 352)
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
         Pilotos.UseVisualStyleBackColor = True
@@ -699,8 +699,8 @@ Partial Class Form1
         Carreras.Controls.Add(ListBox_Carreras)
         Carreras.Location = New Point(4, 24)
         Carreras.Name = "Carreras"
-        Carreras.Padding = New Padding(3)
-        Carreras.Size = New Size(653, 474)
+        Carreras.Padding = New Padding(3, 3, 3, 3)
+        Carreras.Size = New Size(570, 352)
         Carreras.TabIndex = 4
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
@@ -752,7 +752,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(917, 600)
+        ClientSize = New Size(914, 600)
         Controls.Add(Conectar)
         Controls.Add(TabControl1)
         Name = "Form1"
