@@ -128,8 +128,8 @@ Partial Class Form1
         Pais.Controls.Add(ListBox1)
         Pais.Location = New Point(4, 24)
         Pais.Name = "Pais"
-        Pais.Padding = New Padding(3, 2, 3, 2)
-        Pais.Size = New Size(570, 352)
+        Pais.Padding = New Padding(3)
+        Pais.Size = New Size(653, 474)
         Pais.TabIndex = 0
         Pais.Text = "Pais"
         Pais.UseVisualStyleBackColor = True
@@ -253,8 +253,8 @@ Partial Class Form1
         Pilotos.Controls.Add(lbl_ID_Piloto)
         Pilotos.Location = New Point(4, 24)
         Pilotos.Name = "Pilotos"
-        Pilotos.Padding = New Padding(3, 2, 3, 2)
-        Pilotos.Size = New Size(570, 352)
+        Pilotos.Padding = New Padding(3)
+        Pilotos.Size = New Size(653, 474)
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
         Pilotos.UseVisualStyleBackColor = True
@@ -699,8 +699,8 @@ Partial Class Form1
         Carreras.Controls.Add(ListBox_Carreras)
         Carreras.Location = New Point(4, 24)
         Carreras.Name = "Carreras"
-        Carreras.Padding = New Padding(3, 2, 3, 2)
-        Carreras.Size = New Size(570, 352)
+        Carreras.Padding = New Padding(3)
+        Carreras.Size = New Size(653, 474)
         Carreras.TabIndex = 4
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
@@ -739,7 +739,7 @@ Partial Class Form1
         ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(685, 47)
         Conectar.Name = "Conectar"
@@ -750,9 +750,9 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(917, 600)
         Controls.Add(Conectar)
         Controls.Add(TabControl1)
         Name = "Form1"
