@@ -126,10 +126,10 @@ Partial Class Form1
         Pais.Controls.Add(txtHab)
         Pais.Controls.Add(txtNombre)
         Pais.Controls.Add(ListBox1)
-        Pais.Location = New Point(4, 24)
+        Pais.Location = New Point(4, 29)
         Pais.Name = "Pais"
         Pais.Padding = New Padding(3)
-        Pais.Size = New Size(570, 352)
+        Pais.Size = New Size(570, 347)
         Pais.TabIndex = 0
         Pais.Text = "Pais"
         Pais.UseVisualStyleBackColor = True
@@ -147,7 +147,7 @@ Partial Class Form1
         Label3.AutoSize = True
         Label3.Location = New Point(265, 143)
         Label3.Name = "Label3"
-        Label3.Size = New Size(32, 15)
+        Label3.Size = New Size(40, 20)
         Label3.TabIndex = 11
         Label3.Text = "Hab."
         ' 
@@ -156,7 +156,7 @@ Partial Class Form1
         Label2.AutoSize = True
         Label2.Location = New Point(265, 76)
         Label2.Name = "Label2"
-        Label2.Size = New Size(51, 15)
+        Label2.Size = New Size(64, 20)
         Label2.TabIndex = 10
         Label2.Text = "Nombre"
         ' 
@@ -165,7 +165,7 @@ Partial Class Form1
         Label1.AutoSize = True
         Label1.Location = New Point(265, 25)
         Label1.Name = "Label1"
-        Label1.Size = New Size(18, 15)
+        Label1.Size = New Size(24, 20)
         Label1.TabIndex = 9
         Label1.Text = "ID"
         ' 
@@ -174,7 +174,7 @@ Partial Class Form1
         txtID.Location = New Point(332, 22)
         txtID.Name = "txtID"
         txtID.ReadOnly = True
-        txtID.Size = New Size(212, 23)
+        txtID.Size = New Size(212, 27)
         txtID.TabIndex = 8
         ' 
         ' Limpiar
@@ -217,23 +217,22 @@ Partial Class Form1
         ' 
         txtHab.Location = New Point(332, 140)
         txtHab.Name = "txtHab"
-        txtHab.Size = New Size(212, 23)
+        txtHab.Size = New Size(212, 27)
         txtHab.TabIndex = 2
         ' 
         ' txtNombre
         ' 
         txtNombre.Location = New Point(332, 76)
         txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(212, 23)
+        txtNombre.Size = New Size(212, 27)
         txtNombre.TabIndex = 1
         ' 
         ' ListBox1
         ' 
         ListBox1.FormattingEnabled = True
-        ListBox1.ItemHeight = 15
         ListBox1.Location = New Point(30, 25)
         ListBox1.Name = "ListBox1"
-        ListBox1.Size = New Size(212, 214)
+        ListBox1.Size = New Size(212, 204)
         ListBox1.TabIndex = 0
         ' 
         ' Pilotos
@@ -251,10 +250,10 @@ Partial Class Form1
         Pilotos.Controls.Add(lbl_Pais_Piloto)
         Pilotos.Controls.Add(ListBox_Piloto)
         Pilotos.Controls.Add(lbl_ID_Piloto)
-        Pilotos.Location = New Point(4, 24)
+        Pilotos.Location = New Point(4, 29)
         Pilotos.Name = "Pilotos"
-        Pilotos.Padding = New Padding(3, 3, 3, 3)
-        Pilotos.Size = New Size(570, 352)
+        Pilotos.Padding = New Padding(3)
+        Pilotos.Size = New Size(570, 347)
         Pilotos.TabIndex = 1
         Pilotos.Text = "Pilotos"
         Pilotos.UseVisualStyleBackColor = True
@@ -264,7 +263,7 @@ Partial Class Form1
         Label7.AutoSize = True
         Label7.Location = New Point(204, 177)
         Label7.Name = "Label7"
-        Label7.Size = New Size(51, 15)
+        Label7.Size = New Size(66, 20)
         Label7.TabIndex = 36
         Label7.Text = "Apellido"
         ' 
@@ -273,7 +272,7 @@ Partial Class Form1
         Label6.AutoSize = True
         Label6.Location = New Point(204, 128)
         Label6.Name = "Label6"
-        Label6.Size = New Size(51, 15)
+        Label6.Size = New Size(64, 20)
         Label6.TabIndex = 35
         Label6.Text = "Nombre"
         ' 
@@ -281,14 +280,14 @@ Partial Class Form1
         ' 
         TextBox_Apellido_Piloto.Location = New Point(267, 172)
         TextBox_Apellido_Piloto.Name = "TextBox_Apellido_Piloto"
-        TextBox_Apellido_Piloto.Size = New Size(260, 23)
+        TextBox_Apellido_Piloto.Size = New Size(260, 27)
         TextBox_Apellido_Piloto.TabIndex = 34
         ' 
         ' TextBox_Nombre_Piloto
         ' 
         TextBox_Nombre_Piloto.Location = New Point(267, 125)
         TextBox_Nombre_Piloto.Name = "TextBox_Nombre_Piloto"
-        TextBox_Nombre_Piloto.Size = New Size(260, 23)
+        TextBox_Nombre_Piloto.Size = New Size(260, 27)
         TextBox_Nombre_Piloto.TabIndex = 33
         ' 
         ' ComboBox_Pais_Piloto
@@ -297,7 +296,7 @@ Partial Class Form1
         ComboBox_Pais_Piloto.Location = New Point(267, 70)
         ComboBox_Pais_Piloto.Margin = New Padding(3, 2, 3, 2)
         ComboBox_Pais_Piloto.Name = "ComboBox_Pais_Piloto"
-        ComboBox_Pais_Piloto.Size = New Size(260, 23)
+        ComboBox_Pais_Piloto.Size = New Size(260, 28)
         ComboBox_Pais_Piloto.TabIndex = 32
         ' 
         ' TextBox_ID_Piloto
@@ -306,7 +305,7 @@ Partial Class Form1
         TextBox_ID_Piloto.Margin = New Padding(3, 2, 3, 2)
         TextBox_ID_Piloto.Name = "TextBox_ID_Piloto"
         TextBox_ID_Piloto.ReadOnly = True
-        TextBox_ID_Piloto.Size = New Size(260, 23)
+        TextBox_ID_Piloto.Size = New Size(260, 27)
         TextBox_ID_Piloto.TabIndex = 31
         ' 
         ' Limpiar_Piloto
@@ -354,18 +353,17 @@ Partial Class Form1
         lbl_Pais_Piloto.AutoSize = True
         lbl_Pais_Piloto.Location = New Point(227, 70)
         lbl_Pais_Piloto.Name = "lbl_Pais_Piloto"
-        lbl_Pais_Piloto.Size = New Size(28, 15)
+        lbl_Pais_Piloto.Size = New Size(34, 20)
         lbl_Pais_Piloto.TabIndex = 26
         lbl_Pais_Piloto.Text = "Pais"
         ' 
         ' ListBox_Piloto
         ' 
         ListBox_Piloto.FormattingEnabled = True
-        ListBox_Piloto.ItemHeight = 15
         ListBox_Piloto.Location = New Point(27, 26)
         ListBox_Piloto.Margin = New Padding(3, 2, 3, 2)
         ListBox_Piloto.Name = "ListBox_Piloto"
-        ListBox_Piloto.Size = New Size(147, 289)
+        ListBox_Piloto.Size = New Size(147, 284)
         ListBox_Piloto.TabIndex = 25
         ' 
         ' lbl_ID_Piloto
@@ -373,7 +371,7 @@ Partial Class Form1
         lbl_ID_Piloto.AutoSize = True
         lbl_ID_Piloto.Location = New Point(237, 26)
         lbl_ID_Piloto.Name = "lbl_ID_Piloto"
-        lbl_ID_Piloto.Size = New Size(18, 15)
+        lbl_ID_Piloto.Size = New Size(24, 20)
         lbl_ID_Piloto.TabIndex = 24
         lbl_ID_Piloto.Text = "ID"
         ' 
@@ -391,9 +389,9 @@ Partial Class Form1
         GPs.Controls.Add(Label4)
         GPs.Controls.Add(ListBox_Escuderia)
         GPs.Controls.Add(Label5)
-        GPs.Location = New Point(4, 24)
+        GPs.Location = New Point(4, 29)
         GPs.Name = "GPs"
-        GPs.Size = New Size(570, 352)
+        GPs.Size = New Size(570, 347)
         GPs.TabIndex = 2
         GPs.Text = "Escuderias"
         GPs.UseVisualStyleBackColor = True
@@ -403,7 +401,7 @@ Partial Class Form1
         lbl_nombre_Escuderia.AutoSize = True
         lbl_nombre_Escuderia.Location = New Point(306, 148)
         lbl_nombre_Escuderia.Name = "lbl_nombre_Escuderia"
-        lbl_nombre_Escuderia.Size = New Size(51, 15)
+        lbl_nombre_Escuderia.Size = New Size(64, 20)
         lbl_nombre_Escuderia.TabIndex = 47
         lbl_nombre_Escuderia.Text = "Nombre"
         ' 
@@ -412,7 +410,7 @@ Partial Class Form1
         TextBox_Nombre_Escuderia.Location = New Point(368, 146)
         TextBox_Nombre_Escuderia.Margin = New Padding(3, 2, 3, 2)
         TextBox_Nombre_Escuderia.Name = "TextBox_Nombre_Escuderia"
-        TextBox_Nombre_Escuderia.Size = New Size(132, 23)
+        TextBox_Nombre_Escuderia.Size = New Size(132, 27)
         TextBox_Nombre_Escuderia.TabIndex = 46
         ' 
         ' DateTimePicker_Escuderia
@@ -420,7 +418,7 @@ Partial Class Form1
         DateTimePicker_Escuderia.Location = New Point(260, 190)
         DateTimePicker_Escuderia.Margin = New Padding(3, 2, 3, 2)
         DateTimePicker_Escuderia.Name = "DateTimePicker_Escuderia"
-        DateTimePicker_Escuderia.Size = New Size(239, 23)
+        DateTimePicker_Escuderia.Size = New Size(239, 27)
         DateTimePicker_Escuderia.TabIndex = 45
         ' 
         ' ComboBox_Pais_Escuderia
@@ -429,7 +427,7 @@ Partial Class Form1
         ComboBox_Pais_Escuderia.Location = New Point(368, 111)
         ComboBox_Pais_Escuderia.Margin = New Padding(3, 2, 3, 2)
         ComboBox_Pais_Escuderia.Name = "ComboBox_Pais_Escuderia"
-        ComboBox_Pais_Escuderia.Size = New Size(132, 23)
+        ComboBox_Pais_Escuderia.Size = New Size(132, 28)
         ComboBox_Pais_Escuderia.TabIndex = 44
         ' 
         ' TextBox_ID_Escuderia
@@ -438,7 +436,7 @@ Partial Class Form1
         TextBox_ID_Escuderia.Margin = New Padding(3, 2, 3, 2)
         TextBox_ID_Escuderia.Name = "TextBox_ID_Escuderia"
         TextBox_ID_Escuderia.ReadOnly = True
-        TextBox_ID_Escuderia.Size = New Size(132, 23)
+        TextBox_ID_Escuderia.Size = New Size(132, 27)
         TextBox_ID_Escuderia.TabIndex = 43
         ' 
         ' Limpiar_Escuderia
@@ -486,18 +484,17 @@ Partial Class Form1
         Label4.AutoSize = True
         Label4.Location = New Point(332, 113)
         Label4.Name = "Label4"
-        Label4.Size = New Size(28, 15)
+        Label4.Size = New Size(34, 20)
         Label4.TabIndex = 38
         Label4.Text = "Pais"
         ' 
         ' ListBox_Escuderia
         ' 
         ListBox_Escuderia.FormattingEnabled = True
-        ListBox_Escuderia.ItemHeight = 15
         ListBox_Escuderia.Location = New Point(72, 70)
         ListBox_Escuderia.Margin = New Padding(3, 2, 3, 2)
         ListBox_Escuderia.Name = "ListBox_Escuderia"
-        ListBox_Escuderia.Size = New Size(144, 199)
+        ListBox_Escuderia.Size = New Size(144, 184)
         ListBox_Escuderia.TabIndex = 37
         ' 
         ' Label5
@@ -505,7 +502,7 @@ Partial Class Form1
         Label5.AutoSize = True
         Label5.Location = New Point(341, 77)
         Label5.Name = "Label5"
-        Label5.Size = New Size(18, 15)
+        Label5.Size = New Size(24, 20)
         Label5.TabIndex = 36
         Label5.Text = "ID"
         ' 
@@ -522,9 +519,9 @@ Partial Class Form1
         TabPage4.Controls.Add(TextBox_GP_ID)
         TabPage4.Controls.Add(ComboBox_GP_Pais)
         TabPage4.Controls.Add(ListBox_GP)
-        TabPage4.Location = New Point(4, 24)
+        TabPage4.Location = New Point(4, 29)
         TabPage4.Name = "TabPage4"
-        TabPage4.Size = New Size(570, 352)
+        TabPage4.Size = New Size(570, 347)
         TabPage4.TabIndex = 3
         TabPage4.Text = "GPs"
         TabPage4.UseVisualStyleBackColor = True
@@ -534,7 +531,7 @@ Partial Class Form1
         Label10.AutoSize = True
         Label10.Location = New Point(347, 184)
         Label10.Name = "Label10"
-        Label10.Size = New Size(28, 15)
+        Label10.Size = New Size(34, 20)
         Label10.TabIndex = 54
         Label10.Text = "Pais"
         ' 
@@ -543,7 +540,7 @@ Partial Class Form1
         Label9.AutoSize = True
         Label9.Location = New Point(298, 136)
         Label9.Name = "Label9"
-        Label9.Size = New Size(78, 15)
+        Label9.Size = New Size(98, 20)
         Label9.TabIndex = 53
         Label9.Text = "Denomiacion"
         ' 
@@ -552,7 +549,7 @@ Partial Class Form1
         Label8.AutoSize = True
         Label8.Location = New Point(347, 98)
         Label8.Name = "Label8"
-        Label8.Size = New Size(32, 15)
+        Label8.Size = New Size(40, 20)
         Label8.TabIndex = 52
         Label8.Text = "IdGP"
         ' 
@@ -601,7 +598,7 @@ Partial Class Form1
         TextBox_GP_Denominacion.Location = New Point(389, 134)
         TextBox_GP_Denominacion.Margin = New Padding(3, 2, 3, 2)
         TextBox_GP_Denominacion.Name = "TextBox_GP_Denominacion"
-        TextBox_GP_Denominacion.Size = New Size(132, 23)
+        TextBox_GP_Denominacion.Size = New Size(132, 27)
         TextBox_GP_Denominacion.TabIndex = 47
         ' 
         ' TextBox_GP_ID
@@ -610,7 +607,7 @@ Partial Class Form1
         TextBox_GP_ID.Margin = New Padding(3, 2, 3, 2)
         TextBox_GP_ID.Name = "TextBox_GP_ID"
         TextBox_GP_ID.ReadOnly = True
-        TextBox_GP_ID.Size = New Size(132, 23)
+        TextBox_GP_ID.Size = New Size(132, 27)
         TextBox_GP_ID.TabIndex = 46
         ' 
         ' ComboBox_GP_Pais
@@ -619,17 +616,16 @@ Partial Class Form1
         ComboBox_GP_Pais.Location = New Point(389, 182)
         ComboBox_GP_Pais.Margin = New Padding(3, 2, 3, 2)
         ComboBox_GP_Pais.Name = "ComboBox_GP_Pais"
-        ComboBox_GP_Pais.Size = New Size(132, 23)
+        ComboBox_GP_Pais.Size = New Size(132, 28)
         ComboBox_GP_Pais.TabIndex = 45
         ' 
         ' ListBox_GP
         ' 
         ListBox_GP.FormattingEnabled = True
-        ListBox_GP.ItemHeight = 15
         ListBox_GP.Location = New Point(34, 19)
         ListBox_GP.Margin = New Padding(3, 2, 3, 2)
         ListBox_GP.Name = "ListBox_GP"
-        ListBox_GP.Size = New Size(203, 289)
+        ListBox_GP.Size = New Size(203, 284)
         ListBox_GP.TabIndex = 0
         ' 
         ' Calendario
@@ -639,11 +635,11 @@ Partial Class Form1
         Calendario.Controls.Add(Label11)
         Calendario.Controls.Add(TextBox_Orden_Calendario)
         Calendario.Controls.Add(ListBox_Calendario)
-        Calendario.Location = New Point(4, 24)
+        Calendario.Location = New Point(4, 29)
         Calendario.Margin = New Padding(3, 2, 3, 2)
         Calendario.Name = "Calendario"
         Calendario.Padding = New Padding(3, 2, 3, 2)
-        Calendario.Size = New Size(570, 352)
+        Calendario.Size = New Size(570, 347)
         Calendario.TabIndex = 6
         Calendario.Text = "Calendario"
         Calendario.UseVisualStyleBackColor = True
@@ -653,7 +649,7 @@ Partial Class Form1
         Label12.AutoSize = True
         Label12.Location = New Point(349, 184)
         Label12.Name = "Label12"
-        Label12.Size = New Size(40, 15)
+        Label12.Size = New Size(50, 20)
         Label12.TabIndex = 5
         Label12.Text = "Orden"
         ' 
@@ -663,7 +659,7 @@ Partial Class Form1
         TextBox_GP_Calendario.Location = New Point(398, 96)
         TextBox_GP_Calendario.Margin = New Padding(3, 2, 3, 2)
         TextBox_GP_Calendario.Name = "TextBox_GP_Calendario"
-        TextBox_GP_Calendario.Size = New Size(127, 23)
+        TextBox_GP_Calendario.Size = New Size(127, 27)
         TextBox_GP_Calendario.TabIndex = 4
         ' 
         ' Label11
@@ -671,7 +667,7 @@ Partial Class Form1
         Label11.AutoSize = True
         Label11.Location = New Point(369, 98)
         Label11.Name = "Label11"
-        Label11.Size = New Size(22, 15)
+        Label11.Size = New Size(27, 20)
         Label11.TabIndex = 3
         Label11.Text = "GP"
         ' 
@@ -681,26 +677,25 @@ Partial Class Form1
         TextBox_Orden_Calendario.Location = New Point(398, 182)
         TextBox_Orden_Calendario.Margin = New Padding(3, 2, 3, 2)
         TextBox_Orden_Calendario.Name = "TextBox_Orden_Calendario"
-        TextBox_Orden_Calendario.Size = New Size(127, 23)
+        TextBox_Orden_Calendario.Size = New Size(127, 27)
         TextBox_Orden_Calendario.TabIndex = 1
         ' 
         ' ListBox_Calendario
         ' 
         ListBox_Calendario.FormattingEnabled = True
-        ListBox_Calendario.ItemHeight = 15
         ListBox_Calendario.Location = New Point(108, 44)
         ListBox_Calendario.Margin = New Padding(3, 2, 3, 2)
         ListBox_Calendario.Name = "ListBox_Calendario"
-        ListBox_Calendario.Size = New Size(189, 214)
+        ListBox_Calendario.Size = New Size(189, 204)
         ListBox_Calendario.TabIndex = 0
         ' 
         ' Carreras
         ' 
         Carreras.Controls.Add(ListBox_Carreras)
-        Carreras.Location = New Point(4, 24)
+        Carreras.Location = New Point(4, 29)
         Carreras.Name = "Carreras"
-        Carreras.Padding = New Padding(3, 3, 3, 3)
-        Carreras.Size = New Size(570, 352)
+        Carreras.Padding = New Padding(3)
+        Carreras.Size = New Size(570, 347)
         Carreras.TabIndex = 4
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
@@ -708,21 +703,20 @@ Partial Class Form1
         ' ListBox_Carreras
         ' 
         ListBox_Carreras.FormattingEnabled = True
-        ListBox_Carreras.ItemHeight = 15
         ListBox_Carreras.Location = New Point(133, 21)
         ListBox_Carreras.Margin = New Padding(3, 2, 3, 2)
         ListBox_Carreras.Name = "ListBox_Carreras"
-        ListBox_Carreras.Size = New Size(296, 289)
+        ListBox_Carreras.Size = New Size(296, 284)
         ListBox_Carreras.TabIndex = 0
         ' 
         ' Contratos
         ' 
         Contratos.Controls.Add(ListBox_Contratos)
-        Contratos.Location = New Point(4, 24)
+        Contratos.Location = New Point(4, 29)
         Contratos.Margin = New Padding(3, 2, 3, 2)
         Contratos.Name = "Contratos"
         Contratos.Padding = New Padding(3, 2, 3, 2)
-        Contratos.Size = New Size(570, 352)
+        Contratos.Size = New Size(570, 347)
         Contratos.TabIndex = 5
         Contratos.Text = "Contratos"
         Contratos.UseVisualStyleBackColor = True
@@ -730,16 +724,15 @@ Partial Class Form1
         ' ListBox_Contratos
         ' 
         ListBox_Contratos.FormattingEnabled = True
-        ListBox_Contratos.ItemHeight = 15
         ListBox_Contratos.Location = New Point(172, 21)
         ListBox_Contratos.Margin = New Padding(3, 2, 3, 2)
         ListBox_Contratos.Name = "ListBox_Contratos"
-        ListBox_Contratos.Size = New Size(234, 259)
+        ListBox_Contratos.Size = New Size(234, 244)
         ListBox_Contratos.TabIndex = 0
         ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(685, 47)
         Conectar.Name = "Conectar"
@@ -750,7 +743,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(914, 600)
         Controls.Add(Conectar)
