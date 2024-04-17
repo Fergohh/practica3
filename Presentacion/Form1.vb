@@ -476,4 +476,22 @@
             Next
         End If
     End Sub
+
+    Public Function generarRandoms()
+        Dim EAux As Escuderia
+        Me.es = New Escuderia
+        Dim EscuderiasRandom As New List(Of Escuderia)
+        es.LeerTodosEscuderias()
+        For Each EAux In Me.es.EscuderiaDAO.Escuderias
+            EscuderiasRandom.Add(EAux)
+        Next
+        Dim rnd As New Random()
+
+        ' Comparador personalizado para el método Sort que genera un orden aleatorio
+        Dim comparador As New Comparison(Of Escuderia)(Function(x, y) rnd.Next(-1, 2))
+
+        ' Aplicar el comparador para desordenar la lista
+        EscuderiasRandom.Sort(comparador)
+
+    End Function
 End Class
