@@ -511,7 +511,7 @@
         Me.Numeros_GP.Enabled = True
         Me.Button_Valores.Enabled = False
 
-        End Function
+    End Sub
 
     Private Sub GenerarListaTemporadasAleatorias()
         Dim random As New Random()
