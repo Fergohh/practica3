@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿Imports System.Globalization
+Imports System.Runtime.InteropServices.Marshalling
+
+Public Class Form1
     Dim p As Pais
     Dim pi As Piloto
     Dim es As Escuderia
@@ -6,6 +9,10 @@
     Dim ca As Calendario
     Dim c As Carreras
     Dim con As Contrato
+
+    Private temporada As Int32
+    Private rnd As New Random()
+
     Private Sub Añadir_Click(sender As Object, e As EventArgs) Handles Añadir.Click
         If Me.txtID.Text <> String.Empty And Me.txtNombre.Text <> String.Empty And Me.txtID.Text.Length = 3 Then '<> significa !='
             Try
@@ -76,8 +83,8 @@
     End Sub
 
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
-        generarRandomsEscuderias()
-        generarRandomContratos()
+        Dim Escuderias As New List(Of Escuderia)
+        Dim GPs As New List(Of GP)
         Dim pAux As Pais
         Dim piAux As Piloto
         Dim EAux As Escuderia
@@ -92,8 +99,7 @@
         Me.c = New Carreras
         Me.con = New Contrato
         Me.ca = New Calendario
-        Me.Numeros_escuderias.Enabled = False
-        Me.Numeros_GP.Enabled = False
+
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
@@ -128,17 +134,120 @@
         For Each cAux In Me.c.CarrerasDAO.Carrera
             Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
         Next
+
+
+        temporada = rnd.Next(1970, DateTime.Now.Year)
+        Escuderias = generarRandomsEscuderias()
+        Me.ListBox_Escuderia.Items.Clear()
+
+        For Each escuderia In Escuderias
+            Me.ListBox_Escuderia.Items.Add(escuderia.IDEscuderia)
+        Next
+
+        GPs = generarRandomsGPs()
+        Me.ListBox_GP.Items.Clear()
+        For Each gp In GPs
+            Me.ListBox_GP.Items.Add(gp.IDGP)
+        Next
+        generarRandomContratos(Escuderias)
+        Me.ListBox_Contratos.Items.Clear()
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
+        'generarRandomCarreras(GPs)
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
+        Me.Numeros_escuderias.Enabled = False
+        Me.Numeros_GP.Enabled = False
+        Me.Button_Valores.Visible = False
+        Me.Button_Valores.Enabled = False
+        Me.Label_Valores.Visible = False
     End Sub
 
-    Private Sub generarRandomContratos()
-        //haz un metodo que genere contratos random, eligiendo a pilotos aleatorios y que no se repitan
+    Private Sub generarRandomContratos(escuderias As List(Of Escuderia))
+        Me.con.ContratoDAO.BorrarTodos()
 
+        Dim conAux As Contrato
+        Dim i As Integer
+        Dim numEscuderias As Integer
+        Dim rnd As New Random()
+        numEscuderias = escuderias.Count
+        MessageBox.Show(numEscuderias & "Este es el numero de escuderias")
+        For i = 0 To numEscuderias - 1
+
+            Dim randomPiloto1Index As Integer = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
+            Dim randomPiloto2Index As Integer = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
+
+            While randomPiloto1Index = randomPiloto2Index
+                randomPiloto2Index = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
+            End While
+
+
+            conAux = New Contrato With {
+                .Escuderia = escuderias(i).IDEscuderia,
+                .Temporada = temporada,
+                .Piloto1 = Me.pi.PilotoDAO.Pilotos(randomPiloto1Index).IDPiloto,
+                .Piloto2 = Me.pi.PilotoDAO.Pilotos(randomPiloto2Index).IDPiloto
+            }
+            Me.con.ContratoDAO.Contratos.Add(conAux)
+            Me.con.ContratoDAO.Insertar(conAux)
+        Next
+
+
+    End Sub
+
+
+    Private Sub generarRandomCarreras(GPs As List(Of GP))
+        Me.c.CarrerasDAO.BorrarTodos()
+
+        Dim rnd As New Random()
+        Dim GPAux As GP
+        Dim numContratos As Integer = Me.con.ContratoDAO.Contratos.Count
+        Dim conAux As Contrato
+        Dim numPilotos As Integer = 20
+        Dim puntosPorPosicion As Integer() = {10, 6, 4, 3, 2, 1}
+        Dim PosicionesFinal As New List(Of Integer)
+        Dim j As Integer = 0
+
+
+        For Each GPAux In GPs
+            Dim carrera As New Carreras With {
+            .Temporada = temporada,
+            .GP = GPAux.IDGP}
+
+            For i = 1 To numContratos * 2
+                PosicionesFinal.Add(i)
+            Next
+            Dim comparador As New Comparison(Of GP)(Function(x, y) rnd.Next(-1, 2))
+
+            PosicionesFinal.Sort(comparador)
+
+            For Each conAux In Me.con.ContratoDAO.Contratos
+                For y = 1 To 2
+                    j = j + 1
+                    Dim posicion As Integer = PosicionesFinal.Remove(j) ' Genera una posición aleatoria entre 1 y 6
+                    Dim puntos As Integer = 0
+
+                    If posicion <= 6 Then
+                        puntos = puntosPorPosicion(posicion - 1)
+                    End If
+
+                    If y = 2 Then
+                        carrera.Piloto = conAux.Piloto2
+                    Else
+                        carrera.Piloto = conAux.Piloto1
+                    End If
+                    carrera.Posicion = posicion
+                    carrera.Puntos = puntos
+
+                    ' Añade el objeto pilotoCarrera a la base de datos o a la colección correspondiente
+                Next
+
+                ' Añade la carrera a la base de datos o a la colección correspondiente
+            Next
+
+        Next
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
@@ -510,18 +619,60 @@
         ' Aplicar el comparador para desordenar la lista
         EscuderiasRandom.Sort(comparador)
 
-        If (Numeros_escuderias.Value = 0) Then
-            numElementos = 57
-            MessageBox.Show(MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        If (Numeros_escuderias.Enabled = False) Then
+            numElementos = rnd.NextInt64(5, 11)
         Else
             numElementos = Numeros_escuderias.Value
         End If
 
-        For Each EAux In EscuderiasRandom
-            EscuderiasFinal.Add(EAux)
-        Next
+
+        While EscuderiasFinal.Count < numElementos
+            Dim randomIndex As Integer = rnd.Next(0, EscuderiasRandom.Count)
+            EscuderiasFinal.Add(EscuderiasRandom(randomIndex))
+            EscuderiasRandom.RemoveAt(randomIndex)
+        End While
 
         Return EscuderiasFinal
+
+    End Function
+
+    Public Function generarRandomsGPs() As List(Of GP)
+        Dim GPAux As GP
+        Me.G = New GP
+        Dim GPRandom As New List(Of GP)
+        Dim GPFinal As New List(Of GP)
+        Try
+
+            G.LeerTodosGPs()
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+
+        End Try 'si hay algo raro que salte y vuelva a ejecutar'
+        For Each GPAux In Me.G.GPDAO.GPs
+            GPRandom.Add(GPAux)
+        Next
+        Dim rnd As New Random()
+        Dim numElementos As Integer
+        ' Comparador personalizado para el método Sort que genera un orden aleatorio
+        Dim comparador As New Comparison(Of GP)(Function(x, y) rnd.Next(-1, 2))
+
+        ' Aplicar el comparador para desordenar la lista
+        GPRandom.Sort(comparador)
+
+        If (Numeros_GP.Enabled = False) Then
+            numElementos = rnd.NextInt64(10, 21)
+        Else
+            numElementos = Numeros_GP.Value
+        End If
+
+        While GPFinal.Count < numElementos
+            Dim randomIndex As Integer = rnd.Next(0, GPRandom.Count)
+            GPFinal.Add(GPRandom(randomIndex))
+            GPRandom.RemoveAt(randomIndex)
+        End While
+
+        Return GPFinal
 
     End Function
 
@@ -535,7 +686,7 @@
 
     Private Sub ListBox_Contratos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Contratos.SelectedIndexChanged
         If Not Me.ListBox_Contratos.SelectedItem Is Nothing Then
-            Me.con = New Contrato()
+            Me.con = New Contrato(Me.ListBox_Contratos.SelectedItem.ToString, Me.temporada) 'para obtener un elemento de la listaBox'
             Try
                 Me.con.LeerContrato()
             Catch ex As Exception
@@ -543,7 +694,7 @@
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.textBox_Contratos_Escuderia.Text = Me.con.Escuderia.ToString
-            Me.textBox_Contratos_Temporada.Text = Me.con.Temporada.ToString
+            Me.textBox_Contratos_Temporada.Text = Me.temporada.ToString
             Me.textBox_Contratos_Piloto1.Text = Me.con.Piloto1.ToString
             Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
         End If

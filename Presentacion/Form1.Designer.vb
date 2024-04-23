@@ -101,7 +101,7 @@ Partial Class Form1
         Escuderias = New Label()
         Label14 = New Label()
         Button_Valores = New Button()
-        Label13 = New Label()
+        Label_Valores = New Label()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -857,7 +857,7 @@ Partial Class Form1
         ' 
         ' Conectar
         ' 
-        Conectar.Font = New Font("Segoe UI", 48.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Font = New Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Conectar.Image = CType(resources.GetObject("Conectar.Image"), Image)
         Conectar.Location = New Point(599, 35)
         Conectar.Margin = New Padding(3, 2, 3, 2)
@@ -919,21 +919,21 @@ Partial Class Form1
         Button_Valores.Text = "SI QUIERO"
         Button_Valores.UseVisualStyleBackColor = True
         ' 
-        ' Label13
+        ' Label_Valores
         ' 
-        Label13.AutoSize = True
-        Label13.Location = New Point(21, 313)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(198, 60)
-        Label13.TabIndex = 7
-        Label13.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
+        Label_Valores.AutoSize = True
+        Label_Valores.Location = New Point(21, 313)
+        Label_Valores.Name = "Label_Valores"
+        Label_Valores.Size = New Size(198, 60)
+        Label_Valores.TabIndex = 7
+        Label_Valores.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(Label13)
+        Controls.Add(Label_Valores)
         Controls.Add(Button_Valores)
         Controls.Add(Label14)
         Controls.Add(Escuderias)
@@ -1033,7 +1033,7 @@ Partial Class Form1
     Friend WithEvents Escuderias As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Button_Valores As Button
-    Friend WithEvents Label13 As Label
+    Friend WithEvents Label_Valores As Label
     Friend WithEvents textBox_Contratos_Piloto2 As TextBox
     Friend WithEvents textBox_Contratos_Piloto1 As TextBox
     Friend WithEvents textBox_Contratos_Temporada As TextBox

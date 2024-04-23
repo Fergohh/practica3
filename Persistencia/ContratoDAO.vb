@@ -37,4 +37,10 @@
     Public Function Borrar(ByVal p As Contrato) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM contratos WHERE Escuderia='" & p.Escuderia & "';")
     End Function
+
+    Public Function BorrarTodos() As Integer
+        Contratos.Clear()
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM contratos;")
+    End Function
+
 End Class

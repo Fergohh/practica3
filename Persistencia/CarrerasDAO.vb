@@ -37,4 +37,8 @@
     Public Function Borrar(ByVal p As Carreras) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM carreras WHERE Temporada='" & p.Temporada & "';")
     End Function
+
+    Public Function BorrarTodos() As Integer
+        Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM carreras;")
+    End Function
 End Class

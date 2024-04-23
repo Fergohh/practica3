@@ -39,5 +39,4 @@
     Public Function Borrar(ByVal p As Escuderia) As Integer
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM escuderias WHERE IdEscuderia='" & p.IDEscuderia & "';")
     End Function
-
 End Class
