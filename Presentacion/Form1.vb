@@ -513,8 +513,19 @@
 
     End Sub
 
-    Private Sub ListBox_Carreras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Carreras.SelectedIndexChanged
-        Me.txtBox_GP_Carreras.Text = Me.c.GP
-        Me.txtBox_Temporada_Carrera.Text = Me.c.Temporada
+    Private Sub ListBox_Contratos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Contratos.SelectedIndexChanged
+        If Not Me.ListBox_Contratos.SelectedItem Is Nothing Then
+            Me.con = New Contrato()
+            Try
+                Me.con.LeerContrato()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+            End Try
+            Me.textBox_Contratos_Escuderia.Text = Me.con.Escuderia.ToString
+            Me.textBox_Contratos_Temporada.Text = Me.con.Temporada.ToString
+            Me.textBox_Contratos_Piloto1.Text = Me.con.Piloto1.ToString
+            Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
+        End If
     End Sub
 End Class

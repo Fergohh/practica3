@@ -83,13 +83,17 @@ Partial Class Form1
         TextBox_Orden_Calendario = New TextBox()
         ListBox_Calendario = New ListBox()
         Carreras = New TabPage()
-        Label13 = New Label()
-        Temporada = New Label()
-        txtBox_GP_Carreras = New TextBox()
-        txtBox_Temporada_Carrera = New TextBox()
-        ListBox_Clasificacion = New ListBox()
         ListBox_Carreras = New ListBox()
         Contratos = New TabPage()
+        Label18 = New Label()
+        Label17 = New Label()
+        Label16 = New Label()
+        Label15 = New Label()
+        TextBox5 = New TextBox()
+        textBox_Contratos_Piloto2 = New TextBox()
+        textBox_Contratos_Piloto1 = New TextBox()
+        textBox_Contratos_Temporada = New TextBox()
+        textBox_Contratos_Escuderia = New TextBox()
         ListBox_Contratos = New ListBox()
         Conectar = New Button()
         Numeros_escuderias = New NumericUpDown()
@@ -725,11 +729,6 @@ Partial Class Form1
         ' 
         ' Carreras
         ' 
-        Carreras.Controls.Add(Label13)
-        Carreras.Controls.Add(Temporada)
-        Carreras.Controls.Add(txtBox_GP_Carreras)
-        Carreras.Controls.Add(txtBox_Temporada_Carrera)
-        Carreras.Controls.Add(ListBox_Clasificacion)
         Carreras.Controls.Add(ListBox_Carreras)
         Carreras.Location = New Point(4, 24)
         Carreras.Margin = New Padding(3, 2, 3, 2)
@@ -740,61 +739,27 @@ Partial Class Form1
         Carreras.Text = "Carreras"
         Carreras.UseVisualStyleBackColor = True
         ' 
-        ' Label13
-        ' 
-        Label13.AutoSize = True
-        Label13.Location = New Point(31, 186)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(73, 15)
-        Label13.TabIndex = 5
-        Label13.Text = "Gran Premio"
-        ' 
-        ' Temporada
-        ' 
-        Temporada.AutoSize = True
-        Temporada.Location = New Point(31, 135)
-        Temporada.Name = "Temporada"
-        Temporada.Size = New Size(66, 15)
-        Temporada.TabIndex = 4
-        Temporada.Text = "Temporada"
-        ' 
-        ' txtBox_GP_Carreras
-        ' 
-        txtBox_GP_Carreras.Location = New Point(16, 204)
-        txtBox_GP_Carreras.Name = "txtBox_GP_Carreras"
-        txtBox_GP_Carreras.ReadOnly = True
-        txtBox_GP_Carreras.Size = New Size(103, 23)
-        txtBox_GP_Carreras.TabIndex = 3
-        ' 
-        ' txtBox_Temporada_Carrera
-        ' 
-        txtBox_Temporada_Carrera.Location = New Point(18, 153)
-        txtBox_Temporada_Carrera.Name = "txtBox_Temporada_Carrera"
-        txtBox_Temporada_Carrera.ReadOnly = True
-        txtBox_Temporada_Carrera.Size = New Size(99, 23)
-        txtBox_Temporada_Carrera.TabIndex = 2
-        ' 
-        ' ListBox_Clasificacion
-        ' 
-        ListBox_Clasificacion.FormattingEnabled = True
-        ListBox_Clasificacion.ItemHeight = 15
-        ListBox_Clasificacion.Location = New Point(137, 13)
-        ListBox_Clasificacion.Name = "ListBox_Clasificacion"
-        ListBox_Clasificacion.Size = New Size(91, 214)
-        ListBox_Clasificacion.TabIndex = 1
-        ' 
         ' ListBox_Carreras
         ' 
         ListBox_Carreras.FormattingEnabled = True
         ListBox_Carreras.ItemHeight = 15
-        ListBox_Carreras.Location = New Point(16, 13)
+        ListBox_Carreras.Location = New Point(116, 16)
         ListBox_Carreras.Margin = New Padding(3, 2, 3, 2)
         ListBox_Carreras.Name = "ListBox_Carreras"
-        ListBox_Carreras.Size = New Size(103, 109)
+        ListBox_Carreras.Size = New Size(260, 214)
         ListBox_Carreras.TabIndex = 0
         ' 
         ' Contratos
         ' 
+        Contratos.Controls.Add(Label18)
+        Contratos.Controls.Add(Label17)
+        Contratos.Controls.Add(Label16)
+        Contratos.Controls.Add(Label15)
+        Contratos.Controls.Add(TextBox5)
+        Contratos.Controls.Add(textBox_Contratos_Piloto2)
+        Contratos.Controls.Add(textBox_Contratos_Piloto1)
+        Contratos.Controls.Add(textBox_Contratos_Temporada)
+        Contratos.Controls.Add(textBox_Contratos_Escuderia)
         Contratos.Controls.Add(ListBox_Contratos)
         Contratos.Location = New Point(4, 24)
         Contratos.Margin = New Padding(3, 2, 3, 2)
@@ -805,11 +770,86 @@ Partial Class Form1
         Contratos.Text = "Contratos"
         Contratos.UseVisualStyleBackColor = True
         ' 
+        ' Label18
+        ' 
+        Label18.AutoSize = True
+        Label18.Location = New Point(237, 179)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(47, 15)
+        Label18.TabIndex = 9
+        Label18.Text = "Piloto 2"
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Location = New Point(237, 122)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(47, 15)
+        Label17.TabIndex = 8
+        Label17.Text = "Piloto 1"
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Location = New Point(237, 73)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(66, 15)
+        Label16.TabIndex = 7
+        Label16.Text = "Temporada"
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Location = New Point(237, 18)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(57, 15)
+        Label15.TabIndex = 6
+        Label15.Text = "Escuderia"
+        ' 
+        ' TextBox5
+        ' 
+        TextBox5.Location = New Point(221, 140)
+        TextBox5.Name = "TextBox5"
+        TextBox5.Size = New Size(8, 23)
+        TextBox5.TabIndex = 5
+        ' 
+        ' textBox_Contratos_Piloto2
+        ' 
+        textBox_Contratos_Piloto2.Location = New Point(330, 176)
+        textBox_Contratos_Piloto2.Name = "textBox_Contratos_Piloto2"
+        textBox_Contratos_Piloto2.ReadOnly = True
+        textBox_Contratos_Piloto2.Size = New Size(131, 23)
+        textBox_Contratos_Piloto2.TabIndex = 4
+        ' 
+        ' textBox_Contratos_Piloto1
+        ' 
+        textBox_Contratos_Piloto1.Location = New Point(330, 122)
+        textBox_Contratos_Piloto1.Name = "textBox_Contratos_Piloto1"
+        textBox_Contratos_Piloto1.ReadOnly = True
+        textBox_Contratos_Piloto1.Size = New Size(131, 23)
+        textBox_Contratos_Piloto1.TabIndex = 3
+        ' 
+        ' textBox_Contratos_Temporada
+        ' 
+        textBox_Contratos_Temporada.Location = New Point(330, 73)
+        textBox_Contratos_Temporada.Name = "textBox_Contratos_Temporada"
+        textBox_Contratos_Temporada.ReadOnly = True
+        textBox_Contratos_Temporada.Size = New Size(131, 23)
+        textBox_Contratos_Temporada.TabIndex = 2
+        ' 
+        ' textBox_Contratos_Escuderia
+        ' 
+        textBox_Contratos_Escuderia.Location = New Point(330, 15)
+        textBox_Contratos_Escuderia.Name = "textBox_Contratos_Escuderia"
+        textBox_Contratos_Escuderia.ReadOnly = True
+        textBox_Contratos_Escuderia.Size = New Size(131, 23)
+        textBox_Contratos_Escuderia.TabIndex = 1
+        ' 
         ' ListBox_Contratos
         ' 
         ListBox_Contratos.FormattingEnabled = True
         ListBox_Contratos.ItemHeight = 15
-        ListBox_Contratos.Location = New Point(150, 16)
+        ListBox_Contratos.Location = New Point(16, 15)
         ListBox_Contratos.Margin = New Padding(3, 2, 3, 2)
         ListBox_Contratos.Name = "ListBox_Contratos"
         ListBox_Contratos.Size = New Size(205, 184)
@@ -830,48 +870,51 @@ Partial Class Form1
         ' Numeros_escuderias
         ' 
         Numeros_escuderias.Enabled = False
-        Numeros_escuderias.Location = New Point(494, 415)
+        Numeros_escuderias.Location = New Point(432, 311)
+        Numeros_escuderias.Margin = New Padding(3, 2, 3, 2)
         Numeros_escuderias.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Numeros_escuderias.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Numeros_escuderias.Name = "Numeros_escuderias"
-        Numeros_escuderias.Size = New Size(150, 27)
+        Numeros_escuderias.Size = New Size(131, 23)
         Numeros_escuderias.TabIndex = 2
         Numeros_escuderias.Value = New Decimal(New Integer() {5, 0, 0, 0})
         ' 
         ' Numeros_GP
         ' 
         Numeros_GP.Enabled = False
-        Numeros_GP.Location = New Point(494, 458)
+        Numeros_GP.Location = New Point(432, 344)
+        Numeros_GP.Margin = New Padding(3, 2, 3, 2)
         Numeros_GP.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
         Numeros_GP.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Numeros_GP.Name = "Numeros_GP"
-        Numeros_GP.Size = New Size(150, 27)
+        Numeros_GP.Size = New Size(131, 23)
         Numeros_GP.TabIndex = 3
         Numeros_GP.Value = New Decimal(New Integer() {10, 0, 0, 0})
         ' 
         ' Escuderias
         ' 
         Escuderias.AutoSize = True
-        Escuderias.Location = New Point(406, 417)
+        Escuderias.Location = New Point(355, 313)
         Escuderias.Name = "Escuderias"
-        Escuderias.Size = New Size(78, 20)
+        Escuderias.Size = New Size(62, 15)
         Escuderias.TabIndex = 4
         Escuderias.Text = "Escuderias"
         ' 
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Location = New Point(451, 460)
+        Label14.Location = New Point(395, 345)
         Label14.Name = "Label14"
-        Label14.Size = New Size(33, 20)
+        Label14.Size = New Size(27, 15)
         Label14.TabIndex = 5
         Label14.Text = "GPs"
         ' 
         ' Button_Valores
         ' 
-        Button_Valores.Location = New Point(272, 432)
+        Button_Valores.Location = New Point(238, 324)
+        Button_Valores.Margin = New Padding(3, 2, 3, 2)
         Button_Valores.Name = "Button_Valores"
-        Button_Valores.Size = New Size(131, 48)
+        Button_Valores.Size = New Size(115, 36)
         Button_Valores.TabIndex = 6
         Button_Valores.Text = "SI QUIERO"
         Button_Valores.UseVisualStyleBackColor = True
@@ -879,9 +922,9 @@ Partial Class Form1
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Location = New Point(24, 417)
+        Label13.Location = New Point(21, 313)
         Label13.Name = "Label13"
-        Label13.Size = New Size(249, 80)
+        Label13.Size = New Size(198, 60)
         Label13.TabIndex = 7
         Label13.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
         ' 
@@ -889,7 +932,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(914, 600)
+        ClientSize = New Size(800, 450)
         Controls.Add(Label13)
         Controls.Add(Button_Valores)
         Controls.Add(Label14)
@@ -913,8 +956,8 @@ Partial Class Form1
         Calendario.ResumeLayout(False)
         Calendario.PerformLayout()
         Carreras.ResumeLayout(False)
-        Carreras.PerformLayout()
         Contratos.ResumeLayout(False)
+        Contratos.PerformLayout()
         CType(Numeros_escuderias, ComponentModel.ISupportInitialize).EndInit()
         CType(Numeros_GP, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
@@ -991,5 +1034,14 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Friend WithEvents Button_Valores As Button
     Friend WithEvents Label13 As Label
+    Friend WithEvents textBox_Contratos_Piloto2 As TextBox
+    Friend WithEvents textBox_Contratos_Piloto1 As TextBox
+    Friend WithEvents textBox_Contratos_Temporada As TextBox
+    Friend WithEvents textBox_Contratos_Escuderia As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents TextBox5 As TextBox
 
 End Class
