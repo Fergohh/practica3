@@ -76,6 +76,7 @@
     End Sub
 
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
+        generarRandomsEscuderias()
         Dim pAux As Pais
         Dim piAux As Piloto
         Dim EAux As Escuderia
@@ -504,8 +505,8 @@
         EscuderiasRandom.Sort(comparador)
 
         If (Numeros_escuderias.Value = 0) Then
-            numElementos = rnd.Next(5, 11)
-
+            numElementos = 57
+            MessageBox.Show(MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
             numElementos = Numeros_escuderias.Value
         End If
