@@ -99,7 +99,8 @@ Public Class Form1
         Me.c = New Carreras
         Me.con = New Contrato
         Me.ca = New Calendario
-
+        Me.Numeros_escuderias.Enabled = False
+        Me.Numeros_GP.Enabled = False
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
@@ -154,7 +155,6 @@ Public Class Form1
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
-        'generarRandomCarreras(GPs)
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
@@ -186,7 +186,7 @@ Public Class Form1
 
             conAux = New Contrato With {
                 .Escuderia = escuderias(i).IDEscuderia,
-                .Temporada = temporada,
+                .temporada = temporada,
                 .Piloto1 = Me.pi.PilotoDAO.Pilotos(randomPiloto1Index).IDPiloto,
                 .Piloto2 = Me.pi.PilotoDAO.Pilotos(randomPiloto2Index).IDPiloto
             }
@@ -213,7 +213,7 @@ Public Class Form1
 
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
-            .Temporada = temporada,
+            .temporada = temporada,
             .GP = GPAux.IDGP}
 
             For i = 1 To numContratos * 2
@@ -619,8 +619,9 @@ Public Class Form1
         ' Aplicar el comparador para desordenar la lista
         EscuderiasRandom.Sort(comparador)
 
-        If (Numeros_escuderias.Enabled = False) Then
-            numElementos = rnd.NextInt64(5, 11)
+        If (Numeros_escuderias.Value = 0) Then
+            numElementos = 57
+            MessageBox.Show(MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
             numElementos = Numeros_escuderias.Value
         End If
