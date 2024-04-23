@@ -94,6 +94,8 @@
         Me.ca = New Calendario
         Me.Numeros_escuderias.Enabled = False
         Me.Numeros_GP.Enabled = False
+        Me.Button_Valores.Enabled = False
+        MessageBox.Show("Se han generado randoms", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Try
             Me.p.LeerTodasPersonas()
             Me.pi.LeerTodosPilotos()
@@ -131,6 +133,9 @@
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
+
+        Escuderias = generarRandomsEscuderias()
+
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
@@ -510,9 +515,10 @@
         ' Aplicar el comparador para desordenar la lista
         EscuderiasRandom.Sort(comparador)
 
-        If (Numeros_escuderias.Value = 0) Then
+        If (Numeros_escuderias.Value = 5) Then
             numElementos = 57
             MessageBox.Show(MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Print("esta funcionando loco")
         Else
             numElementos = Numeros_escuderias.Value
         End If
