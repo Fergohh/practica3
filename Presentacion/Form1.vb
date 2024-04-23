@@ -479,10 +479,11 @@
         End If
     End Sub
 
-    Public Function generarRandoms() As List(Of Escuderia)
+    Public Function generarRandomsEscuderias() As List(Of Escuderia)
         Dim EAux As Escuderia
         Me.es = New Escuderia
         Dim EscuderiasRandom As New List(Of Escuderia)
+        Dim EscuderiasFinal As New List(Of Escuderia)
         Try
 
             es.LeerTodosEscuderias()
@@ -495,13 +496,25 @@
             EscuderiasRandom.Add(EAux)
         Next
         Dim rnd As New Random()
-
+        Dim numElementos As Integer
         ' Comparador personalizado para el método Sort que genera un orden aleatorio
         Dim comparador As New Comparison(Of Escuderia)(Function(x, y) rnd.Next(-1, 2))
 
         ' Aplicar el comparador para desordenar la lista
         EscuderiasRandom.Sort(comparador)
-        Return EscuderiasRandom
+
+        If (Numeros_escuderias.Value = 0) Then
+            numElementos = rnd.Next(5, 11)
+
+        Else
+            numElementos = Numeros_escuderias.Value
+        End If
+
+        For Each EAux In EscuderiasRandom
+            EscuderiasFinal.Add(EAux)
+        Next
+
+        Return EscuderiasFinal
 
     End Function
 
