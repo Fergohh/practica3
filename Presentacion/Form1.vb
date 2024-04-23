@@ -77,6 +77,7 @@
 
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
         generarRandomsEscuderias()
+        generarRandomContratos()
         Dim pAux As Pais
         Dim piAux As Piloto
         Dim EAux As Escuderia
@@ -133,6 +134,11 @@
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
+    End Sub
+
+    Private Sub generarRandomContratos()
+        //haz un metodo que genere contratos random, eligiendo a pilotos aleatorios y que no se repitan
+
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
