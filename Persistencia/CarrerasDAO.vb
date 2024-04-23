@@ -39,6 +39,7 @@
     End Function
 
     Public Function BorrarTodos() As Integer
+        Carrera.Clear()
         Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM carreras;")
     End Function
 End Class

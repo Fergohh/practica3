@@ -25,7 +25,6 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         TabControl1 = New TabControl()
         Pais = New TabPage()
-        ListView1 = New ListView()
         Label3 = New Label()
         Label2 = New Label()
         Label1 = New Label()
@@ -89,7 +88,6 @@ Partial Class Form1
         Label17 = New Label()
         Label16 = New Label()
         Label15 = New Label()
-        TextBox5 = New TextBox()
         textBox_Contratos_Piloto2 = New TextBox()
         textBox_Contratos_Piloto1 = New TextBox()
         textBox_Contratos_Temporada = New TextBox()
@@ -132,7 +130,6 @@ Partial Class Form1
         ' 
         ' Pais
         ' 
-        Pais.Controls.Add(ListView1)
         Pais.Controls.Add(Label3)
         Pais.Controls.Add(Label2)
         Pais.Controls.Add(Label1)
@@ -152,15 +149,6 @@ Partial Class Form1
         Pais.TabIndex = 0
         Pais.Text = "Pais"
         Pais.UseVisualStyleBackColor = True
-        ' 
-        ' ListView1
-        ' 
-        ListView1.Location = New Point(68, 192)
-        ListView1.Margin = New Padding(3, 2, 3, 2)
-        ListView1.Name = "ListView1"
-        ListView1.Size = New Size(106, 38)
-        ListView1.TabIndex = 12
-        ListView1.UseCompatibleStateImageBehavior = False
         ' 
         ' Label3
         ' 
@@ -342,10 +330,10 @@ Partial Class Form1
         ' 
         ' Limpiar_Piloto
         ' 
-        Limpiar_Piloto.Location = New Point(350, 194)
+        Limpiar_Piloto.Location = New Point(337, 194)
         Limpiar_Piloto.Margin = New Padding(3, 2, 3, 2)
         Limpiar_Piloto.Name = "Limpiar_Piloto"
-        Limpiar_Piloto.Size = New Size(72, 16)
+        Limpiar_Piloto.Size = New Size(85, 26)
         Limpiar_Piloto.TabIndex = 30
         Limpiar_Piloto.Text = "Limpiar"
         Limpiar_Piloto.UseVisualStyleBackColor = True
@@ -355,17 +343,17 @@ Partial Class Form1
         Borrar_Piloto.Location = New Point(249, 194)
         Borrar_Piloto.Margin = New Padding(3, 2, 3, 2)
         Borrar_Piloto.Name = "Borrar_Piloto"
-        Borrar_Piloto.Size = New Size(72, 16)
+        Borrar_Piloto.Size = New Size(82, 26)
         Borrar_Piloto.TabIndex = 29
         Borrar_Piloto.Text = "Borrar"
         Borrar_Piloto.UseVisualStyleBackColor = True
         ' 
         ' Actualizar_Piloto
         ' 
-        Actualizar_Piloto.Location = New Point(350, 167)
+        Actualizar_Piloto.Location = New Point(337, 167)
         Actualizar_Piloto.Margin = New Padding(3, 2, 3, 2)
         Actualizar_Piloto.Name = "Actualizar_Piloto"
-        Actualizar_Piloto.Size = New Size(72, 16)
+        Actualizar_Piloto.Size = New Size(85, 23)
         Actualizar_Piloto.TabIndex = 28
         Actualizar_Piloto.Text = "Actualizar"
         Actualizar_Piloto.UseVisualStyleBackColor = True
@@ -375,7 +363,7 @@ Partial Class Form1
         Añadir_Piloto.Location = New Point(248, 167)
         Añadir_Piloto.Margin = New Padding(3, 2, 3, 2)
         Añadir_Piloto.Name = "Añadir_Piloto"
-        Añadir_Piloto.Size = New Size(72, 16)
+        Añadir_Piloto.Size = New Size(83, 23)
         Añadir_Piloto.TabIndex = 27
         Añadir_Piloto.Text = "Anadir"
         Añadir_Piloto.UseVisualStyleBackColor = True
@@ -475,40 +463,40 @@ Partial Class Form1
         ' 
         ' Limpiar_Escuderia
         ' 
-        Limpiar_Escuderia.Location = New Point(364, 198)
+        Limpiar_Escuderia.Location = New Point(356, 198)
         Limpiar_Escuderia.Margin = New Padding(3, 2, 3, 2)
         Limpiar_Escuderia.Name = "Limpiar_Escuderia"
-        Limpiar_Escuderia.Size = New Size(72, 16)
+        Limpiar_Escuderia.Size = New Size(80, 25)
         Limpiar_Escuderia.TabIndex = 42
         Limpiar_Escuderia.Text = "Limpiar"
         Limpiar_Escuderia.UseVisualStyleBackColor = True
         ' 
         ' Borrar_Escuderia
         ' 
-        Borrar_Escuderia.Location = New Point(279, 198)
+        Borrar_Escuderia.Location = New Point(267, 198)
         Borrar_Escuderia.Margin = New Padding(3, 2, 3, 2)
         Borrar_Escuderia.Name = "Borrar_Escuderia"
-        Borrar_Escuderia.Size = New Size(72, 16)
+        Borrar_Escuderia.Size = New Size(83, 25)
         Borrar_Escuderia.TabIndex = 41
         Borrar_Escuderia.Text = "Borrar"
         Borrar_Escuderia.UseVisualStyleBackColor = True
         ' 
         ' Actualizar_Escuderia
         ' 
-        Actualizar_Escuderia.Location = New Point(364, 171)
+        Actualizar_Escuderia.Location = New Point(356, 171)
         Actualizar_Escuderia.Margin = New Padding(3, 2, 3, 2)
         Actualizar_Escuderia.Name = "Actualizar_Escuderia"
-        Actualizar_Escuderia.Size = New Size(72, 16)
+        Actualizar_Escuderia.Size = New Size(80, 23)
         Actualizar_Escuderia.TabIndex = 40
         Actualizar_Escuderia.Text = "Actualizar"
         Actualizar_Escuderia.UseVisualStyleBackColor = True
         ' 
         ' Añadir_Escuderia
         ' 
-        Añadir_Escuderia.Location = New Point(278, 171)
+        Añadir_Escuderia.Location = New Point(268, 171)
         Añadir_Escuderia.Margin = New Padding(3, 2, 3, 2)
         Añadir_Escuderia.Name = "Añadir_Escuderia"
-        Añadir_Escuderia.Size = New Size(72, 16)
+        Añadir_Escuderia.Size = New Size(82, 23)
         Añadir_Escuderia.TabIndex = 39
         Añadir_Escuderia.Text = "Anadir"
         Añadir_Escuderia.UseVisualStyleBackColor = True
@@ -591,40 +579,40 @@ Partial Class Form1
         ' 
         ' Limpiar_GP
         ' 
-        Limpiar_GP.Location = New Point(383, 214)
+        Limpiar_GP.Location = New Point(377, 214)
         Limpiar_GP.Margin = New Padding(3, 2, 3, 2)
         Limpiar_GP.Name = "Limpiar_GP"
-        Limpiar_GP.Size = New Size(72, 16)
+        Limpiar_GP.Size = New Size(78, 25)
         Limpiar_GP.TabIndex = 51
         Limpiar_GP.Text = "Limpiar"
         Limpiar_GP.UseVisualStyleBackColor = True
         ' 
         ' Borrar_GP
         ' 
-        Borrar_GP.Location = New Point(299, 214)
+        Borrar_GP.Location = New Point(290, 214)
         Borrar_GP.Margin = New Padding(3, 2, 3, 2)
         Borrar_GP.Name = "Borrar_GP"
-        Borrar_GP.Size = New Size(72, 16)
+        Borrar_GP.Size = New Size(81, 25)
         Borrar_GP.TabIndex = 50
         Borrar_GP.Text = "Borrar"
         Borrar_GP.UseVisualStyleBackColor = True
         ' 
         ' Actualizar_GP
         ' 
-        Actualizar_GP.Location = New Point(383, 187)
+        Actualizar_GP.Location = New Point(377, 187)
         Actualizar_GP.Margin = New Padding(3, 2, 3, 2)
         Actualizar_GP.Name = "Actualizar_GP"
-        Actualizar_GP.Size = New Size(72, 16)
+        Actualizar_GP.Size = New Size(78, 23)
         Actualizar_GP.TabIndex = 49
         Actualizar_GP.Text = "Actualizar"
         Actualizar_GP.UseVisualStyleBackColor = True
         ' 
         ' Añadir_GP
         ' 
-        Añadir_GP.Location = New Point(298, 187)
+        Añadir_GP.Location = New Point(290, 187)
         Añadir_GP.Margin = New Padding(3, 2, 3, 2)
         Añadir_GP.Name = "Añadir_GP"
-        Añadir_GP.Size = New Size(72, 16)
+        Añadir_GP.Size = New Size(81, 23)
         Añadir_GP.TabIndex = 48
         Añadir_GP.Text = "Anadir"
         Añadir_GP.UseVisualStyleBackColor = True
@@ -755,7 +743,6 @@ Partial Class Form1
         Contratos.Controls.Add(Label17)
         Contratos.Controls.Add(Label16)
         Contratos.Controls.Add(Label15)
-        Contratos.Controls.Add(TextBox5)
         Contratos.Controls.Add(textBox_Contratos_Piloto2)
         Contratos.Controls.Add(textBox_Contratos_Piloto1)
         Contratos.Controls.Add(textBox_Contratos_Temporada)
@@ -805,13 +792,6 @@ Partial Class Form1
         Label15.Size = New Size(57, 15)
         Label15.TabIndex = 6
         Label15.Text = "Escuderia"
-        ' 
-        ' TextBox5
-        ' 
-        TextBox5.Location = New Point(221, 140)
-        TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(8, 23)
-        TextBox5.TabIndex = 5
         ' 
         ' textBox_Contratos_Piloto2
         ' 
@@ -979,7 +959,6 @@ Partial Class Form1
     Friend WithEvents Añadir As Button
     Friend WithEvents txtHab As TextBox
     Friend WithEvents txtNombre As TextBox
-    Friend WithEvents ListView1 As ListView
     Friend WithEvents Label3 As Label
     Friend WithEvents Conectar As Button
     Friend WithEvents ComboBox_Pais_Piloto As ComboBox
@@ -1042,6 +1021,5 @@ Partial Class Form1
     Friend WithEvents Label17 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents TextBox5 As TextBox
 
 End Class

@@ -155,7 +155,9 @@ Public Class Form1
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
-        'generarRandomCarreras(GPs)'
+        Me.c.CarrerasDAO.BorrarTodos()
+        generarRandomCalendarios(GPs)
+        generarRandomCarreras(GPs)
 
         Conectar.Enabled = False
         Conectar.Visible = False
@@ -175,41 +177,36 @@ Public Class Form1
         Dim numEscuderias As Integer
         Dim rnd As New Random()
         numEscuderias = escuderias.Count
-        Dim Pilotos1 As New List(Of Piloto)
-        Dim Pilotos2 As New List(Of Piloto)
+        Dim Pilotos As New List(Of Piloto)
         Dim PAux As Piloto
         For Each PAux In Me.pi.PilotoDAO.Pilotos
-            Pilotos1.Add(PAux)
-        Next
-        For Each PAux In Me.pi.PilotoDAO.Pilotos
-            Pilotos2.Add(PAux)
+            Pilotos.Add(PAux)
         Next
         MessageBox.Show(numEscuderias & "Este es el numero de escuderias")
         For i = 0 To numEscuderias - 1
+            If Pilotos.Count < 2 Then
+                MessageBox.Show("No hay suficientes pilotos para crear un nuevo contrato.")
+                Exit Sub
+            End If
 
-            Dim randomPiloto1Index As Integer = rnd.Next(1, Pilotos1.Count)
-            Dim randomPiloto2Index As Integer = rnd.Next(1, Pilotos2.Count)
+            Dim randomPiloto1Index As Integer = rnd.Next(0, Pilotos.Count)
+            Dim piloto1 As Piloto = Pilotos(randomPiloto1Index)
+            Pilotos.RemoveAt(randomPiloto1Index)
 
-            While randomPiloto1Index = randomPiloto2Index
-                randomPiloto2Index = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
-            End While
-
+            Dim randomPiloto2Index As Integer = rnd.Next(0, Pilotos.Count)
+            Dim piloto2 As Piloto = Pilotos(randomPiloto2Index)
+            Pilotos.RemoveAt(randomPiloto2Index)
 
             conAux = New Contrato With {
-                .Escuderia = escuderias(i).IDEscuderia,
-                .temporada = temporada,
-                .Piloto1 = Me.pi.PilotoDAO.Pilotos(randomPiloto1Index).IDPiloto,
-                .Piloto2 = Me.pi.PilotoDAO.Pilotos(randomPiloto2Index).IDPiloto
+            .Escuderia = escuderias(i).IDEscuderia,
+            .temporada = temporada,
+            .piloto1 = piloto1.IDPiloto,
+            .piloto2 = piloto2.IDPiloto
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
-            Pilotos1.RemoveAt(randomPiloto1Index)
-            Pilotos2.RemoveAt(randomPiloto2Index)
         Next
-
-
     End Sub
-
 
     Private Sub generarRandomCarreras(GPs As List(Of GP))
         Me.c.CarrerasDAO.BorrarTodos()
@@ -223,25 +220,26 @@ Public Class Form1
         Dim PosicionesFinal As New List(Of Integer)
         Dim j As Integer = 0
 
-
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
-            .temporada = temporada,
+            .Temporada = temporada,
             .GP = GPAux.IDGP}
-
-            For i = 1 To numContratos * 2
+            For i = 0 To (numContratos * 2)
                 PosicionesFinal.Add(i)
             Next
             PosicionesFinal.Sort(Function(x, y) rnd.Next(-1, 2))
 
             For Each conAux In Me.con.ContratoDAO.Contratos
                 For y = 1 To 2
-
                     Dim posicion As Integer = PosicionesFinal.Item(j) ' Genera una posición aleatoria entre 1 y 6
                     Dim puntos As Integer = 0
 
-                    If posicion <= 6 Then
+                    If posicion <= 6 And posicion > 0 Then
                         puntos = puntosPorPosicion(posicion - 1)
+                    ElseIf posicion = 0 Then
+                        puntos = puntosPorPosicion(0)
+                    Else
+                        puntos = 0
                     End If
 
                     If y = 2 Then
@@ -252,14 +250,36 @@ Public Class Form1
                     carrera.Posicion = posicion
                     carrera.Puntos = puntos
                     j = j + 1
-                    ' Añade el objeto pilotoCarrera a la base de datos o a la colección correspondiente
+                    Me.c.CarrerasDAO.Carrera.Add(carrera)
+                    Me.c.CarrerasDAO.Insertar(carrera)
                 Next
 
-                ' Añade la carrera a la base de datos o a la colección correspondiente
+
             Next
             PosicionesFinal.Clear()
-            Me.c.CarrerasDAO.Carrera.Add(carrera)
-            Me.c.CarrerasDAO.Insertar(carrera)
+            j = 0
+
+
+        Next
+    End Sub
+
+    Private Sub generarRandomCalendarios(GPs As List(Of GP))
+        Me.ca.CalendarioDAO.BorrarTodos()
+
+        Dim calen As Calendario
+        Dim i As Integer = 1
+        Dim GPAux As GP
+        For Each GPAux In GPs
+
+            calen = New Calendario With {
+            .Temporada = temporada,
+            .GP = GPAux.IDGP,
+            .Orden = i
+            }
+
+            Me.ca.CalendarioDAO.Calendarios.Add(calen)
+            i += 1
+            Me.ca.CalendarioDAO.Insertar(calen)
 
         Next
     End Sub
