@@ -76,7 +76,7 @@
     End Sub
 
     Private Sub Conectar_Click(sender As Object, e As EventArgs) Handles Conectar.Click
-        generarRandomsEscuderias()
+        Dim Escuderias As New List(Of Escuderia)
         generarRandomContratos()
         Dim pAux As Pais
         Dim piAux As Piloto
