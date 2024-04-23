@@ -155,6 +155,8 @@ Public Class Form1
         For Each conAux In Me.con.ContratoDAO.Contratos
             Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
         Next
+        'generarRandomCarreras(GPs)'
+
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
@@ -173,11 +175,20 @@ Public Class Form1
         Dim numEscuderias As Integer
         Dim rnd As New Random()
         numEscuderias = escuderias.Count
+        Dim Pilotos1 As New List(Of Piloto)
+        Dim Pilotos2 As New List(Of Piloto)
+        Dim PAux As Piloto
+        For Each PAux In Me.pi.PilotoDAO.Pilotos
+            Pilotos1.Add(PAux)
+        Next
+        For Each PAux In Me.pi.PilotoDAO.Pilotos
+            Pilotos2.Add(PAux)
+        Next
         MessageBox.Show(numEscuderias & "Este es el numero de escuderias")
         For i = 0 To numEscuderias - 1
 
-            Dim randomPiloto1Index As Integer = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
-            Dim randomPiloto2Index As Integer = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
+            Dim randomPiloto1Index As Integer = rnd.Next(1, Pilotos1.Count)
+            Dim randomPiloto2Index As Integer = rnd.Next(1, Pilotos2.Count)
 
             While randomPiloto1Index = randomPiloto2Index
                 randomPiloto2Index = rnd.Next(1, Me.pi.PilotoDAO.Pilotos.Count)
@@ -192,6 +203,8 @@ Public Class Form1
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
+            Pilotos1.RemoveAt(randomPiloto1Index)
+            Pilotos2.RemoveAt(randomPiloto2Index)
         Next
 
 
@@ -219,14 +232,12 @@ Public Class Form1
             For i = 1 To numContratos * 2
                 PosicionesFinal.Add(i)
             Next
-            Dim comparador As New Comparison(Of GP)(Function(x, y) rnd.Next(-1, 2))
-
-            PosicionesFinal.Sort(comparador)
+            PosicionesFinal.Sort(Function(x, y) rnd.Next(-1, 2))
 
             For Each conAux In Me.con.ContratoDAO.Contratos
                 For y = 1 To 2
-                    j = j + 1
-                    Dim posicion As Integer = PosicionesFinal.Remove(j) ' Genera una posición aleatoria entre 1 y 6
+
+                    Dim posicion As Integer = PosicionesFinal.Item(j) ' Genera una posición aleatoria entre 1 y 6
                     Dim puntos As Integer = 0
 
                     If posicion <= 6 Then
@@ -240,12 +251,15 @@ Public Class Form1
                     End If
                     carrera.Posicion = posicion
                     carrera.Puntos = puntos
-
+                    j = j + 1
                     ' Añade el objeto pilotoCarrera a la base de datos o a la colección correspondiente
                 Next
 
                 ' Añade la carrera a la base de datos o a la colección correspondiente
             Next
+            PosicionesFinal.Clear()
+            Me.c.CarrerasDAO.Carrera.Add(carrera)
+            Me.c.CarrerasDAO.Insertar(carrera)
 
         Next
     End Sub
