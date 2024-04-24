@@ -606,8 +606,6 @@ Public Class Form1
     End Sub
 
     Private Sub ListBox_Calendario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Calendario.SelectedIndexChanged
-
-
         If Not Me.ListBox_Calendario.SelectedItem Is Nothing Then
             Me.ca = New Calendario(Me.ListBox_Calendario.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
@@ -744,5 +742,9 @@ Public Class Form1
             Me.textBox_Contratos_Piloto1.Text = Me.con.Piloto1.ToString
             Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
         End If
+    End Sub
+
+    Private Sub Calendario_Click(sender As Object, e As EventArgs) Handles Calendario.Click
+
     End Sub
 End Class

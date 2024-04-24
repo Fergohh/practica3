@@ -100,6 +100,14 @@ Partial Class Form1
         Label14 = New Label()
         Button_Valores = New Button()
         Label_Valores = New Label()
+        TabPage1 = New TabPage()
+        Label13 = New Label()
+        Label19 = New Label()
+        Label20 = New Label()
+        ListBox_Clasificacion = New ListBox()
+        TextBox_Clasificacion_Puntos = New TextBox()
+        TextBox_Clasificacion_Pais = New TextBox()
+        TextBox_Clasificacion_Escuderia = New TextBox()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -110,6 +118,7 @@ Partial Class Form1
         Contratos.SuspendLayout()
         CType(Numeros_escuderias, ComponentModel.ISupportInitialize).BeginInit()
         CType(Numeros_GP, ComponentModel.ISupportInitialize).BeginInit()
+        TabPage1.SuspendLayout()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -121,6 +130,7 @@ Partial Class Form1
         TabControl1.Controls.Add(Calendario)
         TabControl1.Controls.Add(Carreras)
         TabControl1.Controls.Add(Contratos)
+        TabControl1.Controls.Add(TabPage1)
         TabControl1.Location = New Point(61, 22)
         TabControl1.Margin = New Padding(3, 2, 3, 2)
         TabControl1.Name = "TabControl1"
@@ -681,9 +691,10 @@ Partial Class Form1
         ' TextBox_GP_Calendario
         ' 
         TextBox_GP_Calendario.Enabled = False
-        TextBox_GP_Calendario.Location = New Point(348, 72)
+        TextBox_GP_Calendario.Location = New Point(348, 74)
         TextBox_GP_Calendario.Margin = New Padding(3, 2, 3, 2)
         TextBox_GP_Calendario.Name = "TextBox_GP_Calendario"
+        TextBox_GP_Calendario.ReadOnly = True
         TextBox_GP_Calendario.Size = New Size(112, 23)
         TextBox_GP_Calendario.TabIndex = 4
         ' 
@@ -702,6 +713,7 @@ Partial Class Form1
         TextBox_Orden_Calendario.Location = New Point(348, 136)
         TextBox_Orden_Calendario.Margin = New Padding(3, 2, 3, 2)
         TextBox_Orden_Calendario.Name = "TextBox_Orden_Calendario"
+        TextBox_Orden_Calendario.ReadOnly = True
         TextBox_Orden_Calendario.Size = New Size(112, 23)
         TextBox_Orden_Calendario.TabIndex = 1
         ' 
@@ -908,6 +920,83 @@ Partial Class Form1
         Label_Valores.TabIndex = 7
         Label_Valores.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
         ' 
+        ' TabPage1
+        ' 
+        TabPage1.Controls.Add(TextBox_Clasificacion_Escuderia)
+        TabPage1.Controls.Add(TextBox_Clasificacion_Pais)
+        TabPage1.Controls.Add(TextBox_Clasificacion_Puntos)
+        TabPage1.Controls.Add(ListBox_Clasificacion)
+        TabPage1.Controls.Add(Label20)
+        TabPage1.Controls.Add(Label19)
+        TabPage1.Controls.Add(Label13)
+        TabPage1.Location = New Point(4, 24)
+        TabPage1.Name = "TabPage1"
+        TabPage1.Padding = New Padding(3)
+        TabPage1.Size = New Size(498, 257)
+        TabPage1.TabIndex = 7
+        TabPage1.Text = "Clasificacion"
+        TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(261, 44)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(44, 15)
+        Label13.TabIndex = 0
+        Label13.Text = "Puntos"
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Location = New Point(277, 108)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(28, 15)
+        Label19.TabIndex = 1
+        Label19.Text = "Pais"
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Location = New Point(248, 182)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(57, 15)
+        Label20.TabIndex = 2
+        Label20.Text = "Escuderia"
+        ' 
+        ' ListBox_Clasificacion
+        ' 
+        ListBox_Clasificacion.FormattingEnabled = True
+        ListBox_Clasificacion.ItemHeight = 15
+        ListBox_Clasificacion.Location = New Point(16, 24)
+        ListBox_Clasificacion.Name = "ListBox_Clasificacion"
+        ListBox_Clasificacion.Size = New Size(175, 199)
+        ListBox_Clasificacion.TabIndex = 3
+        ' 
+        ' TextBox_Clasificacion_Puntos
+        ' 
+        TextBox_Clasificacion_Puntos.Location = New Point(311, 41)
+        TextBox_Clasificacion_Puntos.Name = "TextBox_Clasificacion_Puntos"
+        TextBox_Clasificacion_Puntos.ReadOnly = True
+        TextBox_Clasificacion_Puntos.Size = New Size(153, 23)
+        TextBox_Clasificacion_Puntos.TabIndex = 4
+        ' 
+        ' TextBox_Clasificacion_Pais
+        ' 
+        TextBox_Clasificacion_Pais.Location = New Point(311, 105)
+        TextBox_Clasificacion_Pais.Name = "TextBox_Clasificacion_Pais"
+        TextBox_Clasificacion_Pais.ReadOnly = True
+        TextBox_Clasificacion_Pais.Size = New Size(153, 23)
+        TextBox_Clasificacion_Pais.TabIndex = 5
+        ' 
+        ' TextBox_Clasificacion_Escuderia
+        ' 
+        TextBox_Clasificacion_Escuderia.Location = New Point(311, 179)
+        TextBox_Clasificacion_Escuderia.Name = "TextBox_Clasificacion_Escuderia"
+        TextBox_Clasificacion_Escuderia.ReadOnly = True
+        TextBox_Clasificacion_Escuderia.Size = New Size(153, 23)
+        TextBox_Clasificacion_Escuderia.TabIndex = 6
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -940,6 +1029,8 @@ Partial Class Form1
         Contratos.PerformLayout()
         CType(Numeros_escuderias, ComponentModel.ISupportInitialize).EndInit()
         CType(Numeros_GP, ComponentModel.ISupportInitialize).EndInit()
+        TabPage1.ResumeLayout(False)
+        TabPage1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -1021,5 +1112,13 @@ Partial Class Form1
     Friend WithEvents Label17 As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents Label15 As Label
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TextBox_Clasificacion_Escuderia As TextBox
+    Friend WithEvents TextBox_Clasificacion_Pais As TextBox
+    Friend WithEvents TextBox_Clasificacion_Puntos As TextBox
+    Friend WithEvents ListBox_Clasificacion As ListBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Label13 As Label
 
 End Class
