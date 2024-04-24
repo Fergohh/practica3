@@ -111,7 +111,7 @@ Public Class Form1
             Me.con.LeerTodosContratos()
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show(ex.Message & " error primero", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
         End Try
         Try
@@ -435,16 +435,20 @@ Public Class Form1
             End Try
             Me.TextBox_ID_Escuderia.Text = Me.es.IDEscuderia.ToString
             Me.DateTimePicker_Escuderia.Value = Me.es.FechaCrec
-            Me.ComboBox_Pais_Escuderia.SelectedItem = Me.es.PaisEscuderia
+            Dim pais As Pais = Me.es.PaisEscuderia
+            Me.ComboBox_Pais_Escuderia.SelectedItem = pais
             Me.TextBox_Nombre_Escuderia.Text = Me.es.Nombre.ToString
         End If
     End Sub
 
     Private Sub Añadir_Escuderia_Click(sender As Object, a As EventArgs) Handles Añadir_Escuderia.Click
         If TextBox_Nombre_Escuderia.Text <> String.Empty And ComboBox_Pais_Escuderia.Text <> String.Empty Then '<> significa !='
+            Dim pa As Pais
             Try
                 es = New Escuderia
-                es.PaisEscuderia = ComboBox_Pais_Escuderia.SelectedItem
+                pa = New Pais(ComboBox_Pais_Escuderia.SelectedItem)
+                pa.LeerPais()
+                es.PaisEscuderia = pa
                 es.Nombre = TextBox_Nombre_Escuderia.Text
                 es.FechaCrec = DateTimePicker_Escuderia.Value.ToString("yyyy-MM-dd")
                 If es.InsertarEscuderia <> 1 Then
@@ -538,9 +542,12 @@ Public Class Form1
 
     Private Sub Añadir_GP_Click(sender As Object, e As EventArgs) Handles Añadir_GP.Click
         If Me.TextBox_GP_Denominacion.Text <> String.Empty And ComboBox_GP_Pais.SelectedItem <> String.Empty Then '<> significa !='
+            Dim pa As Pais
             Try
                 G = New GP
-                G.PaisGP = ComboBox_GP_Pais.SelectedItem
+                pa = New Pais(ComboBox_GP_Pais.SelectedItem)
+                pa.LeerPais()
+                G.PaisGP = pa
                 G.DenominacionGP = TextBox_GP_Denominacion.Text
 
 
@@ -749,4 +756,62 @@ Public Class Form1
             Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
         End If
     End Sub
+
+    Public Sub GenerarInformeFinal()
+        ' Leer todos los datos necesarios usando instancias existentes
+        Me.pi.PilotoDAO.LeerTodas()
+        Me.c.CarrerasDAO.LeerTodas()
+        Me.es.EscuderiaDAO.LeerTodas()
+
+        ' Diccionarios para almacenar puntos y posiciones
+        Dim puntosPilotos As New Dictionary(Of String, Tuple(Of Integer, Integer()))
+        Dim puntosEscuderias As New Dictionary(Of String, Tuple(Of Integer, Integer()))
+
+        ' Calcular los puntos de cada piloto y contar posiciones
+        For Each carrera In Me.c.CarrerasDAO.Carrera
+            Dim piloto As String = carrera.Piloto
+            Dim puntos As Integer = Convert.ToInt32(carrera.Puntos)
+            Dim posicion As Integer = Convert.ToInt32(carrera.Posicion)
+
+            If Not puntosPilotos.ContainsKey(piloto) Then
+                ' Inicializar con 0 puntos y un array de enteros para contar posiciones
+                puntosPilotos(piloto) = New Tuple(Of Integer, Integer())(0, New Integer(20) {})
+            End If
+
+            ' Actualizar puntos y posición
+            puntosPilotos(piloto) = New Tuple(Of Integer, Integer())(puntosPilotos(piloto).Item1 + puntos, puntosPilotos(piloto).Item2)
+            puntosPilotos(piloto).Item2(posicion - 1) += 1
+        Next
+
+        ' Similar para escuderías
+        For Each carrera In Me.c.CarrerasDAO.Carrera
+            Dim escuderia As String = carrera.Escuderia
+            Dim puntos As Integer = Convert.ToInt32(carrera.Puntos)
+            Dim posicion As Integer = Convert.ToInt32(carrera.Posicion)
+
+            If Not puntosEscuderias.ContainsKey(escuderia) Then
+                puntosEscuderias(escuderia) = New Tuple(Of Integer, Integer())(0, New Integer(20) {})
+            End If
+
+            puntosEscuderias(escuderia) = New Tuple(Of Integer, Integer())(puntosEscuderias(escuderia).Item1 + puntos, puntosEscuderias(escuderia).Item2)
+            puntosEscuderias(escuderia).Item2(posicion - 1) += 1
+        Next
+
+        ' Determinar el campeón de pilotos y escuderías con desempate
+        Dim campeonPiloto As String = puntosPilotos.OrderByDescending(Function(x) x.Value.Item1).ThenByDescending(Function(x) x.Value.Item2).First().Key
+        Dim campeonEscuderia As String = puntosEscuderias.OrderByDescending(Function(x) x.Value.Item1).ThenByDescending(Function(x) x.Value.Item2).First().Key
+
+        ' Imprimir los resultados
+        Console.WriteLine("Campeón de Pilotos: " & campeonPiloto)
+        Console.WriteLine("Campeón de Escuderías: " & campeonEscuderia)
+        Console.WriteLine("Clasificación Final de Pilotos:")
+        For Each piloto In puntosPilotos
+            Console.WriteLine("Piloto: " & piloto.Key & " - Puntos Totales: " & piloto.Value.Item1)
+        Next
+        Console.WriteLine("Clasificación Final de Escuderías:")
+        For Each escuderia In puntosEscuderias
+            Console.WriteLine("Escudería: " & escuderia.Key & " - Puntos Totales: " & escuderia.Value.Item1)
+        Next
+    End Sub
+
 End Class
