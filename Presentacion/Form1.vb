@@ -743,8 +743,4 @@ Public Class Form1
             Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
         End If
     End Sub
-
-    Private Sub Calendario_Click(sender As Object, e As EventArgs) Handles Calendario.Click
-
-    End Sub
 End Class
