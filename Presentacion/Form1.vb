@@ -114,6 +114,33 @@ Public Class Form1
             MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
         End Try
+        Try
+            temporada = rnd.Next(1970, DateTime.Now.Year)
+            Escuderias = generarRandomsEscuderias()
+            Me.ListBox_Escuderia.Items.Clear()
+
+            For Each escuderia In Escuderias
+                Me.ListBox_Escuderia.Items.Add(escuderia.IDEscuderia)
+            Next
+
+            GPs = generarRandomsGPs()
+            Me.ListBox_GP.Items.Clear()
+            For Each gp In GPs
+                Me.ListBox_GP.Items.Add(gp.IDGP)
+            Next
+            generarRandomContratos(Escuderias)
+            Me.ListBox_Contratos.Items.Clear()
+            For Each conAux In Me.con.ContratoDAO.Contratos
+                Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
+            Next
+            Me.c.CarrerasDAO.BorrarTodos()
+            generarRandomCalendarios(GPs)
+            generarRandomCarreras(GPs)
+
+        Catch ex As Exception
+            MessageBox.Show("debes crear primero las escuderias, GPs, Pilotos y Paises", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
+        End Try
         For Each pAux In Me.p.PerDAO.Personas
             Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
             Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
@@ -135,30 +162,6 @@ Public Class Form1
         For Each cAux In Me.c.CarrerasDAO.Carrera
             Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
         Next
-
-
-        temporada = rnd.Next(1970, DateTime.Now.Year)
-        Escuderias = generarRandomsEscuderias()
-        Me.ListBox_Escuderia.Items.Clear()
-
-        For Each escuderia In Escuderias
-            Me.ListBox_Escuderia.Items.Add(escuderia.IDEscuderia)
-        Next
-
-        GPs = generarRandomsGPs()
-        Me.ListBox_GP.Items.Clear()
-        For Each gp In GPs
-            Me.ListBox_GP.Items.Add(gp.IDGP)
-        Next
-        generarRandomContratos(Escuderias)
-        Me.ListBox_Contratos.Items.Clear()
-        For Each conAux In Me.con.ContratoDAO.Contratos
-            Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
-        Next
-        Me.c.CarrerasDAO.BorrarTodos()
-        generarRandomCalendarios(GPs)
-        generarRandomCarreras(GPs)
-
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
