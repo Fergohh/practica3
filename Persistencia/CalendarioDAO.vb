@@ -11,11 +11,13 @@ Public Class CalendarioDAO
         Try
             Dim calendario As Calendario
             Dim col, aux As Collection
+            Dim gp As GP
             col = AgenteBD.ObtenerAgente().Leer("SELECT * FROM calendario ORDER BY Temporada, Orden") ' Leer todos los calendarios ordenados por temporada y orden
             For Each aux In col
+                gp = New GP(aux(2).ToString)
                 calendario = New Calendario()
                 calendario.Temporada = aux(1) ' El primer elemento es la temporada
-                calendario.GP = aux(2) ' El segundo elemento es el GP
+                calendario.GP = gp ' El segundo elemento es el GP
                 calendario.Orden = aux(3) ' El tercer elemento es el orden
                 Me.Calendarios.Add(calendario) ' Agregar el calendario a la colección
             Next
@@ -27,7 +29,7 @@ Public Class CalendarioDAO
     Public Sub Leer(ByRef calendario As Calendario)
         Try
             Dim col As Collection : Dim aux As Collection
-            col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Leer un calendario específico por temporada y GP
+            col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP.IDGP & "';") ' Leer un calendario específico por temporada y GP
             For Each aux In col
                 calendario.Orden = aux(3) ' Actualizar el orden del calendario proporcionado
             Next
@@ -42,7 +44,7 @@ Public Class CalendarioDAO
                 Throw New ArgumentException("El año de la temporada debe estar entre 1970 y 2024")
             End If
 
-            Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO calendario (Temporada, GP, Orden) VALUES ('" & calendario.Temporada & "', '" & calendario.GP & "', '" & calendario.Orden & "')")
+            Return AgenteBD.ObtenerAgente.Modificar("INSERT INTO calendario (Temporada, GP, Orden) VALUES ('" & calendario.Temporada & "', '" & calendario.GP.IDGP & "', '" & calendario.Orden & "')")
         Catch ex As ArgumentException
             Throw
         Catch ex As Exception
@@ -52,7 +54,7 @@ Public Class CalendarioDAO
 
     Public Function Actualizar(ByVal calendario As Calendario) As Integer
         Try
-            Return AgenteBD.ObtenerAgente.Modificar("UPDATE calendario SET Orden='" & calendario.Orden & "' WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Actualizar el orden de un calendario existente en la base de datos
+            Return AgenteBD.ObtenerAgente.Modificar("UPDATE calendario SET Orden='" & calendario.Orden & "' WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP.IDGP & "';") ' Actualizar el orden de un calendario existente en la base de datos
         Catch ex As Exception
             Throw New Exception("Error al actualizar el calendario", ex)
         End Try
@@ -60,7 +62,7 @@ Public Class CalendarioDAO
 
     Public Function Borrar(ByVal calendario As Calendario) As Integer
         Try
-            Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP & "';") ' Borrar un calendario existente de la base de datos
+            Return AgenteBD.ObtenerAgente.Modificar("DELETE FROM calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP.IDGP & "';") ' Borrar un calendario existente de la base de datos
         Catch ex As Exception
             Throw New Exception("Error al borrar el calendario", ex)
         End Try

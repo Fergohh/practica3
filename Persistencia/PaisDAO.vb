@@ -1,4 +1,4 @@
-﻿Public Class PersonaDAO
+﻿Public Class PaisDAO
 
     Public ReadOnly Property Personas As Collection
 

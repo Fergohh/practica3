@@ -209,10 +209,10 @@ Public Class Form1
             Pilotos.RemoveAt(randomPiloto2Index)
 
             conAux = New Contrato With {
-            .Escuderia = escuderias(i).IDEscuderia,
-            .temporada = temporada,
-            .piloto1 = piloto1.IDPiloto,
-            .piloto2 = piloto2.IDPiloto
+            .Escuderia = escuderias(i),
+            .Temporada = temporada,
+            .Piloto1 = piloto1,
+            .Piloto2 = piloto2
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
@@ -234,7 +234,7 @@ Public Class Form1
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
             .Temporada = temporada,
-            .GP = GPAux.IDGP}
+            .GP = GPAux}
             For i = 0 To (numContratos * 2)
                 PosicionesFinal.Add(i)
             Next
@@ -284,7 +284,7 @@ Public Class Form1
 
             calen = New Calendario With {
             .Temporada = temporada,
-            .GP = GPAux.IDGP,
+            .GP = GPAux,
             .Orden = i
             }
 
@@ -663,8 +663,7 @@ Public Class Form1
         EscuderiasRandom.Sort(comparador)
 
         If (Numeros_escuderias.Value = 0) Then
-            numElementos = 57
-            MessageBox.Show(MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            numElementos = rnd.NextInt64(10, 21)
         Else
             numElementos = Numeros_escuderias.Value
         End If
@@ -730,7 +729,10 @@ Public Class Form1
 
     Private Sub ListBox_Contratos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Contratos.SelectedIndexChanged
         If Not Me.ListBox_Contratos.SelectedItem Is Nothing Then
-            Me.con = New Contrato(Me.ListBox_Contratos.SelectedItem.ToString, Me.temporada) 'para obtener un elemento de la listaBox'
+            Dim esc As Escuderia
+            esc = New Escuderia(Me.ListBox_Contratos.SelectedItem.ToString)
+            esc.LeerEscuderia()
+            Me.con = New Contrato(esc, Me.temporada) 'para obtener un elemento de la listaBox'
             Try
                 Me.con.LeerContrato()
             Catch ex As Exception
