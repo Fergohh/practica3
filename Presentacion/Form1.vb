@@ -22,7 +22,7 @@ Public Class Form1
                 p.Habitantes = txtHab.Text
 
 
-                If p.InsertarPersona() <> 1 Then
+                If p.InsertarPais() <> 1 Then
                     MessageBox.Show("INSERT return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -41,7 +41,7 @@ Public Class Form1
             p.Nombre = txtNombre.Text
             p.Habitantes = txtHab.Text
             Try
-                If p.ActualizarPersona() <> 1 Then
+                If p.ActualizarPais() <> 1 Then
                     MessageBox.Show("UPDATE return <> 1", String.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Exit Sub
                 End If
@@ -102,7 +102,7 @@ Public Class Form1
         Me.Numeros_escuderias.Enabled = False
         Me.Numeros_GP.Enabled = False
         Try
-            Me.p.LeerTodasPersonas()
+            Me.p.LeerTodosPaises()
             Me.pi.LeerTodosPilotos()
             Me.es.LeerTodosEscuderias()
             Me.G.LeerTodosGPs()
@@ -302,7 +302,7 @@ Public Class Form1
         If Not Me.ListBox1.SelectedItem Is Nothing Then
             Me.p = New Pais(Me.ListBox1.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
             Try
-                Me.p.LeerPersona()
+                Me.p.LeerPais()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
@@ -316,8 +316,12 @@ Public Class Form1
     Private Sub Añadir_Piloto_Click(sender As Object, e As EventArgs) Handles Añadir_Piloto.Click
         If Me.TextBox_Nombre_Piloto.Text <> String.Empty And Me.TextBox_Apellido_Piloto.Text <> String.Empty And ComboBox_Pais_Piloto.SelectedItem <> String.Empty Then '<> significa !='
             Try
+                Dim pa As Pais
+
                 pi = New Piloto
-                pi.PaisPiloto = ComboBox_Pais_Piloto.SelectedItem
+                pa = New Pais(ComboBox_Pais_Piloto.SelectedItem.ToString)
+                pa.LeerPais()
+                pi.PaisPiloto = pa
                 pi.Nombre = TextBox_Nombre_Piloto.Text
                 pi.Apellido = TextBox_Apellido_Piloto.Text
 

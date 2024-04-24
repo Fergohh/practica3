@@ -14,19 +14,19 @@
         Me.IDPais = id
     End Sub
 
-    Public Sub LeerTodasPersonas()
+    Public Sub LeerTodosPaises()
         Me.PerDAO.LeerTodas()
     End Sub
 
-    Public Sub LeerPersona()
+    Public Sub LeerPais()
         Me.PerDAO.Leer(Me)
     End Sub
 
-    Public Function InsertarPersona() As Integer
+    Public Function InsertarPais() As Integer
         Return Me.PerDAO.Insertar(Me)
     End Function
 
-    Public Function ActualizarPersona() As Integer
+    Public Function ActualizarPais() As Integer
         Return Me.PerDAO.Actualizar(Me)
     End Function
 
