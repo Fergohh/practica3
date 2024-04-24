@@ -1,9 +1,9 @@
 ﻿Public Class PaisDAO
 
-    Public ReadOnly Property Personas As Collection
+    Public ReadOnly Property Paises As Collection
 
     Public Sub New()
-        Me.Personas = New Collection
+        Me.Paises = New Collection
     End Sub
 
     Public Sub LeerTodas()
@@ -14,7 +14,7 @@
             p = New Pais(aux(1).ToString)
             p.Nombre = aux(2).ToString
             p.Habitantes = aux(3).ToString
-            Me.Personas.Add(p)
+            Me.Paises.Add(p)
         Next
     End Sub
 
@@ -24,7 +24,7 @@
         For Each aux In col
             p.Nombre = aux(2).ToString
             p.Habitantes = aux(3).ToString
-            Me.Personas.Add(p)
+            Me.Paises.Add(p)
         Next
     End Sub
 

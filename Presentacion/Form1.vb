@@ -147,9 +147,15 @@ Public Class Form1
             Me.Button_Valores.Visible = False
             Me.Button_Valores.Enabled = False
             Me.Label_Valores.Visible = False
+            For Each pAux In Me.p.PaisDAO.Paises
+                Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
+                Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
+                Me.ComboBox_Pais_Escuderia.Items.Add(pAux.IDPais)
+                Me.ComboBox_GP_Pais.Items.Add(pAux.IDPais)
+            Next
             Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
         End Try
-        For Each pAux In Me.p.PerDAO.Personas
+        For Each pAux In Me.p.PaisDAO.Paises
             Me.ListBox1.Items.Add(pAux.IDPais) 'imprime el id de la persona en la lista con .Items.Add'
             Me.ComboBox_Pais_Piloto.Items.Add(pAux.IDPais)
             Me.ComboBox_Pais_Escuderia.Items.Add(pAux.IDPais)
@@ -210,9 +216,9 @@ Public Class Form1
 
             conAux = New Contrato With {
             .Escuderia = escuderias(i),
-            .Temporada = temporada,
-            .Piloto1 = piloto1,
-            .Piloto2 = piloto2
+            .temporada = temporada,
+            .piloto1 = piloto1,
+            .piloto2 = piloto2
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
@@ -233,7 +239,7 @@ Public Class Form1
 
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
-            .Temporada = temporada,
+            .temporada = temporada,
             .GP = GPAux}
             For i = 0 To (numContratos * 2)
                 PosicionesFinal.Add(i)
@@ -283,7 +289,7 @@ Public Class Form1
         For Each GPAux In GPs
 
             calen = New Calendario With {
-            .Temporada = temporada,
+            .temporada = temporada,
             .GP = GPAux,
             .Orden = i
             }
@@ -639,7 +645,7 @@ Public Class Form1
         If txt <> String.Empty And txt.Length > 2 Then
             txtID.Text = txt.Substring(0, 3).ToUpper
 
-            For Each pAux In Me.p.PerDAO.Personas
+            For Each pAux In Me.p.PaisDAO.Paises
                 If pAux.IDPais = txtID.Text Then
                     txtID.ReadOnly = False
                 Else
