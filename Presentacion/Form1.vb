@@ -210,9 +210,9 @@ Public Class Form1
 
             conAux = New Contrato With {
             .Escuderia = escuderias(i).IDEscuderia,
-            .temporada = temporada,
-            .piloto1 = piloto1.IDPiloto,
-            .piloto2 = piloto2.IDPiloto
+            .Temporada = temporada,
+            .Piloto1 = piloto1,
+            .Piloto2 = piloto2
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
@@ -234,7 +234,7 @@ Public Class Form1
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
             .Temporada = temporada,
-            .GP = GPAux.IDGP}
+            .GP = GPAux}
             For i = 0 To (numContratos * 2)
                 PosicionesFinal.Add(i)
             Next
@@ -284,7 +284,7 @@ Public Class Form1
 
             calen = New Calendario With {
             .Temporada = temporada,
-            .GP = GPAux.IDGP,
+            .GP = GPAux,
             .Orden = i
             }
 

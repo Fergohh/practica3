@@ -3,14 +3,14 @@
     Public Property IDPais As String
     Public Property Nombre As String
     Public Property Habitantes As Integer
-    Public ReadOnly Property PerDAO As PersonaDAO
+    Public ReadOnly Property PerDAO As PaisDAO
 
     Public Sub New()
-        Me.PerDAO = New PersonaDAO
+        Me.PerDAO = New PaisDAO
     End Sub
 
     Public Sub New(id As String)
-        Me.PerDAO = New PersonaDAO
+        Me.PerDAO = New PaisDAO
         Me.IDPais = id
     End Sub
 

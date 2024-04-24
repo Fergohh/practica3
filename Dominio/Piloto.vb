@@ -4,7 +4,7 @@
 
     Public Property Apellido As String
 
-    Public Property PaisPiloto As String
+    Public Property PaisPiloto As Pais
     Public ReadOnly Property PilotoDAO As PilotoDAO 'cereamos objeto tipo PersonaDAO'
 
     Public Sub New()

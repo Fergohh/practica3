@@ -1,6 +1,6 @@
 ﻿Public Class Calendario
     Public Property Temporada As Short ' SmallInt en SQL
-    Public Property GP As Integer
+    Public Property GP As GP
     Public Property Orden As Byte ' TinyInt en SQL
 
     Public ReadOnly Property CalendarioDAO As CalendarioDAO

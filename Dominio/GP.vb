@@ -2,7 +2,7 @@
     Public Property IDGP As Integer
     Public Property DenominacionGP As String
 
-    Public Property PaisGP As String
+    Public Property PaisGP As Pais
 
 
     Public ReadOnly Property GPDAO As GPDAO 'cereamos objeto tipo PersonaDAO'

@@ -1,9 +1,9 @@
 ﻿Public Class Contrato
 
     Public Property Temporada As Integer
-    Public Property Escuderia As Integer
-    Public Property Piloto1 As Integer
-    Public Property Piloto2 As Integer
+    Public Property Escuderia As Escuderia
+    Public Property Piloto1 As Piloto
+    Public Property Piloto2 As Piloto
 
     Public ReadOnly Property ContratoDAO As ContratoDAO 'creamos objeto tipo PersonaDAO'
 
@@ -11,7 +11,7 @@
         Me.ContratoDAO = New ContratoDAO
     End Sub
 
-    Public Sub New(Escuderia As String, Temporada As Integer)
+    Public Sub New(Escuderia As Escuderia, Temporada As Integer)
         Me.ContratoDAO = New ContratoDAO
         Me.Temporada = Temporada
         Me.Escuderia = Escuderia

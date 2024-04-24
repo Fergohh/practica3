@@ -1,8 +1,8 @@
 ﻿Public Class Carreras
 
     Public Property Temporada As Integer
-    Public Property GP As Integer
-    Public Property Piloto As Integer
+    Public Property GP As GP
+    Public Property Piloto As Piloto
     Public Property Posicion As Integer
     Public Property Puntos As Integer
     Public ReadOnly Property CarrerasDAO As CarrerasDAO 'creamos objeto tipo PersonaDAO'
@@ -11,7 +11,7 @@
         Me.CarrerasDAO = New CarrerasDAO
     End Sub
 
-    Public Sub New(temporada As String, Gp As Integer, Piloto As Integer)
+    Public Sub New(temporada As String, Gp As GP, Piloto As Piloto)
         Me.CarrerasDAO = New CarrerasDAO
         Me.Temporada = temporada
         Me.GP = Gp

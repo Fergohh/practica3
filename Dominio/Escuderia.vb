@@ -2,7 +2,7 @@
     Public Property IDEscuderia As Integer
     Public Property Nombre As String
 
-    Public Property PaisEscuderia As String
+    Public Property PaisEscuderia As Pais
 
     Public Property FechaCrec As Date
 
