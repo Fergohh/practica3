@@ -139,6 +139,14 @@ Public Class Form1
 
         Catch ex As Exception
             MessageBox.Show("debes crear primero las escuderias, GPs, Pilotos y Paises", ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Conectar.Enabled = False
+            Conectar.Visible = False
+            Añadir.Enabled = True
+            Me.Numeros_escuderias.Enabled = False
+            Me.Numeros_GP.Enabled = False
+            Me.Button_Valores.Visible = False
+            Me.Button_Valores.Enabled = False
+            Me.Label_Valores.Visible = False
             Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
         End Try
         For Each pAux In Me.p.PerDAO.Personas
