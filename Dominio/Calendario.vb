@@ -9,8 +9,9 @@
         Me.CalendarioDAO = New CalendarioDAO
     End Sub
 
-    Public Sub New(ByVal temporada As Short)
+    Public Sub New(ByVal temporada As Short, ByVal GP As GP)
         Me.Temporada = temporada
+        Me.GP = GP
         Me.CalendarioDAO = New CalendarioDAO
     End Sub
 
@@ -30,7 +31,7 @@
         Return Me.CalendarioDAO.Actualizar(Me)
     End Function
 
-    Public Function BorrarCalendario() As Integer
-        Return Me.CalendarioDAO.Borrar(Me)
+    Public Function BorrarTodosLosCalendarios() As Integer
+        Return Me.CalendarioDAO.BorrarTodos()
     End Function
 End Class

@@ -26,7 +26,7 @@
         Dim col As Collection : Dim aux As Collection
         Dim pi As Piloto
         Dim gp As GP
-        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM carreras WHERE Temporada='" & p.Temporada & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
+        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM carreras WHERE Temporada='" & p.Temporada & "' AND GP='" & p.GP.IDGP & "' AND Piloto='" & p.Piloto.IDPiloto & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
         For Each aux In col
             gp = New GP(aux(2).ToString)
             pi = New Piloto(aux(3).ToString)

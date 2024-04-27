@@ -32,4 +32,8 @@
     Public Function BorrarContrato() As Integer
         Return Me.ContratoDAO.Borrar(Me)
     End Function
+
+    Public Function BorrarTodosLoscontratos() As Integer
+        Return Me.ContratoDAO.BorrarTodos()
+    End Function
 End Class

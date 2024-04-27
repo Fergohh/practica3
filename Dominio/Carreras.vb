@@ -33,4 +33,8 @@
     Public Function BorrarPilotos() As Integer
         Return Me.CarrerasDAO.Borrar(Me)
     End Function
+
+    Public Function BorrarTodasLasCarreras() As Integer
+        Return Me.CarrerasDAO.BorrarTodos()
+    End Function
 End Class

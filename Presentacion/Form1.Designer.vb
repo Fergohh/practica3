@@ -104,35 +104,28 @@ Partial Class Form1
         textBox_Contratos_Escuderia = New TextBox()
         ListBox_Contratos = New ListBox()
         TabPage1 = New TabPage()
+        ListBox_Clasificacion_Escuderias = New ListBox()
         TextBox_Clasificacion_Escuderia = New TextBox()
         TextBox_Clasificacion_Pais = New TextBox()
         TextBox_Clasificacion_Puntos = New TextBox()
-        ListBox_Clasificacion = New ListBox()
+        ListBox_Clasificacion_Pilotos = New ListBox()
         Label20 = New Label()
         Label19 = New Label()
         Label13 = New Label()
         TabPage2 = New TabPage()
-        TabPage3 = New TabPage()
-        TabPage5 = New TabPage()
-        Conectar = New Button()
-        Numeros_escuderias = New NumericUpDown()
-        Numeros_GP = New NumericUpDown()
-        Escuderias = New Label()
-        Label14 = New Label()
-        Button_Valores = New Button()
-        Label_Valores = New Label()
-        ListBox_HistorialPiloto_Piloto = New ListBox()
-        ListBox_HistorialPiloto_Carreras = New ListBox()
-        DateTimePicker_HistorialPiloto_Inicio = New DateTimePicker()
-        DateTimePicker_HistorialPiloto_Fin = New DateTimePicker()
-        Label27 = New Label()
-        Label28 = New Label()
-        Label29 = New Label()
-        Label30 = New Label()
-        Label31 = New Label()
-        TextBox_HistorialPiloto_GP = New TextBox()
-        TextBox_HistorialPiloto_Posicion = New TextBox()
         TextBox_HistorialPiloto_Puntos = New TextBox()
+        TextBox_HistorialPiloto_Posicion = New TextBox()
+        TextBox_HistorialPiloto_GP = New TextBox()
+        Label31 = New Label()
+        Label30 = New Label()
+        Label29 = New Label()
+        Label28 = New Label()
+        Label27 = New Label()
+        DateTimePicker_HistorialPiloto_Fin = New DateTimePicker()
+        DateTimePicker_HistorialPiloto_Inicio = New DateTimePicker()
+        ListBox_HistorialPiloto_Carreras = New ListBox()
+        ListBox_HistorialPiloto_Piloto = New ListBox()
+        TabPage3 = New TabPage()
         TextBox_HistorialEscuderia_Puntos = New TextBox()
         TextBox_HistorialEscuderia_Posicion = New TextBox()
         TextBox_HistorialEscuderia_GP = New TextBox()
@@ -145,19 +138,27 @@ Partial Class Form1
         DateTimePicker_HistorialEscuderia_Inicio = New DateTimePicker()
         ListBox_HistorialEscuderia_Piloto = New ListBox()
         ListBox_HistorialEscuderia_Escuderia = New ListBox()
-        ListBox_Campeones_Pilotos = New ListBox()
-        ListBox_Campeones_Pais = New ListBox()
-        Label37 = New Label()
-        Label38 = New Label()
-        Label39 = New Label()
-        TextBox1 = New TextBox()
-        TextBox2 = New TextBox()
-        TextBox3 = New TextBox()
+        TabPage5 = New TabPage()
         DataGridView_InformeCampeones = New DataGridView()
         TemporadasCampeon = New DataGridViewTextBoxColumn()
         EscuderiaCorria = New DataGridViewTextBoxColumn()
         PuntosObtenidos = New DataGridViewTextBoxColumn()
         CarrerasGanadas = New DataGridViewTextBoxColumn()
+        TextBox3 = New TextBox()
+        TextBox2 = New TextBox()
+        TextBox1 = New TextBox()
+        Label39 = New Label()
+        Label38 = New Label()
+        Label37 = New Label()
+        ListBox_Campeones_Pais = New ListBox()
+        ListBox_Campeones_Pilotos = New ListBox()
+        Conectar = New Button()
+        Numeros_escuderias = New NumericUpDown()
+        Numeros_GP = New NumericUpDown()
+        Escuderias = New Label()
+        Label14 = New Label()
+        Button_Valores = New Button()
+        Label_Valores = New Label()
         TabControl1.SuspendLayout()
         Pais.SuspendLayout()
         Pilotos.SuspendLayout()
@@ -170,9 +171,9 @@ Partial Class Form1
         TabPage2.SuspendLayout()
         TabPage3.SuspendLayout()
         TabPage5.SuspendLayout()
+        CType(DataGridView_InformeCampeones, ComponentModel.ISupportInitialize).BeginInit()
         CType(Numeros_escuderias, ComponentModel.ISupportInitialize).BeginInit()
         CType(Numeros_GP, ComponentModel.ISupportInitialize).BeginInit()
-        CType(DataGridView_InformeCampeones, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' TabControl1
@@ -1011,10 +1012,11 @@ Partial Class Form1
         ' 
         ' TabPage1
         ' 
+        TabPage1.Controls.Add(ListBox_Clasificacion_Escuderias)
         TabPage1.Controls.Add(TextBox_Clasificacion_Escuderia)
         TabPage1.Controls.Add(TextBox_Clasificacion_Pais)
         TabPage1.Controls.Add(TextBox_Clasificacion_Puntos)
-        TabPage1.Controls.Add(ListBox_Clasificacion)
+        TabPage1.Controls.Add(ListBox_Clasificacion_Pilotos)
         TabPage1.Controls.Add(Label20)
         TabPage1.Controls.Add(Label19)
         TabPage1.Controls.Add(Label13)
@@ -1025,6 +1027,15 @@ Partial Class Form1
         TabPage1.TabIndex = 7
         TabPage1.Text = "Clasificacion"
         TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' ListBox_Clasificacion_Escuderias
+        ' 
+        ListBox_Clasificacion_Escuderias.FormattingEnabled = True
+        ListBox_Clasificacion_Escuderias.ItemHeight = 15
+        ListBox_Clasificacion_Escuderias.Location = New Point(16, 211)
+        ListBox_Clasificacion_Escuderias.Name = "ListBox_Clasificacion_Escuderias"
+        ListBox_Clasificacion_Escuderias.Size = New Size(175, 154)
+        ListBox_Clasificacion_Escuderias.TabIndex = 7
         ' 
         ' TextBox_Clasificacion_Escuderia
         ' 
@@ -1050,14 +1061,14 @@ Partial Class Form1
         TextBox_Clasificacion_Puntos.Size = New Size(153, 23)
         TextBox_Clasificacion_Puntos.TabIndex = 4
         ' 
-        ' ListBox_Clasificacion
+        ' ListBox_Clasificacion_Pilotos
         ' 
-        ListBox_Clasificacion.FormattingEnabled = True
-        ListBox_Clasificacion.ItemHeight = 15
-        ListBox_Clasificacion.Location = New Point(16, 24)
-        ListBox_Clasificacion.Name = "ListBox_Clasificacion"
-        ListBox_Clasificacion.Size = New Size(175, 349)
-        ListBox_Clasificacion.TabIndex = 3
+        ListBox_Clasificacion_Pilotos.FormattingEnabled = True
+        ListBox_Clasificacion_Pilotos.ItemHeight = 15
+        ListBox_Clasificacion_Pilotos.Location = New Point(16, 24)
+        ListBox_Clasificacion_Pilotos.Name = "ListBox_Clasificacion_Pilotos"
+        ListBox_Clasificacion_Pilotos.Size = New Size(175, 154)
+        ListBox_Clasificacion_Pilotos.TabIndex = 3
         ' 
         ' Label20
         ' 
@@ -1108,6 +1119,107 @@ Partial Class Form1
         TabPage2.Text = "Historial piloto"
         TabPage2.UseVisualStyleBackColor = True
         ' 
+        ' TextBox_HistorialPiloto_Puntos
+        ' 
+        TextBox_HistorialPiloto_Puntos.Location = New Point(331, 281)
+        TextBox_HistorialPiloto_Puntos.Name = "TextBox_HistorialPiloto_Puntos"
+        TextBox_HistorialPiloto_Puntos.ReadOnly = True
+        TextBox_HistorialPiloto_Puntos.Size = New Size(182, 23)
+        TextBox_HistorialPiloto_Puntos.TabIndex = 11
+        ' 
+        ' TextBox_HistorialPiloto_Posicion
+        ' 
+        TextBox_HistorialPiloto_Posicion.Location = New Point(331, 209)
+        TextBox_HistorialPiloto_Posicion.Name = "TextBox_HistorialPiloto_Posicion"
+        TextBox_HistorialPiloto_Posicion.ReadOnly = True
+        TextBox_HistorialPiloto_Posicion.Size = New Size(182, 23)
+        TextBox_HistorialPiloto_Posicion.TabIndex = 10
+        ' 
+        ' TextBox_HistorialPiloto_GP
+        ' 
+        TextBox_HistorialPiloto_GP.Location = New Point(331, 138)
+        TextBox_HistorialPiloto_GP.Name = "TextBox_HistorialPiloto_GP"
+        TextBox_HistorialPiloto_GP.ReadOnly = True
+        TextBox_HistorialPiloto_GP.Size = New Size(182, 23)
+        TextBox_HistorialPiloto_GP.TabIndex = 9
+        ' 
+        ' Label31
+        ' 
+        Label31.AutoSize = True
+        Label31.Location = New Point(260, 284)
+        Label31.Name = "Label31"
+        Label31.Size = New Size(44, 15)
+        Label31.TabIndex = 8
+        Label31.Text = "Puntos"
+        ' 
+        ' Label30
+        ' 
+        Label30.AutoSize = True
+        Label30.Location = New Point(252, 212)
+        Label30.Name = "Label30"
+        Label30.Size = New Size(52, 15)
+        Label30.TabIndex = 7
+        Label30.Text = "Posicion"
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.Location = New Point(231, 141)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(73, 15)
+        Label29.TabIndex = 6
+        Label29.Text = "Gran Premio"
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.Location = New Point(423, 24)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(55, 15)
+        Label28.TabIndex = 5
+        Label28.Text = "Fecha fin"
+        ' 
+        ' Label27
+        ' 
+        Label27.AutoSize = True
+        Label27.Location = New Point(239, 24)
+        Label27.Name = "Label27"
+        Label27.Size = New Size(70, 15)
+        Label27.TabIndex = 4
+        Label27.Text = "Fecha inicio"
+        ' 
+        ' DateTimePicker_HistorialPiloto_Fin
+        ' 
+        DateTimePicker_HistorialPiloto_Fin.Location = New Point(371, 42)
+        DateTimePicker_HistorialPiloto_Fin.Name = "DateTimePicker_HistorialPiloto_Fin"
+        DateTimePicker_HistorialPiloto_Fin.Size = New Size(151, 23)
+        DateTimePicker_HistorialPiloto_Fin.TabIndex = 3
+        ' 
+        ' DateTimePicker_HistorialPiloto_Inicio
+        ' 
+        DateTimePicker_HistorialPiloto_Inicio.Location = New Point(204, 42)
+        DateTimePicker_HistorialPiloto_Inicio.Name = "DateTimePicker_HistorialPiloto_Inicio"
+        DateTimePicker_HistorialPiloto_Inicio.Size = New Size(150, 23)
+        DateTimePicker_HistorialPiloto_Inicio.TabIndex = 2
+        ' 
+        ' ListBox_HistorialPiloto_Carreras
+        ' 
+        ListBox_HistorialPiloto_Carreras.FormattingEnabled = True
+        ListBox_HistorialPiloto_Carreras.ItemHeight = 15
+        ListBox_HistorialPiloto_Carreras.Location = New Point(36, 212)
+        ListBox_HistorialPiloto_Carreras.Name = "ListBox_HistorialPiloto_Carreras"
+        ListBox_HistorialPiloto_Carreras.Size = New Size(150, 154)
+        ListBox_HistorialPiloto_Carreras.TabIndex = 1
+        ' 
+        ' ListBox_HistorialPiloto_Piloto
+        ' 
+        ListBox_HistorialPiloto_Piloto.FormattingEnabled = True
+        ListBox_HistorialPiloto_Piloto.ItemHeight = 15
+        ListBox_HistorialPiloto_Piloto.Location = New Point(34, 33)
+        ListBox_HistorialPiloto_Piloto.Name = "ListBox_HistorialPiloto_Piloto"
+        ListBox_HistorialPiloto_Piloto.Size = New Size(153, 154)
+        ListBox_HistorialPiloto_Piloto.TabIndex = 0
+        ' 
         ' TabPage3
         ' 
         TabPage3.Controls.Add(TextBox_HistorialEscuderia_Puntos)
@@ -1129,198 +1241,6 @@ Partial Class Form1
         TabPage3.TabIndex = 9
         TabPage3.Text = "Historial escuderia"
         TabPage3.UseVisualStyleBackColor = True
-        ' 
-        ' TabPage5
-        ' 
-        TabPage5.Controls.Add(DataGridView_InformeCampeones)
-        TabPage5.Controls.Add(TextBox3)
-        TabPage5.Controls.Add(TextBox2)
-        TabPage5.Controls.Add(TextBox1)
-        TabPage5.Controls.Add(Label39)
-        TabPage5.Controls.Add(Label38)
-        TabPage5.Controls.Add(Label37)
-        TabPage5.Controls.Add(ListBox_Campeones_Pais)
-        TabPage5.Controls.Add(ListBox_Campeones_Pilotos)
-        TabPage5.Location = New Point(4, 24)
-        TabPage5.Name = "TabPage5"
-        TabPage5.Padding = New Padding(3)
-        TabPage5.Size = New Size(537, 389)
-        TabPage5.TabIndex = 10
-        TabPage5.Text = "Informe campeones"
-        TabPage5.UseVisualStyleBackColor = True
-        ' 
-        ' Conectar
-        ' 
-        Conectar.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Conectar.Location = New Point(599, 372)
-        Conectar.Margin = New Padding(3, 2, 3, 2)
-        Conectar.Name = "Conectar"
-        Conectar.Size = New Size(189, 60)
-        Conectar.TabIndex = 1
-        Conectar.Text = "Conectar!!!"
-        Conectar.UseVisualStyleBackColor = True
-        ' 
-        ' Numeros_escuderias
-        ' 
-        Numeros_escuderias.Enabled = False
-        Numeros_escuderias.Location = New Point(657, 330)
-        Numeros_escuderias.Margin = New Padding(3, 2, 3, 2)
-        Numeros_escuderias.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Numeros_escuderias.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
-        Numeros_escuderias.Name = "Numeros_escuderias"
-        Numeros_escuderias.Size = New Size(131, 23)
-        Numeros_escuderias.TabIndex = 2
-        Numeros_escuderias.Value = New Decimal(New Integer() {5, 0, 0, 0})
-        ' 
-        ' Numeros_GP
-        ' 
-        Numeros_GP.Enabled = False
-        Numeros_GP.Location = New Point(657, 303)
-        Numeros_GP.Margin = New Padding(3, 2, 3, 2)
-        Numeros_GP.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
-        Numeros_GP.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
-        Numeros_GP.Name = "Numeros_GP"
-        Numeros_GP.Size = New Size(131, 23)
-        Numeros_GP.TabIndex = 3
-        Numeros_GP.Value = New Decimal(New Integer() {10, 0, 0, 0})
-        ' 
-        ' Escuderias
-        ' 
-        Escuderias.AutoSize = True
-        Escuderias.Location = New Point(589, 332)
-        Escuderias.Name = "Escuderias"
-        Escuderias.Size = New Size(62, 15)
-        Escuderias.TabIndex = 4
-        Escuderias.Text = "Escuderias"
-        ' 
-        ' Label14
-        ' 
-        Label14.AutoSize = True
-        Label14.Location = New Point(624, 305)
-        Label14.Name = "Label14"
-        Label14.Size = New Size(27, 15)
-        Label14.TabIndex = 5
-        Label14.Text = "GPs"
-        ' 
-        ' Button_Valores
-        ' 
-        Button_Valores.Location = New Point(636, 122)
-        Button_Valores.Margin = New Padding(3, 2, 3, 2)
-        Button_Valores.Name = "Button_Valores"
-        Button_Valores.Size = New Size(115, 36)
-        Button_Valores.TabIndex = 6
-        Button_Valores.Text = "SI QUIERO"
-        Button_Valores.UseVisualStyleBackColor = True
-        ' 
-        ' Label_Valores
-        ' 
-        Label_Valores.AutoSize = True
-        Label_Valores.Location = New Point(590, 46)
-        Label_Valores.Name = "Label_Valores"
-        Label_Valores.Size = New Size(198, 60)
-        Label_Valores.TabIndex = 7
-        Label_Valores.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
-        ' 
-        ' ListBox_HistorialPiloto_Piloto
-        ' 
-        ListBox_HistorialPiloto_Piloto.FormattingEnabled = True
-        ListBox_HistorialPiloto_Piloto.ItemHeight = 15
-        ListBox_HistorialPiloto_Piloto.Location = New Point(34, 33)
-        ListBox_HistorialPiloto_Piloto.Name = "ListBox_HistorialPiloto_Piloto"
-        ListBox_HistorialPiloto_Piloto.Size = New Size(153, 154)
-        ListBox_HistorialPiloto_Piloto.TabIndex = 0
-        ' 
-        ' ListBox_HistorialPiloto_Carreras
-        ' 
-        ListBox_HistorialPiloto_Carreras.FormattingEnabled = True
-        ListBox_HistorialPiloto_Carreras.ItemHeight = 15
-        ListBox_HistorialPiloto_Carreras.Location = New Point(36, 212)
-        ListBox_HistorialPiloto_Carreras.Name = "ListBox_HistorialPiloto_Carreras"
-        ListBox_HistorialPiloto_Carreras.Size = New Size(150, 154)
-        ListBox_HistorialPiloto_Carreras.TabIndex = 1
-        ' 
-        ' DateTimePicker_HistorialPiloto_Inicio
-        ' 
-        DateTimePicker_HistorialPiloto_Inicio.Location = New Point(204, 42)
-        DateTimePicker_HistorialPiloto_Inicio.Name = "DateTimePicker_HistorialPiloto_Inicio"
-        DateTimePicker_HistorialPiloto_Inicio.Size = New Size(150, 23)
-        DateTimePicker_HistorialPiloto_Inicio.TabIndex = 2
-        ' 
-        ' DateTimePicker_HistorialPiloto_Fin
-        ' 
-        DateTimePicker_HistorialPiloto_Fin.Location = New Point(371, 42)
-        DateTimePicker_HistorialPiloto_Fin.Name = "DateTimePicker_HistorialPiloto_Fin"
-        DateTimePicker_HistorialPiloto_Fin.Size = New Size(151, 23)
-        DateTimePicker_HistorialPiloto_Fin.TabIndex = 3
-        ' 
-        ' Label27
-        ' 
-        Label27.AutoSize = True
-        Label27.Location = New Point(239, 24)
-        Label27.Name = "Label27"
-        Label27.Size = New Size(70, 15)
-        Label27.TabIndex = 4
-        Label27.Text = "Fecha inicio"
-        ' 
-        ' Label28
-        ' 
-        Label28.AutoSize = True
-        Label28.Location = New Point(423, 24)
-        Label28.Name = "Label28"
-        Label28.Size = New Size(55, 15)
-        Label28.TabIndex = 5
-        Label28.Text = "Fecha fin"
-        ' 
-        ' Label29
-        ' 
-        Label29.AutoSize = True
-        Label29.Location = New Point(231, 141)
-        Label29.Name = "Label29"
-        Label29.Size = New Size(73, 15)
-        Label29.TabIndex = 6
-        Label29.Text = "Gran Premio"
-        ' 
-        ' Label30
-        ' 
-        Label30.AutoSize = True
-        Label30.Location = New Point(252, 212)
-        Label30.Name = "Label30"
-        Label30.Size = New Size(52, 15)
-        Label30.TabIndex = 7
-        Label30.Text = "Posicion"
-        ' 
-        ' Label31
-        ' 
-        Label31.AutoSize = True
-        Label31.Location = New Point(260, 284)
-        Label31.Name = "Label31"
-        Label31.Size = New Size(44, 15)
-        Label31.TabIndex = 8
-        Label31.Text = "Puntos"
-        ' 
-        ' TextBox_HistorialPiloto_GP
-        ' 
-        TextBox_HistorialPiloto_GP.Location = New Point(331, 138)
-        TextBox_HistorialPiloto_GP.Name = "TextBox_HistorialPiloto_GP"
-        TextBox_HistorialPiloto_GP.ReadOnly = True
-        TextBox_HistorialPiloto_GP.Size = New Size(182, 23)
-        TextBox_HistorialPiloto_GP.TabIndex = 9
-        ' 
-        ' TextBox_HistorialPiloto_Posicion
-        ' 
-        TextBox_HistorialPiloto_Posicion.Location = New Point(331, 209)
-        TextBox_HistorialPiloto_Posicion.Name = "TextBox_HistorialPiloto_Posicion"
-        TextBox_HistorialPiloto_Posicion.ReadOnly = True
-        TextBox_HistorialPiloto_Posicion.Size = New Size(182, 23)
-        TextBox_HistorialPiloto_Posicion.TabIndex = 10
-        ' 
-        ' TextBox_HistorialPiloto_Puntos
-        ' 
-        TextBox_HistorialPiloto_Puntos.Location = New Point(331, 281)
-        TextBox_HistorialPiloto_Puntos.Name = "TextBox_HistorialPiloto_Puntos"
-        TextBox_HistorialPiloto_Puntos.ReadOnly = True
-        TextBox_HistorialPiloto_Puntos.Size = New Size(182, 23)
-        TextBox_HistorialPiloto_Puntos.TabIndex = 11
         ' 
         ' TextBox_HistorialEscuderia_Puntos
         ' 
@@ -1423,71 +1343,24 @@ Partial Class Form1
         ListBox_HistorialEscuderia_Escuderia.Size = New Size(153, 154)
         ListBox_HistorialEscuderia_Escuderia.TabIndex = 12
         ' 
-        ' ListBox_Campeones_Pilotos
+        ' TabPage5
         ' 
-        ListBox_Campeones_Pilotos.FormattingEnabled = True
-        ListBox_Campeones_Pilotos.ItemHeight = 15
-        ListBox_Campeones_Pilotos.Location = New Point(26, 200)
-        ListBox_Campeones_Pilotos.Name = "ListBox_Campeones_Pilotos"
-        ListBox_Campeones_Pilotos.Size = New Size(136, 154)
-        ListBox_Campeones_Pilotos.TabIndex = 0
-        ' 
-        ' ListBox_Campeones_Pais
-        ' 
-        ListBox_Campeones_Pais.FormattingEnabled = True
-        ListBox_Campeones_Pais.ItemHeight = 15
-        ListBox_Campeones_Pais.Location = New Point(26, 22)
-        ListBox_Campeones_Pais.Name = "ListBox_Campeones_Pais"
-        ListBox_Campeones_Pais.Size = New Size(136, 154)
-        ListBox_Campeones_Pais.TabIndex = 1
-        ' 
-        ' Label37
-        ' 
-        Label37.AutoSize = True
-        Label37.Location = New Point(214, 45)
-        Label37.Name = "Label37"
-        Label37.Size = New Size(52, 15)
-        Label37.TabIndex = 2
-        Label37.Text = "ID Piloto"
-        ' 
-        ' Label38
-        ' 
-        Label38.AutoSize = True
-        Label38.Location = New Point(210, 84)
-        Label38.Name = "Label38"
-        Label38.Size = New Size(51, 15)
-        Label38.TabIndex = 3
-        Label38.Text = "Nombre"
-        ' 
-        ' Label39
-        ' 
-        Label39.AutoSize = True
-        Label39.Location = New Point(210, 125)
-        Label39.Name = "Label39"
-        Label39.Size = New Size(56, 15)
-        Label39.TabIndex = 4
-        Label39.Text = "Apellidos"
-        ' 
-        ' TextBox1
-        ' 
-        TextBox1.Location = New Point(281, 37)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(213, 23)
-        TextBox1.TabIndex = 5
-        ' 
-        ' TextBox2
-        ' 
-        TextBox2.Location = New Point(281, 81)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(213, 23)
-        TextBox2.TabIndex = 6
-        ' 
-        ' TextBox3
-        ' 
-        TextBox3.Location = New Point(281, 122)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(213, 23)
-        TextBox3.TabIndex = 7
+        TabPage5.Controls.Add(DataGridView_InformeCampeones)
+        TabPage5.Controls.Add(TextBox3)
+        TabPage5.Controls.Add(TextBox2)
+        TabPage5.Controls.Add(TextBox1)
+        TabPage5.Controls.Add(Label39)
+        TabPage5.Controls.Add(Label38)
+        TabPage5.Controls.Add(Label37)
+        TabPage5.Controls.Add(ListBox_Campeones_Pais)
+        TabPage5.Controls.Add(ListBox_Campeones_Pilotos)
+        TabPage5.Location = New Point(4, 24)
+        TabPage5.Name = "TabPage5"
+        TabPage5.Padding = New Padding(3)
+        TabPage5.Size = New Size(537, 389)
+        TabPage5.TabIndex = 10
+        TabPage5.Text = "Informe campeones"
+        TabPage5.UseVisualStyleBackColor = True
         ' 
         ' DataGridView_InformeCampeones
         ' 
@@ -1495,7 +1368,7 @@ Partial Class Form1
         DataGridView_InformeCampeones.AllowUserToDeleteRows = False
         DataGridView_InformeCampeones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView_InformeCampeones.Columns.AddRange(New DataGridViewColumn() {TemporadasCampeon, EscuderiaCorria, PuntosObtenidos, CarrerasGanadas})
-        DataGridView_InformeCampeones.Location = New Point(186, 200)
+        DataGridView_InformeCampeones.Location = New Point(184, 200)
         DataGridView_InformeCampeones.Name = "DataGridView_InformeCampeones"
         DataGridView_InformeCampeones.ReadOnly = True
         DataGridView_InformeCampeones.Size = New Size(335, 154)
@@ -1524,6 +1397,144 @@ Partial Class Form1
         CarrerasGanadas.HeaderText = "Carreras ganadas"
         CarrerasGanadas.Name = "CarrerasGanadas"
         CarrerasGanadas.ReadOnly = True
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.Location = New Point(281, 122)
+        TextBox3.Name = "TextBox3"
+        TextBox3.Size = New Size(213, 23)
+        TextBox3.TabIndex = 7
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(281, 81)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(213, 23)
+        TextBox2.TabIndex = 6
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(281, 37)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(213, 23)
+        TextBox1.TabIndex = 5
+        ' 
+        ' Label39
+        ' 
+        Label39.AutoSize = True
+        Label39.Location = New Point(210, 125)
+        Label39.Name = "Label39"
+        Label39.Size = New Size(56, 15)
+        Label39.TabIndex = 4
+        Label39.Text = "Apellidos"
+        ' 
+        ' Label38
+        ' 
+        Label38.AutoSize = True
+        Label38.Location = New Point(210, 84)
+        Label38.Name = "Label38"
+        Label38.Size = New Size(51, 15)
+        Label38.TabIndex = 3
+        Label38.Text = "Nombre"
+        ' 
+        ' Label37
+        ' 
+        Label37.AutoSize = True
+        Label37.Location = New Point(214, 45)
+        Label37.Name = "Label37"
+        Label37.Size = New Size(52, 15)
+        Label37.TabIndex = 2
+        Label37.Text = "ID Piloto"
+        ' 
+        ' ListBox_Campeones_Pais
+        ' 
+        ListBox_Campeones_Pais.FormattingEnabled = True
+        ListBox_Campeones_Pais.ItemHeight = 15
+        ListBox_Campeones_Pais.Location = New Point(26, 22)
+        ListBox_Campeones_Pais.Name = "ListBox_Campeones_Pais"
+        ListBox_Campeones_Pais.Size = New Size(136, 154)
+        ListBox_Campeones_Pais.TabIndex = 1
+        ' 
+        ' ListBox_Campeones_Pilotos
+        ' 
+        ListBox_Campeones_Pilotos.FormattingEnabled = True
+        ListBox_Campeones_Pilotos.ItemHeight = 15
+        ListBox_Campeones_Pilotos.Location = New Point(26, 200)
+        ListBox_Campeones_Pilotos.Name = "ListBox_Campeones_Pilotos"
+        ListBox_Campeones_Pilotos.Size = New Size(136, 154)
+        ListBox_Campeones_Pilotos.TabIndex = 0
+        ' 
+        ' Conectar
+        ' 
+        Conectar.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Conectar.Location = New Point(599, 372)
+        Conectar.Margin = New Padding(3, 2, 3, 2)
+        Conectar.Name = "Conectar"
+        Conectar.Size = New Size(189, 60)
+        Conectar.TabIndex = 1
+        Conectar.Text = "Conectar!!!"
+        Conectar.UseVisualStyleBackColor = True
+        ' 
+        ' Numeros_escuderias
+        ' 
+        Numeros_escuderias.Enabled = False
+        Numeros_escuderias.Location = New Point(657, 330)
+        Numeros_escuderias.Margin = New Padding(3, 2, 3, 2)
+        Numeros_escuderias.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Numeros_escuderias.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
+        Numeros_escuderias.Name = "Numeros_escuderias"
+        Numeros_escuderias.Size = New Size(131, 23)
+        Numeros_escuderias.TabIndex = 2
+        Numeros_escuderias.Value = New Decimal(New Integer() {5, 0, 0, 0})
+        ' 
+        ' Numeros_GP
+        ' 
+        Numeros_GP.Enabled = False
+        Numeros_GP.Location = New Point(657, 303)
+        Numeros_GP.Margin = New Padding(3, 2, 3, 2)
+        Numeros_GP.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
+        Numeros_GP.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Numeros_GP.Name = "Numeros_GP"
+        Numeros_GP.Size = New Size(131, 23)
+        Numeros_GP.TabIndex = 3
+        Numeros_GP.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        ' 
+        ' Escuderias
+        ' 
+        Escuderias.AutoSize = True
+        Escuderias.Location = New Point(589, 332)
+        Escuderias.Name = "Escuderias"
+        Escuderias.Size = New Size(62, 15)
+        Escuderias.TabIndex = 4
+        Escuderias.Text = "Escuderias"
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Location = New Point(624, 305)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(27, 15)
+        Label14.TabIndex = 5
+        Label14.Text = "GPs"
+        ' 
+        ' Button_Valores
+        ' 
+        Button_Valores.Location = New Point(636, 122)
+        Button_Valores.Margin = New Padding(3, 2, 3, 2)
+        Button_Valores.Name = "Button_Valores"
+        Button_Valores.Size = New Size(115, 36)
+        Button_Valores.TabIndex = 6
+        Button_Valores.Text = "SI QUIERO"
+        Button_Valores.UseVisualStyleBackColor = True
+        ' 
+        ' Label_Valores
+        ' 
+        Label_Valores.AutoSize = True
+        Label_Valores.Location = New Point(590, 46)
+        Label_Valores.Name = "Label_Valores"
+        Label_Valores.Size = New Size(198, 60)
+        Label_Valores.TabIndex = 7
+        Label_Valores.Text = "Si quieres elegir los valores " & vbCrLf & "de las escuderias y las GPs " & vbCrLf & "haga clicl en el boton ""Si quiero""" & vbCrLf & "Sino haga click en el boton conectar" & vbCrLf
         ' 
         ' Form1
         ' 
@@ -1564,9 +1575,9 @@ Partial Class Form1
         TabPage3.PerformLayout()
         TabPage5.ResumeLayout(False)
         TabPage5.PerformLayout()
+        CType(DataGridView_InformeCampeones, ComponentModel.ISupportInitialize).EndInit()
         CType(Numeros_escuderias, ComponentModel.ISupportInitialize).EndInit()
         CType(Numeros_GP, ComponentModel.ISupportInitialize).EndInit()
-        CType(DataGridView_InformeCampeones, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -1652,7 +1663,7 @@ Partial Class Form1
     Friend WithEvents TextBox_Clasificacion_Escuderia As TextBox
     Friend WithEvents TextBox_Clasificacion_Pais As TextBox
     Friend WithEvents TextBox_Clasificacion_Puntos As TextBox
-    Friend WithEvents ListBox_Clasificacion As ListBox
+    Friend WithEvents ListBox_Clasificacion_Pilotos As ListBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Label13 As Label
@@ -1707,5 +1718,6 @@ Partial Class Form1
     Friend WithEvents EscuderiaCorria As DataGridViewTextBoxColumn
     Friend WithEvents PuntosObtenidos As DataGridViewTextBoxColumn
     Friend WithEvents CarrerasGanadas As DataGridViewTextBoxColumn
+    Friend WithEvents ListBox_Clasificacion_Escuderias As ListBox
 
 End Class

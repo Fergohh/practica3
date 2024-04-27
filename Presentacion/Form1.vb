@@ -1,5 +1,6 @@
 ﻿Imports System.Globalization
 Imports System.Runtime.InteropServices.Marshalling
+Imports System.Xml.XPath
 
 Public Class Form1
     Dim p As Pais
@@ -131,7 +132,10 @@ Public Class Form1
             generarRandomContratos(Escuderias)
             Me.ListBox_Contratos.Items.Clear()
             For Each conAux In Me.con.ContratoDAO.Contratos
-                Me.ListBox_Contratos.Items.Add(conAux.Escuderia) 'imprime el id de la persona en la lista con .Items.Add'
+                Me.ListBox_Contratos.Items.Add(conAux.Escuderia.IDEscuderia) 'imprime el id de la persona en la lista con .Items.Add'
+                Me.ListBox_HistorialEscuderia_Escuderia.Items.Add(conAux.Escuderia.IDEscuderia)
+                Me.ListBox_HistorialPiloto_Piloto.Items.Add(conAux.Piloto1.IDPiloto)
+                Me.ListBox_HistorialPiloto_Piloto.Items.Add(conAux.Piloto2.IDPiloto)
             Next
             Me.c.CarrerasDAO.BorrarTodos()
             generarRandomCalendarios(GPs)
@@ -171,19 +175,24 @@ Public Class Form1
             Me.ListBox_GP.Items.Add(GAux.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each caAux In Me.ca.CalendarioDAO.Calendarios
-            Me.ListBox_Calendario.Items.Add(caAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
+            Me.ListBox_Calendario.Items.Add(caAux.GP.IDGP) 'imprime el id de la persona en la lista con .Items.Add'
         Next
         For Each cAux In Me.c.CarrerasDAO.Carrera
             Me.ListBox_Carreras.Items.Add(cAux.Temporada) 'imprime el id de la persona en la lista con .Items.Add'
         Next
+
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
+        GenerarInformeFinal()
+
         Me.Numeros_escuderias.Enabled = False
         Me.Numeros_GP.Enabled = False
         Me.Button_Valores.Visible = False
         Me.Button_Valores.Enabled = False
         Me.Label_Valores.Visible = False
+
+
     End Sub
 
     Private Sub generarRandomContratos(escuderias As List(Of Escuderia))
@@ -216,9 +225,9 @@ Public Class Form1
 
             conAux = New Contrato With {
             .Escuderia = escuderias(i),
-            .temporada = temporada,
-            .piloto1 = piloto1,
-            .piloto2 = piloto2
+            .Temporada = temporada,
+            .Piloto1 = piloto1,
+            .Piloto2 = piloto2
             }
             Me.con.ContratoDAO.Contratos.Add(conAux)
             Me.con.ContratoDAO.Insertar(conAux)
@@ -239,7 +248,7 @@ Public Class Form1
 
         For Each GPAux In GPs
             Dim carrera As New Carreras With {
-            .temporada = temporada,
+            .Temporada = temporada,
             .GP = GPAux}
             For i = 0 To (numContratos * 2)
                 PosicionesFinal.Add(i)
@@ -289,7 +298,7 @@ Public Class Form1
         For Each GPAux In GPs
 
             calen = New Calendario With {
-            .temporada = temporada,
+            .Temporada = temporada,
             .GP = GPAux,
             .Orden = i
             }
@@ -428,7 +437,7 @@ Public Class Form1
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.TextBox_ID_Piloto.Text = Me.pi.IDPiloto.ToString
-            Me.ComboBox_Pais_Piloto.SelectedItem = Me.pi.PaisPiloto
+            Me.ComboBox_Pais_Piloto.SelectedItem = Me.pi.PaisPiloto.IDPais
             Me.TextBox_Nombre_Piloto.Text = Me.pi.Nombre.ToString
             Me.TextBox_Apellido_Piloto.Text = Me.pi.Apellido.ToString
 
@@ -453,8 +462,7 @@ Public Class Form1
             End Try
             Me.TextBox_ID_Escuderia.Text = Me.es.IDEscuderia.ToString
             Me.DateTimePicker_Escuderia.Value = Me.es.FechaCrec
-            Dim pais As Pais = Me.es.PaisEscuderia
-            Me.ComboBox_Pais_Escuderia.SelectedItem = pais
+            Me.ComboBox_Pais_Escuderia.SelectedItem = Me.es.PaisEscuderia.IDPais
             Me.TextBox_Nombre_Escuderia.Text = Me.es.Nombre.ToString
         End If
     End Sub
@@ -550,7 +558,7 @@ Public Class Form1
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
             Me.TextBox_GP_ID.Text = Me.G.IDGP.ToString
-            Me.ComboBox_GP_Pais.SelectedItem = Me.G.PaisGP
+            Me.ComboBox_GP_Pais.SelectedItem = Me.G.PaisGP.IDPais
             Me.TextBox_GP_Denominacion.Text = Me.G.DenominacionGP.ToString
 
 
@@ -636,14 +644,16 @@ Public Class Form1
 
     Private Sub ListBox_Calendario_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Calendario.SelectedIndexChanged
         If Not Me.ListBox_Calendario.SelectedItem Is Nothing Then
-            Me.ca = New Calendario(Me.ListBox_Calendario.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Dim gp As New GP(Me.ListBox_Calendario.SelectedItem.ToString)
+            gp.LeerGP()
+            Me.ca = New Calendario(temporada, gp) 'para obtener un elemento de la listaBox'
             Try
                 Me.ca.LeerCalendario()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
-            Me.TextBox_GP_Calendario.Text = Me.ca.GP.ToString
+            Me.TextBox_GP_Calendario.Text = Me.ca.Temporada.ToString
             Me.TextBox_Orden_Calendario.Text = Me.ca.Orden.ToString
 
 
@@ -768,68 +778,122 @@ Public Class Form1
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub 'si hay algo raro que salte y vuelva a ejecutar'
             End Try
-            Me.textBox_Contratos_Escuderia.Text = Me.con.Escuderia.ToString
+            Me.textBox_Contratos_Escuderia.Text = Me.con.Escuderia.IDEscuderia.ToString
             Me.textBox_Contratos_Temporada.Text = Me.temporada.ToString
-            Me.textBox_Contratos_Piloto1.Text = Me.con.Piloto1.ToString
-            Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.ToString
+            Me.textBox_Contratos_Piloto1.Text = Me.con.Piloto1.IDPiloto.ToString
+            Me.textBox_Contratos_Piloto2.Text = Me.con.Piloto2.IDPiloto.ToString
         End If
     End Sub
 
     Public Sub GenerarInformeFinal()
-        ' Leer todos los datos necesarios usando instancias existentes
-        Me.pi.PilotoDAO.LeerTodas()
-        Me.c.CarrerasDAO.LeerTodas()
-        Me.es.EscuderiaDAO.LeerTodas()
-
-        ' Diccionarios para almacenar puntos y posiciones
-        Dim puntosPilotos As New Dictionary(Of String, Tuple(Of Integer, Integer()))
-        Dim puntosEscuderias As New Dictionary(Of String, Tuple(Of Integer, Integer()))
-
-        ' Calcular los puntos de cada piloto y contar posiciones
+        Dim piAux As Piloto
+        Dim puntos As List(Of KeyValuePair(Of Integer, Piloto)) = New List(Of KeyValuePair(Of Integer, Piloto))
+        Dim puntosPiloto As Integer = 0
+        Dim carrera As Carreras
         For Each carrera In Me.c.CarrerasDAO.Carrera
-            Dim piloto As String = carrera.Piloto
-            Dim puntos As Integer = Convert.ToInt32(carrera.Puntos)
-            Dim posicion As Integer = Convert.ToInt32(carrera.Posicion)
+            piAux = New Piloto(carrera.Piloto.IDPiloto)
+            piAux.LeerPilotos()
 
-            If Not puntosPilotos.ContainsKey(piloto) Then
-                ' Inicializar con 0 puntos y un array de enteros para contar posiciones
-                puntosPilotos(piloto) = New Tuple(Of Integer, Integer())(0, New Integer(20) {})
-            End If
-
-            ' Actualizar puntos y posición
-            puntosPilotos(piloto) = New Tuple(Of Integer, Integer())(puntosPilotos(piloto).Item1 + puntos, puntosPilotos(piloto).Item2)
-            puntosPilotos(piloto).Item2(posicion - 1) += 1
+            Dim kvp As KeyValuePair(Of Integer, Piloto) = New KeyValuePair(Of Integer, Piloto)(puntosPiloto, piAux)
+            puntos.Add(kvp)
         Next
 
-        ' Similar para escuderías
-        For Each carrera In Me.c.CarrerasDAO.Carrera
-            Dim escuderia As String = carrera.Escuderia
-            Dim puntos As Integer = Convert.ToInt32(carrera.Puntos)
-            Dim posicion As Integer = Convert.ToInt32(carrera.Posicion)
+        puntos.Sort(Function(x, y) x.Key.CompareTo(y.Key))
+        puntos.Reverse()
 
-            If Not puntosEscuderias.ContainsKey(escuderia) Then
-                puntosEscuderias(escuderia) = New Tuple(Of Integer, Integer())(0, New Integer(20) {})
-            End If
+        Dim valores As KeyValuePair(Of Integer, Piloto)
 
-            puntosEscuderias(escuderia) = New Tuple(Of Integer, Integer())(puntosEscuderias(escuderia).Item1 + puntos, puntosEscuderias(escuderia).Item2)
-            puntosEscuderias(escuderia).Item2(posicion - 1) += 1
+        For Each valores In puntos
+            ListBox_Clasificacion_Pilotos.Items.Add(valores)
         Next
 
-        ' Determinar el campeón de pilotos y escuderías con desempate
-        Dim campeonPiloto As String = puntosPilotos.OrderByDescending(Function(x) x.Value.Item1).ThenByDescending(Function(x) x.Value.Item2).First().Key
-        Dim campeonEscuderia As String = puntosEscuderias.OrderByDescending(Function(x) x.Value.Item1).ThenByDescending(Function(x) x.Value.Item2).First().Key
-
-        ' Imprimir los resultados
-        Console.WriteLine("Campeón de Pilotos: " & campeonPiloto)
-        Console.WriteLine("Campeón de Escuderías: " & campeonEscuderia)
-        Console.WriteLine("Clasificación Final de Pilotos:")
-        For Each piloto In puntosPilotos
-            Console.WriteLine("Piloto: " & piloto.Key & " - Puntos Totales: " & piloto.Value.Item1)
-        Next
-        Console.WriteLine("Clasificación Final de Escuderías:")
-        For Each escuderia In puntosEscuderias
-            Console.WriteLine("Escudería: " & escuderia.Key & " - Puntos Totales: " & escuderia.Value.Item1)
-        Next
     End Sub
 
+
+    Private Sub ListBox_HistorialEscuderia_Escuderia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_HistorialEscuderia_Escuderia.SelectedIndexChanged
+        ListBox_HistorialEscuderia_Piloto.Items.Clear()
+
+        If Not Me.ListBox_HistorialEscuderia_Escuderia.SelectedItem Is Nothing Then
+            Me.es = New Escuderia(Me.ListBox_HistorialEscuderia_Escuderia.SelectedItem.ToString) 'para obtener un elemento de la listaBox'
+            Dim contrato As Contrato
+
+            For Each contrato In Me.con.ContratoDAO.Contratos
+                If contrato.Escuderia.IDEscuderia = Me.es.IDEscuderia Then
+                    Me.ListBox_HistorialEscuderia_Piloto.Items.Add(contrato.Piloto1.IDPiloto)
+                    Me.ListBox_HistorialEscuderia_Piloto.Items.Add(contrato.Piloto2.IDPiloto)
+                End If
+            Next
+
+
+
+        End If
+    End Sub
+
+    Private Sub ListBox_HistorialEscuderia_Piloto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_HistorialEscuderia_Piloto.SelectedIndexChanged
+        If Not Me.ListBox_HistorialEscuderia_Piloto.SelectedItem Is Nothing Then
+            Me.pi = New Piloto(Me.ListBox_HistorialEscuderia_Piloto.SelectedItem.ToString)
+            Dim fechainicio As Integer = DateTimePicker_HistorialEscuderia_Inicio.Value.Year
+            Dim fechafin As Integer = DateTimePicker_HistorialEscuderia_Final.Value.Year
+            Dim carreras As Collection = New Collection
+            Dim carrera As Carreras
+            Dim puntos As Integer = 0
+
+            For Each carrera In Me.c.CarrerasDAO.Carrera
+                If carrera.Piloto.IDPiloto = Me.pi.IDPiloto And carrera.Temporada >= fechainicio And carrera.Temporada <= fechafin Then
+                    carreras.Add(carrera)
+                    puntos += carrera.Puntos
+                End If
+            Next
+
+            TextBox_HistorialEscuderia_Puntos.Text = puntos
+        End If
+    End Sub
+
+    Private Sub ListBox_HistorialPiloto_Piloto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_HistorialPiloto_Piloto.SelectedIndexChanged
+
+        Dim pi As Piloto
+        Dim caAux As Carreras
+        Dim gp As GP
+        Dim ca As Carreras
+        If Not Me.ListBox_HistorialPiloto_Piloto.SelectedItem Is Nothing Then
+            Me.ListBox_HistorialPiloto_Carreras.Items.Clear()
+            pi = New Piloto(Me.ListBox_HistorialPiloto_Piloto.SelectedItem.ToString)
+
+            For Each caAux In Me.c.CarrerasDAO.Carrera
+
+                If pi.IDPiloto = caAux.Piloto.IDPiloto Then
+                    Me.ListBox_HistorialPiloto_Carreras.Items.Add(caAux.GP.IDGP)
+                End If
+            Next
+            Me.TextBox_HistorialPiloto_GP.Text = String.Empty
+            Me.TextBox_HistorialPiloto_Posicion.Text = String.Empty
+            Me.TextBox_HistorialPiloto_Puntos.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub ListBox_HistorialPiloto_Carreras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_HistorialPiloto_Carreras.SelectedIndexChanged
+        If Not Me.ListBox_HistorialPiloto_Carreras.SelectedItem Is Nothing Then
+            Dim gp = New GP(Me.ListBox_HistorialPiloto_Carreras.SelectedItem.ToString)
+            Dim ca As Carreras
+            Dim pi = New Piloto(Me.ListBox_HistorialPiloto_Piloto.SelectedItem.ToString)
+            Try
+                gp.LeerGP()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            End Try
+            ca = New Carreras(temporada, gp, pi)
+            ca.LeerCarrera()
+            Me.TextBox_HistorialPiloto_GP.Text = gp.DenominacionGP
+            Me.TextBox_HistorialPiloto_Posicion.Text = ca.Posicion.ToString
+            Me.TextBox_HistorialPiloto_Puntos.Text = ca.Puntos.ToString
+        End If
+    End Sub
+
+    Private Sub EliminarInfoDeUnaTemporada()
+        Me.con.BorrarTodosLoscontratos()
+        Me.c.BorrarTodasLasCarreras()
+        Me.ca.BorrarTodosLosCalendarios()
+
+    End Sub
 End Class
