@@ -1,6 +1,7 @@
 ﻿Public Class ContratoDAO
 
     Public ReadOnly Property Contratos As Collection 'personas es una variable de tipo colleción'
+    Public ReadOnly Property ContratosTemporada As Collection
 
     Public Sub New()
         Me.Contratos = New Collection
@@ -36,6 +37,21 @@
             p.Piloto1 = pi1
             p.Piloto2 = pi2
 
+        Next
+    End Sub
+
+    Public Sub LeerTodosPorTemporada(ByRef p As Contrato) 'lo mismo que leer todas pero solo una persona la diferencia esta que como parametros pasamos una persona'
+        Dim col As Collection : Dim aux As Collection
+        Dim pi1 As Piloto
+        Dim pi2 As Piloto
+        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM contratos WHERE Temporada='" & p.Temporada & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
+        For Each aux In col
+            p.Temporada = aux(2)
+            pi1 = New Piloto(aux(3).ToString)
+            pi2 = New Piloto(aux(4).ToString)
+            p.Piloto1 = pi1
+            p.Piloto2 = pi2
+            Me.ContratosTemporada.Add(p)
         Next
     End Sub
 
