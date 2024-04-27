@@ -25,6 +25,10 @@
         Me.ContratoDAO.Leer(Me) 'Me es un objeto persona'
     End Sub
 
+    Public Sub LeerTodosContratosPorTemporada()
+        Me.ContratoDAO.LeerTodosPorTemporada(Me)
+    End Sub
+
     Public Function InsertarContrato() As Integer
         Return Me.ContratoDAO.Insertar(Me)
     End Function

@@ -23,6 +23,10 @@
         Me.CalendarioDAO.Leer(Me)
     End Sub
 
+    Public Sub LeerTodosCalendariosPorTemporada()
+        Me.CalendarioDAO.LeerTodosPorTemporada(Me)
+    End Sub
+
     Public Function InsertarCalendario() As Integer
         Return Me.CalendarioDAO.Insertar(Me)
     End Function

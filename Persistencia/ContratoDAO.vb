@@ -41,12 +41,15 @@
     End Sub
 
     Public Sub LeerTodosPorTemporada(ByRef p As Contrato) 'lo mismo que leer todas pero solo una persona la diferencia esta que como parametros pasamos una persona'
+        ContratosTemporada.Clear()
         Dim col As Collection : Dim aux As Collection
         Dim pi1 As Piloto
         Dim pi2 As Piloto
+        Dim es As Escuderia
         col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM contratos WHERE Temporada='" & p.Temporada & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
         For Each aux In col
-            p.Temporada = aux(2)
+            es = New Escuderia(aux(1).ToString)
+            p.Escuderia = es
             pi1 = New Piloto(aux(3).ToString)
             pi2 = New Piloto(aux(4).ToString)
             p.Piloto1 = pi1

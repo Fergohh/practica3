@@ -2,7 +2,7 @@
 
 Public Class CalendarioDAO
     Public ReadOnly Property Calendarios As Collection ' Calendarios es una colección de objetos Calendario
-
+    Public ReadOnly Property CalendariosTemporada As Collection
     Public Sub New()
         Me.Calendarios = New Collection
     End Sub
@@ -31,6 +31,23 @@ Public Class CalendarioDAO
             Dim col As Collection : Dim aux As Collection
             col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM calendario WHERE Temporada='" & calendario.Temporada & "' AND GP='" & calendario.GP.IDGP & "';") ' Leer un calendario específico por temporada y GP
             For Each aux In col
+                calendario.Orden = aux(3) ' Actualizar el orden del calendario proporcionado
+            Next
+        Catch ex As Exception
+            Throw New Exception("Error al leer el calendario", ex)
+        End Try
+    End Sub
+
+    Public Sub LeerTodosPorTemporada(ByRef calendario As Calendario)
+
+        Try
+            CalendariosTemporada.Clear()
+            Dim gp As GP
+            Dim col As Collection : Dim aux As Collection
+            col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM calendario WHERE Temporada='" & calendario.Temporada & "';") ' Leer un calendario específico por temporada y GP
+            For Each aux In col
+                gp = New GP(aux(2).ToString)
+                calendario.GP = gp
                 calendario.Orden = aux(3) ' Actualizar el orden del calendario proporcionado
             Next
         Catch ex As Exception

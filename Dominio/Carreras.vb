@@ -25,6 +25,9 @@
     Public Sub LeerCarrera()
         Me.CarrerasDAO.Leer(Me) 'Me es un objeto persona'
     End Sub
+    Public Sub LeerTodasCarrerasPorTemporada()
+        Me.CarrerasDAO.LeerTodosPorTemporada(Me) 'Me es un objeto persona'
+    End Sub
 
     Public Function InsertarCarrera() As Integer
         Return Me.CarrerasDAO.Insertar(Me)

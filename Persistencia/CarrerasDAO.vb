@@ -1,7 +1,7 @@
 ﻿Public Class CarrerasDAO
 
     Public ReadOnly Property Carrera As Collection 'personas es una variable de tipo colleción'
-
+    Public ReadOnly Property CarreraPorTemporada As Collection
     Public Sub New()
         Me.Carrera = New Collection
     End Sub
@@ -27,6 +27,18 @@
         Dim pi As Piloto
         Dim gp As GP
         col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM carreras WHERE Temporada='" & p.Temporada & "' AND GP='" & p.GP.IDGP & "' AND Piloto='" & p.Piloto.IDPiloto & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
+        For Each aux In col
+            p.Posicion = aux(4)
+            p.Puntos = aux(5)
+        Next
+    End Sub
+
+    Public Sub LeerTodosPorTemporada(ByRef p As Carreras) 'lo mismo que leer todas pero solo una persona la diferencia esta que como parametros pasamos una persona'
+        CarreraPorTemporada.Clear()
+        Dim col As Collection : Dim aux As Collection
+        Dim pi As Piloto
+        Dim gp As GP
+        col = AgenteBD.ObtenerAgente.Leer("SELECT * FROM carreras WHERE Temporada='" & p.Temporada & "';") 'el select es diferente al de leer todas le pasamos la id de persona'
         For Each aux In col
             gp = New GP(aux(2).ToString)
             pi = New Piloto(aux(3).ToString)
