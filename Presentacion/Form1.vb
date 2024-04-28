@@ -10,6 +10,7 @@ Public Class Form1
     Dim ca As Calendario
     Dim c As Carreras
     Dim con As Contrato
+    Dim cla As Clasificacion
 
     Private temporada As Int32
     Private rnd As New Random()
@@ -184,7 +185,7 @@ Public Class Form1
         Conectar.Enabled = False
         Conectar.Visible = False
         Añadir.Enabled = True
-        GenerarInformeFinal()
+        VerClasificacionCarrera()
 
         Me.Numeros_escuderias.Enabled = False
         Me.Numeros_GP.Enabled = False
@@ -889,6 +890,30 @@ Public Class Form1
             Me.TextBox_HistorialPiloto_Puntos.Text = ca.Puntos.ToString
         End If
     End Sub
+
+    Private Sub VerClasificacionCarrera()
+        Dim clasificacion As Clasificacion
+        Dim claAux As Clasificacion
+        Dim piloto As Piloto
+        clasificacion = New Clasificacion(temporada)
+        clasificacion.ConseguirClasificacion()
+
+        Try
+            For Each claAux In Me.cla.ClasificacionDAO.Clasificaciones
+
+                piloto = claAux.Piloto
+                piloto.LeerPilotos()
+                ListBox_Clasificacion_Pilotos.Items.Add(piloto.Nombre)
+            Next
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, ex.Source, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
+
+
+
+    End Sub
+
 
     Private Sub EliminarInfoDeUnaTemporada()
         Me.con.BorrarTodosLoscontratos()
