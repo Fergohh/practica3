@@ -892,18 +892,27 @@ Public Class Form1
     End Sub
 
     Private Sub VerClasificacionCarrera()
-        Dim clasificacion As Clasificacion
+        Dim clasifica As Clasificacion
         Dim claAux As Clasificacion
         Dim piloto As Piloto
-        clasificacion = New Clasificacion(temporada)
-        clasificacion.ConseguirClasificacion()
+        Dim escuderia As Escuderia
+        clasifica = New Clasificacion(temporada)
+        clasifica.ConseguirClasificacionPilotos()
+        clasifica.ConseguirClasificacionEscuderias()
 
         Try
-            For Each claAux In Me.cla.ClasificacionDAO.Clasificaciones
+            For Each claAux In clasifica.ClasificacionDAO.ClasificacionesPilotos
 
                 piloto = claAux.Piloto
                 piloto.LeerPilotos()
                 ListBox_Clasificacion_Pilotos.Items.Add(piloto.Nombre)
+            Next
+
+            For Each claAux In clasifica.ClasificacionDAO.ClasificacionesEscuderias
+
+                escuderia = claAux.Escuderia
+                escuderia.LeerEscuderia()
+                ListBox_Clasificacion_Escuderias.Items.Add(escuderia.Nombre)
             Next
 
         Catch ex As Exception
