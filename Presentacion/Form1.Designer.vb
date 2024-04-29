@@ -105,11 +105,8 @@ Partial Class Form1
         ListBox_Contratos = New ListBox()
         TabPage1 = New TabPage()
         ListBox_Clasificacion_Escuderias = New ListBox()
-        TextBox_Clasificacion_Escuderia = New TextBox()
-        TextBox_Clasificacion_Pais = New TextBox()
-        TextBox_Clasificacion_Puntos = New TextBox()
+        TextBox_Clasificacion_Puntos_Piloto = New TextBox()
         ListBox_Clasificacion_Pilotos = New ListBox()
-        Label20 = New Label()
         Label19 = New Label()
         Label13 = New Label()
         TabPage2 = New TabPage()
@@ -1013,11 +1010,8 @@ Partial Class Form1
         ' TabPage1
         ' 
         TabPage1.Controls.Add(ListBox_Clasificacion_Escuderias)
-        TabPage1.Controls.Add(TextBox_Clasificacion_Escuderia)
-        TabPage1.Controls.Add(TextBox_Clasificacion_Pais)
-        TabPage1.Controls.Add(TextBox_Clasificacion_Puntos)
+        TabPage1.Controls.Add(TextBox_Clasificacion_Puntos_Piloto)
         TabPage1.Controls.Add(ListBox_Clasificacion_Pilotos)
-        TabPage1.Controls.Add(Label20)
         TabPage1.Controls.Add(Label19)
         TabPage1.Controls.Add(Label13)
         TabPage1.Location = New Point(4, 24)
@@ -1037,29 +1031,14 @@ Partial Class Form1
         ListBox_Clasificacion_Escuderias.Size = New Size(175, 154)
         ListBox_Clasificacion_Escuderias.TabIndex = 7
         ' 
-        ' TextBox_Clasificacion_Escuderia
         ' 
-        TextBox_Clasificacion_Escuderia.Location = New Point(311, 179)
-        TextBox_Clasificacion_Escuderia.Name = "TextBox_Clasificacion_Escuderia"
-        TextBox_Clasificacion_Escuderia.ReadOnly = True
-        TextBox_Clasificacion_Escuderia.Size = New Size(153, 23)
-        TextBox_Clasificacion_Escuderia.TabIndex = 6
+        ' TextBox_Clasificacion_Puntos_Piloto
         ' 
-        ' TextBox_Clasificacion_Pais
-        ' 
-        TextBox_Clasificacion_Pais.Location = New Point(311, 105)
-        TextBox_Clasificacion_Pais.Name = "TextBox_Clasificacion_Pais"
-        TextBox_Clasificacion_Pais.ReadOnly = True
-        TextBox_Clasificacion_Pais.Size = New Size(153, 23)
-        TextBox_Clasificacion_Pais.TabIndex = 5
-        ' 
-        ' TextBox_Clasificacion_Puntos
-        ' 
-        TextBox_Clasificacion_Puntos.Location = New Point(311, 41)
-        TextBox_Clasificacion_Puntos.Name = "TextBox_Clasificacion_Puntos"
-        TextBox_Clasificacion_Puntos.ReadOnly = True
-        TextBox_Clasificacion_Puntos.Size = New Size(153, 23)
-        TextBox_Clasificacion_Puntos.TabIndex = 4
+        TextBox_Clasificacion_Puntos_Piloto.Location = New Point(339, 42)
+        TextBox_Clasificacion_Puntos_Piloto.Name = "TextBox_Clasificacion_Puntos_Piloto"
+        TextBox_Clasificacion_Puntos_Piloto.ReadOnly = True
+        TextBox_Clasificacion_Puntos_Piloto.Size = New Size(153, 23)
+        TextBox_Clasificacion_Puntos_Piloto.TabIndex = 4
         ' 
         ' ListBox_Clasificacion_Pilotos
         ' 
@@ -1070,32 +1049,23 @@ Partial Class Form1
         ListBox_Clasificacion_Pilotos.Size = New Size(175, 154)
         ListBox_Clasificacion_Pilotos.TabIndex = 3
         ' 
-        ' Label20
-        ' 
-        Label20.AutoSize = True
-        Label20.Location = New Point(248, 182)
-        Label20.Name = "Label20"
-        Label20.Size = New Size(57, 15)
-        Label20.TabIndex = 2
-        Label20.Text = "Escuderia"
-        ' 
         ' Label19
         ' 
         Label19.AutoSize = True
-        Label19.Location = New Point(277, 108)
+        Label19.Location = New Point(197, 108)
         Label19.Name = "Label19"
-        Label19.Size = New Size(28, 15)
+        Label19.Size = New Size(136, 15)
         Label19.TabIndex = 1
-        Label19.Text = "Pais"
+        Label19.Text = "Puntos Totales Escuderia"
         ' 
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Location = New Point(261, 44)
+        Label13.Location = New Point(206, 45)
         Label13.Name = "Label13"
-        Label13.Size = New Size(44, 15)
+        Label13.Size = New Size(121, 15)
         Label13.TabIndex = 0
-        Label13.Text = "Puntos"
+        Label13.Text = "Puntos totales Pilotos"
         ' 
         ' TabPage2
         ' 
@@ -1662,7 +1632,7 @@ Partial Class Form1
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TextBox_Clasificacion_Escuderia As TextBox
     Friend WithEvents TextBox_Clasificacion_Pais As TextBox
-    Friend WithEvents TextBox_Clasificacion_Puntos As TextBox
+    Friend WithEvents TextBox_Clasificacion_Puntos_Piloto As TextBox
     Friend WithEvents ListBox_Clasificacion_Pilotos As ListBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Label19 As Label

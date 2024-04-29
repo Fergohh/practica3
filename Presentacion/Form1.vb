@@ -930,4 +930,18 @@ Public Class Form1
         Me.ca.BorrarTodosLosCalendarios()
 
     End Sub
+
+    Private Sub ListBox_Clasificacion_Pilotos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Clasificacion_Pilotos.SelectedIndexChanged
+        If Not Me.ListBox_Clasificacion_Pilotos.SelectedItem Is Nothing Then
+
+        End If
+    End Sub
+
+    Private Sub ListBox_Clasificacion_Escuderias_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox_Clasificacion_Escuderias.SelectedIndexChanged
+        If Not Me.ListBox_Clasificacion_Escuderias.SelectedItem Is Nothing Then
+
+        End If
+    End Sub
+
+
 End Class

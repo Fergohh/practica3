@@ -2,6 +2,7 @@
     Public Property Temporada As Integer
     Public Property Piloto As Piloto
     Public Property Escuderia As Escuderia
+    Public Property Puntos As Integer
     Public ReadOnly Property ClasificacionDAO As ClasificacionDAO 'creamos objeto tipo PersonaDAO'
 
     Public Sub New(temporada As Integer)

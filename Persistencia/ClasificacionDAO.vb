@@ -29,6 +29,7 @@ ORDER BY TotalPuntos DESC, (SELECT COUNT(*)
             p.Piloto = pil
             clasi = New Clasificacion(p.Temporada)
             clasi.Piloto = pil
+            clasi.Puntos = aux(2)
             Me.ClasificacionesPilotos.Add(clasi)
 
         Next
@@ -57,6 +58,7 @@ ORDER BY TotalPuntos DESC, (SELECT COUNT(*)
             p.Escuderia = escu
             clasi = New Clasificacion(p.Temporada)
             clasi.Escuderia = escu
+            clasi.Puntos = aux(2)
             Me.ClasificacionesEscuderias.Add(clasi)
             MessageBox.Show("veamos:" & aux(1).ToString)
         Next
